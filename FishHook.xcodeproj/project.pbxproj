@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C493CC2759AD7FD8D8B0C1C /* Pods_FishHookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */; };
 		4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F96F221B0D4800664FF2 /* AppDelegate.swift */; };
 		4A35F972221B0D4800664FF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F971221B0D4800664FF2 /* ViewController.swift */; };
 		4A35F975221B0D4800664FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F973221B0D4800664FF2 /* Main.storyboard */; };
 		4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F976221B0D4900664FF2 /* Assets.xcassets */; };
 		4A35F97A221B0D4900664FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */; };
 		4A35F985221B0D4900664FF2 /* FishHookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F984221B0D4900664FF2 /* FishHookTests.swift */; };
+		4A9D7DF3221E3F3F00585DCA /* GoogleService-InfoiOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-InfoiOS.plist */; };
+		C7D1E48C95698234A45DC45C /* Pods_FishHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E085035BFBE25D88C1EAE79 /* Pods-FishHook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.debug.xcconfig"; sourceTree = "<group>"; };
+		23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.release.xcconfig"; sourceTree = "<group>"; };
+		41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.release.xcconfig"; sourceTree = "<group>"; };
 		4A35F96C221B0D4800664FF2 /* FishHook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishHook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F96F221B0D4800664FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A35F971221B0D4800664FF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +43,9 @@
 		4A35F980221B0D4900664FF2 /* FishHookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishHookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F984221B0D4900664FF2 /* FishHookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishHookTests.swift; sourceTree = "<group>"; };
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A9D7DF2221E3F3F00585DCA /* GoogleService-InfoiOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-InfoiOS.plist"; sourceTree = "<group>"; };
+		5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D1E48C95698234A45DC45C /* Pods_FishHook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C493CC2759AD7FD8D8B0C1C /* Pods_FishHookTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +74,8 @@
 				4A35F96E221B0D4800664FF2 /* FishHook */,
 				4A35F983221B0D4900664FF2 /* FishHookTests */,
 				4A35F96D221B0D4800664FF2 /* Products */,
+				75C9D853F827504E6184467A /* Pods */,
+				6AFA36CDC0C672D390094BAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +97,7 @@
 				4A35F976221B0D4900664FF2 /* Assets.xcassets */,
 				4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */,
 				4A35F97B221B0D4900664FF2 /* Info.plist */,
+				4A9D7DF2221E3F3F00585DCA /* GoogleService-InfoiOS.plist */,
 			);
 			path = FishHook;
 			sourceTree = "<group>";
@@ -96,6 +111,26 @@
 			path = FishHookTests;
 			sourceTree = "<group>";
 		};
+		6AFA36CDC0C672D390094BAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */,
+				B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75C9D853F827504E6184467A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E085035BFBE25D88C1EAE79 /* Pods-FishHook.debug.xcconfig */,
+				41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */,
+				23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */,
+				2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +138,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A35F989221B0D4900664FF2 /* Build configuration list for PBXNativeTarget "FishHook" */;
 			buildPhases = (
+				31C8FB46D48D14FABEB1E96E /* [CP] Check Pods Manifest.lock */,
 				4A35F968221B0D4700664FF2 /* Sources */,
 				4A35F969221B0D4700664FF2 /* Frameworks */,
 				4A35F96A221B0D4700664FF2 /* Resources */,
@@ -120,6 +156,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A35F98C221B0D4900664FF2 /* Build configuration list for PBXNativeTarget "FishHookTests" */;
 			buildPhases = (
+				B9803D651CD6024FFE9607E1 /* [CP] Check Pods Manifest.lock */,
 				4A35F97C221B0D4900664FF2 /* Sources */,
 				4A35F97D221B0D4900664FF2 /* Frameworks */,
 				4A35F97E221B0D4900664FF2 /* Resources */,
@@ -180,6 +217,7 @@
 				4A35F97A221B0D4900664FF2 /* LaunchScreen.storyboard in Resources */,
 				4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */,
 				4A35F975221B0D4800664FF2 /* Main.storyboard in Resources */,
+				4A9D7DF3221E3F3F00585DCA /* GoogleService-InfoiOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +229,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31C8FB46D48D14FABEB1E96E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FishHook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9803D651CD6024FFE9607E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FishHookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A35F968221B0D4700664FF2 /* Sources */ = {
@@ -358,6 +443,7 @@
 		};
 		4A35F98A221B0D4900664FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E085035BFBE25D88C1EAE79 /* Pods-FishHook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +462,7 @@
 		};
 		4A35F98B221B0D4900664FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +481,7 @@
 		};
 		4A35F98D221B0D4900664FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +503,7 @@
 		};
 		4A35F98E221B0D4900664FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
