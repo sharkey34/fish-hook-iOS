@@ -11,5 +11,6 @@ target 'FishHook' do
     inherit! :search_paths
     # Pods for testing
   end
+pod 'Firebase/Core'
 
 end
