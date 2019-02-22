@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,85 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83i-n4-lfj" customClass="ColorGradient" customModule="FishHook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="First">
+                                        <color key="value" red="0.12156862745098039" green="0.58039215686274503" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="Second">
+                                        <color key="value" red="0.062745098039215685" green="0.29019607843137252" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2X6-iX-jSX">
+                                <rect key="frame" x="153.5" y="455" width="461" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7t-To-fCl">
+                                <rect key="frame" x="153.5" y="532" width="461" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FishHookiOS" translatesAutoresizingMaskIntoConstraints="NO" id="Nrz-bp-U2U">
+                                <rect key="frame" x="269" y="55" width="230" height="307.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="irK-aj-8uL">
+                                <rect key="frame" x="291.5" y="574" width="185" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No account? Sign up now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="cTH-Yg-DxD">
+                                <rect key="frame" x="248.5" y="873" width="271" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="4Zl-zH-MPJ">
+                                <rect key="frame" x="355" y="716.5" width="58" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.58039215686274503" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cTH-Yg-DxD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1D4-Kf-b6z"/>
+                            <constraint firstItem="Nrz-bp-U2U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="5LF-eq-mEb"/>
+                            <constraint firstItem="2X6-iX-jSX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9lU-Sg-Gly"/>
+                            <constraint firstItem="Nrz-bp-U2U" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="BYl-sj-iIV"/>
+                            <constraint firstItem="d7t-To-fCl" firstAttribute="top" secondItem="2X6-iX-jSX" secondAttribute="bottom" constant="47" id="D5v-Ix-GQy"/>
+                            <constraint firstItem="d7t-To-fCl" firstAttribute="height" secondItem="2X6-iX-jSX" secondAttribute="height" id="D6s-Mi-l5Q"/>
+                            <constraint firstItem="irK-aj-8uL" firstAttribute="top" secondItem="d7t-To-fCl" secondAttribute="bottom" constant="12" id="EIQ-Na-HvJ"/>
+                            <constraint firstItem="irK-aj-8uL" firstAttribute="centerX" secondItem="d7t-To-fCl" secondAttribute="centerX" id="Fhe-UR-Jfe"/>
+                            <constraint firstItem="4Zl-zH-MPJ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MwK-VD-EUD"/>
+                            <constraint firstItem="cTH-Yg-DxD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.7" id="Plg-tV-HPy"/>
+                            <constraint firstItem="Nrz-bp-U2U" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XVo-RU-7AX"/>
+                            <constraint firstItem="Nrz-bp-U2U" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.4" id="a44-LM-YBU"/>
+                            <constraint firstItem="d7t-To-fCl" firstAttribute="centerX" secondItem="2X6-iX-jSX" secondAttribute="centerX" id="c9c-oR-5AK"/>
+                            <constraint firstItem="d7t-To-fCl" firstAttribute="width" secondItem="2X6-iX-jSX" secondAttribute="width" id="i7l-CK-0xv"/>
+                            <constraint firstItem="2X6-iX-jSX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="mUq-jh-AuX"/>
+                            <constraint firstItem="2X6-iX-jSX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="npk-oc-42P"/>
+                            <constraint firstItem="4Zl-zH-MPJ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.4" id="uNw-ab-phH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="26.5625" y="17.578125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FishHookiOS" width="190" height="172"/>
+    </resources>
 </document>
