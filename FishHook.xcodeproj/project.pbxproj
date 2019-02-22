@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A2F48B0221F955000FDBC93 /* AdminDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */; };
+		4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */; };
 		4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F96F221B0D4800664FF2 /* AppDelegate.swift */; };
 		4A35F972221B0D4800664FF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F971221B0D4800664FF2 /* ViewController.swift */; };
 		4A35F975221B0D4800664FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F973221B0D4800664FF2 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.release.xcconfig"; sourceTree = "<group>"; };
 		41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.release.xcconfig"; sourceTree = "<group>"; };
+		4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardViewController.swift; sourceTree = "<group>"; };
+		4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		4A35F96C221B0D4800664FF2 /* FishHook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishHook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F96F221B0D4800664FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A35F971221B0D4800664FF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A2F48A7221F92DC00FDBC93 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4A2F48AA221F941200FDBC93 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4A2F48AB221F941A00FDBC93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4A2F48AC221F942D00FDBC93 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A35F971221B0D4800664FF2 /* ViewController.swift */,
+				4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */,
+				4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		4A35F963221B0D4700664FF2 = {
 			isa = PBXGroup;
 			children = (
@@ -93,14 +129,16 @@
 		4A35F96E221B0D4800664FF2 /* FishHook */ = {
 			isa = PBXGroup;
 			children = (
+				4A2F48AC221F942D00FDBC93 /* Controllers */,
+				4A2F48AA221F941200FDBC93 /* ViewModels */,
+				4A2F48AB221F941A00FDBC93 /* Models */,
 				4A35F96F221B0D4800664FF2 /* AppDelegate.swift */,
-				4A35F971221B0D4800664FF2 /* ViewController.swift */,
 				4A35F973221B0D4800664FF2 /* Main.storyboard */,
 				4A35F976221B0D4900664FF2 /* Assets.xcassets */,
 				4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */,
 				4A35F97B221B0D4900664FF2 /* Info.plist */,
 				4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */,
-				4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */,
+				4A2F48A7221F92DC00FDBC93 /* Utilities */,
 			);
 			path = FishHook;
 			sourceTree = "<group>";
@@ -266,6 +304,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FishHook/Pods-FishHook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -273,6 +312,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -310,7 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
+				4A2F48B0221F955000FDBC93 /* AdminDashboardViewController.swift in Sources */,
 				4A35F972221B0D4800664FF2 /* ViewController.swift in Sources */,
 				4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */,
 			);

@@ -12,5 +12,6 @@ target 'FishHook' do
     # Pods for testing
   end
 pod 'Firebase/Core'
+pod 'Firebase/Auth'
 
 end
