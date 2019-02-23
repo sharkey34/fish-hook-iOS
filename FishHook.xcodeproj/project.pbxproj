@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A2F48B0221F955000FDBC93 /* AdminDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */; };
 		4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */; };
 		4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F96F221B0D4800664FF2 /* AppDelegate.swift */; };
 		4A35F972221B0D4800664FF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F971221B0D4800664FF2 /* ViewController.swift */; };
@@ -19,6 +18,8 @@
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AA55318221E5D3200D835BA /* Pods_FishHookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */; };
 		4AA55319221E5D3500D835BA /* Pods_FishHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */; };
+		4AC715722220D8EA00868214 /* AdminDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715712220D8EA00868214 /* AdminDashViewController.swift */; };
+		4AC715742220DBD800868214 /* TournamentCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* TournamentCreationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 		23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.release.xcconfig"; sourceTree = "<group>"; };
 		41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.release.xcconfig"; sourceTree = "<group>"; };
-		4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardViewController.swift; sourceTree = "<group>"; };
 		4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		4A35F96C221B0D4800664FF2 /* FishHook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishHook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F96F221B0D4800664FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AC715712220D8EA00868214 /* AdminDashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashViewController.swift; sourceTree = "<group>"; };
+		4AC715732220DBD800868214 /* TournamentCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCreationViewController.swift; sourceTree = "<group>"; };
 		5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,9 +101,9 @@
 		4A2F48AC221F942D00FDBC93 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A35F971221B0D4800664FF2 /* ViewController.swift */,
-				4A2F48AF221F955000FDBC93 /* AdminDashboardViewController.swift */,
-				4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */,
+				4AC715762220DC6500868214 /* Login_Signup */,
+				4AC715752220DBEB00868214 /* TournamentCreation */,
+				4AC715712220D8EA00868214 /* AdminDashViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -150,6 +152,23 @@
 				4A35F986221B0D4900664FF2 /* Info.plist */,
 			);
 			path = FishHookTests;
+			sourceTree = "<group>";
+		};
+		4AC715752220DBEB00868214 /* TournamentCreation */ = {
+			isa = PBXGroup;
+			children = (
+				4AC715732220DBD800868214 /* TournamentCreationViewController.swift */,
+			);
+			path = TournamentCreation;
+			sourceTree = "<group>";
+		};
+		4AC715762220DC6500868214 /* Login_Signup */ = {
+			isa = PBXGroup;
+			children = (
+				4A35F971221B0D4800664FF2 /* ViewController.swift */,
+				4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */,
+			);
+			path = Login_Signup;
 			sourceTree = "<group>";
 		};
 		6AFA36CDC0C672D390094BAA /* Frameworks */ = {
@@ -350,9 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC715742220DBD800868214 /* TournamentCreationViewController.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
-				4A2F48B0221F955000FDBC93 /* AdminDashboardViewController.swift in Sources */,
+				4AC715722220D8EA00868214 /* AdminDashViewController.swift in Sources */,
 				4A35F972221B0D4800664FF2 /* ViewController.swift in Sources */,
 				4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */,
 			);
