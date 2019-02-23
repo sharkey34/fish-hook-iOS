@@ -13,6 +13,9 @@
 		4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F976221B0D4900664FF2 /* Assets.xcassets */; };
 		4A35F97A221B0D4900664FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */; };
 		4A35F985221B0D4900664FF2 /* FishHookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F984221B0D4900664FF2 /* FishHookTests.swift */; };
+		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
+		4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9D2221EBE0006DE8B9 /* User.swift */; };
+		4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */; };
 		4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AA55318221E5D3200D835BA /* Pods_FishHookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */; };
@@ -49,6 +52,9 @@
 		4A35F980221B0D4900664FF2 /* FishHookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishHookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F984221B0D4900664FF2 /* FishHookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishHookTests.swift; sourceTree = "<group>"; };
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
+		4A5C3C9D2221EBE0006DE8B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AC715732220DBD800868214 /* TournamentCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCreationViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 		4A2F48AB221F941A00FDBC93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A5C3C9D2221EBE0006DE8B9 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +112,7 @@
 		4A2F48AC221F942D00FDBC93 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A5C3C9A2221EB89006DE8B9 /* Utiilties */,
 				4AC7157D2220E09A00868214 /* Divisions */,
 				4AC715762220DC6500868214 /* Login_Signup */,
 				4AC715752220DBEB00868214 /* TournamentCreation */,
@@ -158,6 +166,15 @@
 				4A35F986221B0D4900664FF2 /* Info.plist */,
 			);
 			path = FishHookTests;
+			sourceTree = "<group>";
+		};
+		4A5C3C9A2221EB89006DE8B9 /* Utiilties */ = {
+			isa = PBXGroup;
+			children = (
+				4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */,
+				4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */,
+			);
+			path = Utiilties;
 			sourceTree = "<group>";
 		};
 		4AC715752220DBEB00868214 /* TournamentCreation */ = {
@@ -389,7 +406,10 @@
 				4AC7157C2220E05F00868214 /* AdminTournamentsCollectionViewController.swift in Sources */,
 				4AC715812220E3EC00868214 /* LoginViewController.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
+				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
 				4AC7157F2220E0B100868214 /* DivisionsCollectionViewController.swift in Sources */,
+				4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */,
+				4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */,
 				4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
