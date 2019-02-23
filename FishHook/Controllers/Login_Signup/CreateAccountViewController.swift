@@ -9,22 +9,22 @@
 import UIKit
 
 class CreateAccountViewController: UIViewController {
-
+    @IBOutlet weak var signUp: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped(sender:)))
+        
+        signUp.addGestureRecognizer(tap)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc
+    func signUpTapped(sender: UITapGestureRecognizer){
+        
+        
+        // TODO: Create new Firebase user.
+        performSegue(withIdentifier: "createToAdmin", sender: self)
     }
-    */
-
 }
