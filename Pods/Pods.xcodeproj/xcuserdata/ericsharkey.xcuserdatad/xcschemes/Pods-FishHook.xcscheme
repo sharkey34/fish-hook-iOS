@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B87195F1E8D525911EB435F888A8FA5D"
+               BlueprintIdentifier = "3408DC87F8BBDA36863C2D90492BCAB2"
                BuildableName = "Pods_FishHook.framework"
                BlueprintName = "Pods-FishHook"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B87195F1E8D525911EB435F888A8FA5D"
+            BlueprintIdentifier = "3408DC87F8BBDA36863C2D90492BCAB2"
             BuildableName = "Pods_FishHook.framework"
             BlueprintName = "Pods-FishHook"
             ReferencedContainer = "container:Pods.xcodeproj">
