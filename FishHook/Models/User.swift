@@ -10,14 +10,39 @@ import Foundation
 
 class User: NSObject, NSCoding {
     
+    // properties
+    var uid: String
+    var firstName: String
+    var lastName: String
+    var email: String
+    var password: String
     
+    
+    // Encoding properties
     func encode(with aCoder: NSCoder) {
-        // TDOO: Encode properties
+        aCoder.encode(uid, forKey: "uid")
+        aCoder.encode(firstName, forKey: "first")
+        aCoder.encode(lastName, forKey: "last")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(password, forKey: "password")
         
     }
     
+    // Super init
+    init(uid:String,first:String,last:String,email:String,password:String) {
+        self.uid = uid
+        self.firstName = first
+        self.lastName = last
+        self.email = email
+        self.password = password
+    }
+    
+    // Decoding and assigning properties
     required init?(coder aDecoder: NSCoder) {
-        // TODO: Decode properties
-        
+        self.uid = aDecoder.decodeObject(forKey: "uid") as! String
+        self.firstName = aDecoder.decodeObject(forKey: "first") as! String
+        self.lastName = aDecoder.decodeObject(forKey: "last") as! String
+        self.email = aDecoder.decodeObject(forKey: "email") as! String
+        self.password = aDecoder.decodeObject(forKey: "password") as! String
     }
 }

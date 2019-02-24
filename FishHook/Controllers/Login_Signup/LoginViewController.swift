@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
     @IBOutlet var labels: [UILabel]!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     
+    private var ref: DocumentReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +35,24 @@ class LoginViewController: UIViewController {
         
         switch tag {
         case 0:
-            // TODO: Possibly display dialog to help user retrieve account information.
-            print("Forgot your password?")
+            // TODO: Give the user the ability to create a new password.
+            let passwordAlert = Alert.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
+            self.present(passwordAlert, animated: true, completion: nil)
         case 1:
-            // TODO: Validated entries with firebase.
-            print("Login")
+            // TODO: Properly validate entries.
+            guard let emailText = email.text, let passwordText = password.text else {return}
+            
+            Auth.auth().signIn(withEmail: emailText, password: passwordText) { (result, error) in
+                
+                guard let _ = result, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                // TODO: Get the current user and save to User Defaults.
+                
+            }
+            
+            
         case 2:
             // TODO: Perform Segue to Create Account Controller
             performSegue(withIdentifier: "toCreateAccount", sender: self)

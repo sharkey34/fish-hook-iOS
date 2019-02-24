@@ -93,6 +93,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="email" destination="2X6-iX-jSX" id="SMt-2K-TsH"/>
+                        <outlet property="password" destination="d7t-To-fCl" id="pBI-8M-YnB"/>
                         <outletCollection property="labels" destination="irK-aj-8uL" collectionClass="NSMutableArray" id="bt4-1i-6oI"/>
                         <outletCollection property="labels" destination="4Zl-zH-MPJ" collectionClass="NSMutableArray" id="VT9-eg-h9O"/>
                         <outletCollection property="labels" destination="cTH-Yg-DxD" collectionClass="NSMutableArray" id="BQe-q9-w1z"/>
@@ -194,6 +196,10 @@
                         <viewLayoutGuide key="safeArea" id="CJw-wY-RT1"/>
                     </view>
                     <connections>
+                        <outlet property="email" destination="OvE-Ro-HvA" id="7pY-p5-HbT"/>
+                        <outlet property="first" destination="Web-XA-uFE" id="Gba-fD-ILs"/>
+                        <outlet property="last" destination="tSN-qc-7bA" id="n9F-qX-Zfj"/>
+                        <outlet property="password" destination="0Je-Mn-VzM" id="vZN-gG-4fX"/>
                         <outlet property="signUp" destination="BMd-bW-Q0p" id="nFz-PE-pMt"/>
                         <segue destination="RrT-hY-ejQ" kind="show" identifier="createToAdmin" id="EhG-wx-BBF"/>
                     </connections>
@@ -290,7 +296,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="96l-fy-WYg">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="96l-fy-WYg">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -325,7 +331,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jdp-mV-Abl">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="jdp-mV-Abl">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -406,6 +412,6 @@
         <image name="FishHookiOS" width="190" height="172"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LFA-oN-rzn"/>
+        <segue reference="EhG-wx-BBF"/>
     </inferredMetricsTieBreakers>
 </document>

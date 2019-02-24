@@ -12,7 +12,6 @@ import UIKit
 struct Alert {
     
     // Create functions to issue alerts
-    
     static func basicAlert(title: String, message: String, Button: String) -> UIAlertController{
         
         // Create functions to create alerts.
