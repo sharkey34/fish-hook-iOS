@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class AdminTournamentsCollectionViewController: UICollectionViewController {
+    
+    var tournaments: [Tournaments] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +31,39 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        if tournaments.count > 0 {
+            return tournaments.count + 1
+        } else {
+            return 1
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AdminDashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
     
+        print(tournaments.count)
+        print(indexPath.row)
         // Configure the cell
-    
+        if indexPath.row > tournaments.count || tournaments.count == 0 {
+            // TODO: Add image
+            cell.tournamentImage.image = UIImage(named: "Plus")
+            cell.dateLabel.text = "Add"
+            cell.dateLabel.textColor = UIColor.blue
+        } else {
+            // TODO: Normal setup
+            // TODO: Get and set image from storage.
+            cell.tournamentImage.image = UIImage(named: "DefaultTournament")
+            cell.dateLabel.text = tournaments[indexPath.row].created
+        }
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
 
     /*
