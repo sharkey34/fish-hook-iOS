@@ -124,13 +124,13 @@
                                         <rect key="frame" x="153.5" y="446" width="461" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSN-qc-7bA">
                                         <rect key="frame" x="153.5" y="548" width="461" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OvE-Ro-HvA">
                                         <rect key="frame" x="153.5" y="650.5" width="461" height="30"/>
@@ -290,19 +290,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A7p-qH-TsM">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="352" height="342"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="96l-fy-WYg">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="96l-fy-WYg" customClass="AdminDashboardCollectionCell" customModule="FishHook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="352" height="342"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="352" height="342"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YgB-0p-k4j">
+                                            <rect key="frame" x="8" y="28" width="336" height="239.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6J-df-BZ9">
+                                            <rect key="frame" x="0.0" y="297.5" width="352" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="P6J-df-BZ9" firstAttribute="centerY" secondItem="96l-fy-WYg" secondAttribute="centerY" multiplier="1.8" id="6hF-Bq-d0p"/>
+                                    <constraint firstItem="P6J-df-BZ9" firstAttribute="width" secondItem="96l-fy-WYg" secondAttribute="width" id="Bhu-Xc-n0a"/>
+                                    <constraint firstItem="YgB-0p-k4j" firstAttribute="leading" secondItem="96l-fy-WYg" secondAttribute="leadingMargin" id="Xqy-At-jJT"/>
+                                    <constraint firstItem="YgB-0p-k4j" firstAttribute="top" secondItem="96l-fy-WYg" secondAttribute="topMargin" id="YXC-dN-rJH"/>
+                                    <constraint firstItem="YgB-0p-k4j" firstAttribute="height" secondItem="96l-fy-WYg" secondAttribute="height" multiplier="0.7" id="ZBe-Mu-lI1"/>
+                                    <constraint firstItem="P6J-df-BZ9" firstAttribute="centerX" secondItem="96l-fy-WYg" secondAttribute="centerX" id="wrO-cP-rdn"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YgB-0p-k4j" secondAttribute="trailing" id="ynf-Ta-S1t"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dateLabel" destination="P6J-df-BZ9" id="bVw-bj-onc"/>
+                                    <outlet property="tournamentImage" destination="YgB-0p-k4j" id="EHH-V5-eKO"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -314,7 +338,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4t-do-MB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176" y="2060"/>
+            <point key="canvasLocation" x="175.78125" y="2059.5703125"/>
         </scene>
         <!--Divisions Collection View Controller-->
         <scene sceneID="j7g-W7-fhN">
@@ -361,13 +385,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Spa-4L-Vz0" kind="relationship" relationship="viewControllers" id="1XY-oz-R2I"/>
-                        <segue destination="dAi-ke-FIk" kind="relationship" relationship="viewControllers" id="r3D-Cc-svs"/>
+                        <segue destination="dAi-ke-FIk" kind="relationship" relationship="viewControllers" id="wkk-ha-hEl"/>
+                        <segue destination="Spa-4L-Vz0" kind="relationship" relationship="viewControllers" id="Bub-di-6IM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zL-bL-TrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="696"/>
+            <point key="canvasLocation" x="404" y="696"/>
         </scene>
         <!--Item-->
         <scene sceneID="3er-IU-lIJ">

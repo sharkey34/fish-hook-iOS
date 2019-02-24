@@ -17,14 +17,13 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    var ref: DocumentReference!
-    var db = Firestore.firestore()
+    var db: Firestore?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped(sender:)))
         
+        db = Firestore.firestore()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped(sender:)))
         signUp.addGestureRecognizer(tap)
     }
     
@@ -39,9 +38,9 @@ class CreateAccountViewController: UIViewController {
             
             guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {return}
      
-            let currentUser = User(uid: uid, first: first, last: last, email: email, password: password)
+            let currentUser = User(uid: uid, first: first, last: last, email: email)
             
-            self.db.collection("users").document(uid).setData(
+            self.db!.collection("users").document(uid).setData(
                 [
                     "first":first,
                     "last": last,

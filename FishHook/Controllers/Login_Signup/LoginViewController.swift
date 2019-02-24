@@ -16,10 +16,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    private var ref: DocumentReference!
+    var db: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Firestore.firestore()
+        
+        // Setting time to take a Firebase Timestamp instead of a System Date
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
         
         // looping through labels and setting tapGesture.
         for label in labels{
@@ -52,11 +60,32 @@ class LoginViewController: UIViewController {
                     print(error!.localizedDescription)
                     return
                 }
-                // TODO: Get the current user and save to User Defaults.
                 
+                if let uid = Auth.auth().currentUser?.uid {
+                    
+                    let ref = self.db.collection("users").document(uid)
+                    
+                    ref.getDocument(completion: { (document, error) in
+                        
+                        if let doc = document, document!.exists{
+                            // TODO: Map the data and save the user information to currentUser.
+                            if let map = doc.data(){
+                                
+                                let email = map["email"] as! String
+                                let first = map["first"] as! String
+                                let last = map["last"] as! String
+                                
+                                do {
+                                    try UserDefaults.standard.set(currentUser: User(uid: uid, first: first, last: last, email: email), forKey: "currentUser")
+                                } catch {
+                                    print("Error saving User to Defaults")
+                                }
+                            }
+                        }
+                    })
+                    self.performSegue(withIdentifier: "loginToAdmin", sender: self)
+                }
             }
-            
-            
         case 2:
             // TODO: Perform Segue to Create Account Controller
             performSegue(withIdentifier: "toCreateAccount", sender: self)

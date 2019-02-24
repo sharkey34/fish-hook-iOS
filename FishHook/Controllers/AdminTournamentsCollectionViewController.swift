@@ -16,6 +16,7 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.title = "Admin Dashboard"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,17 +25,6 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
