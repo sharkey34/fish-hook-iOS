@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class CreateAccountViewController: UIViewController {
     @IBOutlet weak var signUp: UILabel!
@@ -15,6 +16,9 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var last: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    var ref: DocumentReference!
+    var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +37,28 @@ class CreateAccountViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
-            guard let _ = result, error == nil else {return}
+            guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {return}
+     
+            let currentUser = User(uid: uid, first: first, last: last, email: email, password: password)
             
-            
-            // Save to database.
-            
-            
+            self.db.collection("users").document(uid).setData(
+                [
+                    "first":first,
+                    "last": last,
+                    "email": email
+                ],
+                completion: { (error) in if let err = error {
+                    let alert = Alert.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    do{
+                        try UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
+                        self.performSegue(withIdentifier: "createToAdmin", sender: self)
+                    } catch {
+                        print("Error saving current user to defaults.")
+                    }
+                }
+            })
         }
-        
-        // TODO: Create new Firebase user.
-        performSegue(withIdentifier: "createToAdmin", sender: self)
     }
 }

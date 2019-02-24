@@ -17,17 +17,6 @@ class User: NSObject, NSCoding {
     var email: String
     var password: String
     
-    
-    // Encoding properties
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(uid, forKey: "uid")
-        aCoder.encode(firstName, forKey: "first")
-        aCoder.encode(lastName, forKey: "last")
-        aCoder.encode(email, forKey: "email")
-        aCoder.encode(password, forKey: "password")
-        
-    }
-    
     // Super init
     init(uid:String,first:String,last:String,email:String,password:String) {
         self.uid = uid
@@ -44,5 +33,15 @@ class User: NSObject, NSCoding {
         self.lastName = aDecoder.decodeObject(forKey: "last") as! String
         self.email = aDecoder.decodeObject(forKey: "email") as! String
         self.password = aDecoder.decodeObject(forKey: "password") as! String
+    }
+    
+    // Encoding properties
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(uid, forKey: "uid")
+        aCoder.encode(firstName, forKey: "first")
+        aCoder.encode(lastName, forKey: "last")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(password, forKey: "password")
+        
     }
 }

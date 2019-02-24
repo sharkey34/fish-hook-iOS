@@ -36,6 +36,10 @@ class LoginViewController: UIViewController {
         switch tag {
         case 0:
             // TODO: Give the user the ability to create a new password.
+            
+//            Auth.auth().sendPasswordReset(withEmail: email) { error in
+//                // ...
+//            }
             let passwordAlert = Alert.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
             self.present(passwordAlert, animated: true, completion: nil)
         case 1:
