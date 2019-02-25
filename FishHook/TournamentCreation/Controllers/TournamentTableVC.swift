@@ -9,10 +9,15 @@
 import UIKit
 
 class TournamentTableVC: UITableViewController {
+    
+    private let titles = [TournamentSetup.Basic, TournamentSetup.Dates, TournamentSetup.Fish, TournamentSetup.Divisions, TournamentSetup.Summary]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Setting tableview color.
+        tableView.backgroundColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -23,24 +28,29 @@ class TournamentTableVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        // TODO: Make fit for each device.
+        tableView.rowHeight = 70
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SplitTableViewCell else {
+            return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        }
+        
+        // TODO: cell setup
+        cell.title.text = titles[indexPath.row].rawValue
+        cell.backgroundColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
+        cell.title.textColor = UIColor.white
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

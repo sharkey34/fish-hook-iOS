@@ -241,7 +241,7 @@
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="2hI-o0-kmB" customClass="TournamentTableVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -255,23 +255,22 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yzQ-pV-fOK">
                                             <rect key="frame" x="16" y="7" width="64" height="55.5"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpP-mC-NDo">
-                                            <rect key="frame" x="100" y="0.0" width="208" height="69.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hpP-mC-NDo">
+                                            <rect key="frame" x="96" y="0.0" width="208" height="69.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="leading" secondItem="yzQ-pV-fOK" secondAttribute="trailing" constant="16" id="0vP-He-b4g"/>
                                         <constraint firstItem="yzQ-pV-fOK" firstAttribute="height" secondItem="xkw-yn-bqn" secondAttribute="height" multiplier="0.8" id="20q-JK-FYr"/>
                                         <constraint firstItem="yzQ-pV-fOK" firstAttribute="width" secondItem="xkw-yn-bqn" secondAttribute="width" multiplier="0.2" id="2Mt-fJ-fSX"/>
-                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="width" secondItem="xkw-yn-bqn" secondAttribute="width" multiplier="0.65" id="6VH-gg-k1t"/>
                                         <constraint firstItem="hpP-mC-NDo" firstAttribute="centerY" secondItem="xkw-yn-bqn" secondAttribute="centerY" id="7bz-s8-cxM"/>
                                         <constraint firstItem="yzQ-pV-fOK" firstAttribute="centerY" secondItem="xkw-yn-bqn" secondAttribute="centerY" id="Cvi-oI-g3c"/>
-                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yzQ-pV-fOK" secondAttribute="trailing" constant="8" symbolic="YES" id="DHI-bV-OTO"/>
                                         <constraint firstItem="hpP-mC-NDo" firstAttribute="height" secondItem="xkw-yn-bqn" secondAttribute="height" id="Kj2-WC-Hre"/>
+                                        <constraint firstAttribute="trailing" secondItem="hpP-mC-NDo" secondAttribute="trailing" constant="16" id="fYP-5k-6Ae"/>
                                         <constraint firstItem="yzQ-pV-fOK" firstAttribute="leading" secondItem="xkw-yn-bqn" secondAttribute="leading" constant="16" id="h3j-Pa-TTV"/>
-                                        <constraint firstAttribute="trailing" secondItem="hpP-mC-NDo" secondAttribute="trailing" constant="12" id="tfx-5i-v2M"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -418,7 +417,7 @@
             <objects>
                 <navigationController id="E65-Z5-6Gk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pdP-2i-DG2">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
