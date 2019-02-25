@@ -1,5 +1,5 @@
 //
-//  DivisionsCollectionViewController.swift
+//  AdminTournamentsCollectionViewController.swift
 //  FishHook
 //
 //  Created by Eric Sharkey on 2/22/19.
@@ -10,11 +10,19 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class DivisionsCollectionViewController: UICollectionViewController {
+class TournamentsCollectionAdminVC: UICollectionViewController {
+    
+    
+    // TODO: Make this double for both Admins and regular users.
+    
+    var tournaments: [Tournaments] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.title = "Admin Dashboard"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -23,38 +31,56 @@ class DivisionsCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        if tournaments.count > 0 {
+            return tournaments.count + 1
+        } else {
+            return 1
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AdminDashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
     
+        print(tournaments.count)
+        print(indexPath.row)
         // Configure the cell
-    
+        if indexPath.row > tournaments.count || tournaments.count == 0 {
+            // TODO: Add image
+            cell.tournamentImage.image = UIImage(named: "Plus")
+            cell.dateLabel.text = "Add"
+            cell.dateLabel.textColor = UIColor.blue
+        } else {
+            // TODO: Normal setup
+            // TODO: Get and set image from storage.
+            cell.tournamentImage.image = UIImage(named: "DefaultTournament")
+            cell.dateLabel.text = tournaments[indexPath.row].created
+        }
         return cell
     }
-
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: If add button selected then segue to tournament creation else go to details of tournament.
+        if indexPath.row > tournaments.count || tournaments.count == 0 {
+         
+            performSegue(withIdentifier: "toTournament", sender: self)
+            
+        } else {
+            // TODO ORRR make this the active tournament.
+        }
+    }
+    
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*

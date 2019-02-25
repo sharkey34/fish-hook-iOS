@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountVC: UIViewController {
     @IBOutlet weak var signUp: UILabel!
     @IBOutlet weak var first: UITextField!
     @IBOutlet weak var last: UITextField!

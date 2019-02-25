@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TournamentCreationViewController: UISplitViewController {
+class CreateTournamentVC: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */; };
+		4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48B1221F95CA00FDBC93 /* CreateAccountVC.swift */; };
 		4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F96F221B0D4800664FF2 /* AppDelegate.swift */; };
 		4A35F975221B0D4800664FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F973221B0D4800664FF2 /* Main.storyboard */; };
 		4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F976221B0D4900664FF2 /* Assets.xcassets */; };
@@ -18,18 +18,26 @@
 		4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */; };
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
 		4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */; };
+		4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */; };
+		4A73E4422224934700786CE1 /* SplitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4412224934700786CE1 /* SplitTableViewCell.swift */; };
+		4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4442224940700786CE1 /* CreateDivisionCell.swift */; };
+		4A73E4482224943E00786CE1 /* FishSpeciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4472224943E00786CE1 /* FishSpeciesCell.swift */; };
+		4A73E44A2224949000786CE1 /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4492224949000786CE1 /* SummaryVC.swift */; };
+		4A73E44D222494E600786CE1 /* CreateDivisionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */; };
+		4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */; };
+		4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4502224952300786CE1 /* RunDatesVC.swift */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AA55318221E5D3200D835BA /* Pods_FishHookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */; };
 		4AA55319221E5D3500D835BA /* Pods_FishHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */; };
-		4AC715742220DBD800868214 /* TournamentCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* TournamentCreationViewController.swift */; };
-		4AC7157A2220DF7000868214 /* AdminTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabViewController.swift */; };
-		4AC7157C2220E05F00868214 /* AdminTournamentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* AdminTournamentsCollectionViewController.swift */; };
-		4AC7157F2220E0B100868214 /* DivisionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157E2220E0B100868214 /* DivisionsCollectionViewController.swift */; };
-		4AC715812220E3EC00868214 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715802220E3EC00868214 /* LoginViewController.swift */; };
+		4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* CreateTournamentVC.swift */; };
+		4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabVC.swift */; };
+		4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */; };
+		4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */; };
+		4AC715812220E3EC00868214 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715802220E3EC00868214 /* LoginVC.swift */; };
 		4AFF71D22223317B0038707F /* AdminDashboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D12223317B0038707F /* AdminDashboardCollectionCell.swift */; };
 		4AFF71D4222331910038707F /* DivsionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D3222331910038707F /* DivsionCollectionViewCell.swift */; };
 		4AFF71D822233E140038707F /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D722233E140038707F /* Tournament.swift */; };
-		4AFF71DC22238C4E0038707F /* TournamentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71DB22238C4E0038707F /* TournamentMainViewController.swift */; };
+		4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71DB22238C4E0038707F /* BasicDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +55,7 @@
 		23AA5ED718A7B480E6DAB269 /* Pods-FishHookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2580ADBAE32566D8DAE73CAD /* Pods-FishHookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHookTests/Pods-FishHookTests.release.xcconfig"; sourceTree = "<group>"; };
 		41FEDDC9E47150B778888129 /* Pods-FishHook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.release.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.release.xcconfig"; sourceTree = "<group>"; };
-		4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		4A2F48B1221F95CA00FDBC93 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		4A35F96C221B0D4800664FF2 /* FishHook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishHook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F96F221B0D4800664FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A35F974221B0D4800664FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,16 +70,24 @@
 		4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
+		4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableVC.swift; sourceTree = "<group>"; };
+		4A73E4412224934700786CE1 /* SplitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTableViewCell.swift; sourceTree = "<group>"; };
+		4A73E4442224940700786CE1 /* CreateDivisionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDivisionCell.swift; sourceTree = "<group>"; };
+		4A73E4472224943E00786CE1 /* FishSpeciesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishSpeciesCell.swift; sourceTree = "<group>"; };
+		4A73E4492224949000786CE1 /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
+		4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDivisionVC.swift; sourceTree = "<group>"; };
+		4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpeciesVC.swift; sourceTree = "<group>"; };
+		4A73E4502224952300786CE1 /* RunDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDatesVC.swift; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4AC715732220DBD800868214 /* TournamentCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCreationViewController.swift; sourceTree = "<group>"; };
-		4AC715792220DF7000868214 /* AdminTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabViewController.swift; sourceTree = "<group>"; };
-		4AC7157B2220E05F00868214 /* AdminTournamentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTournamentsCollectionViewController.swift; sourceTree = "<group>"; };
-		4AC7157E2220E0B100868214 /* DivisionsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionsCollectionViewController.swift; sourceTree = "<group>"; };
-		4AC715802220E3EC00868214 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4AC715732220DBD800868214 /* CreateTournamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournamentVC.swift; sourceTree = "<group>"; };
+		4AC715792220DF7000868214 /* AdminTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabVC.swift; sourceTree = "<group>"; };
+		4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionAdminVC.swift; sourceTree = "<group>"; };
+		4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionsCollectionVC.swift; sourceTree = "<group>"; };
+		4AC715802220E3EC00868214 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		4AFF71D12223317B0038707F /* AdminDashboardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardCollectionCell.swift; sourceTree = "<group>"; };
 		4AFF71D3222331910038707F /* DivsionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivsionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AFF71D722233E140038707F /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
-		4AFF71DB22238C4E0038707F /* TournamentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentMainViewController.swift; sourceTree = "<group>"; };
+		4AFF71DB22238C4E0038707F /* BasicDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetailsVC.swift; sourceTree = "<group>"; };
 		5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,11 +132,10 @@
 		4A2F48AC221F942D00FDBC93 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4AC715792220DF7000868214 /* AdminTabVC.swift */,
+				4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */,
 				4AC7157D2220E09A00868214 /* Divisions */,
 				4AC715762220DC6500868214 /* Login_Signup */,
-				4AC715752220DBEB00868214 /* TournamentCreation */,
-				4AC715792220DF7000868214 /* AdminTabViewController.swift */,
-				4AC7157B2220E05F00868214 /* AdminTournamentsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -148,10 +163,9 @@
 		4A35F96E221B0D4800664FF2 /* FishHook */ = {
 			isa = PBXGroup;
 			children = (
-				4AFF71CC222331030038707F /* Cells */,
+				4A73E452222498F000786CE1 /* App */,
 				4A5C3C9A2221EB89006DE8B9 /* Utiilties */,
-				4A2F48AC221F942D00FDBC93 /* Controllers */,
-				4A2F48AA221F941200FDBC93 /* ViewModels */,
+				4AC715752220DBEB00868214 /* TournamentCreation */,
 				4A2F48AB221F941A00FDBC93 /* Models */,
 				4A35F96F221B0D4800664FF2 /* AppDelegate.swift */,
 				4A35F973221B0D4800664FF2 /* Main.storyboard */,
@@ -182,11 +196,45 @@
 			path = Utiilties;
 			sourceTree = "<group>";
 		};
+		4A73E443222493D100786CE1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A73E4412224934700786CE1 /* SplitTableViewCell.swift */,
+				4A73E4442224940700786CE1 /* CreateDivisionCell.swift */,
+				4A73E4472224943E00786CE1 /* FishSpeciesCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4A73E44B222494BA00786CE1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4AC715732220DBD800868214 /* CreateTournamentVC.swift */,
+				4AFF71DB22238C4E0038707F /* BasicDetailsVC.swift */,
+				4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */,
+				4A73E4492224949000786CE1 /* SummaryVC.swift */,
+				4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */,
+				4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */,
+				4A73E4502224952300786CE1 /* RunDatesVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4A73E452222498F000786CE1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4A2F48AA221F941200FDBC93 /* ViewModels */,
+				4A2F48AC221F942D00FDBC93 /* Controllers */,
+				4AFF71CC222331030038707F /* Cells */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		4AC715752220DBEB00868214 /* TournamentCreation */ = {
 			isa = PBXGroup;
 			children = (
-				4AC715732220DBD800868214 /* TournamentCreationViewController.swift */,
-				4AFF71DB22238C4E0038707F /* TournamentMainViewController.swift */,
+				4A73E44B222494BA00786CE1 /* Controllers */,
+				4A73E443222493D100786CE1 /* Cells */,
 			);
 			path = TournamentCreation;
 			sourceTree = "<group>";
@@ -194,8 +242,8 @@
 		4AC715762220DC6500868214 /* Login_Signup */ = {
 			isa = PBXGroup;
 			children = (
-				4A2F48B1221F95CA00FDBC93 /* CreateAccountViewController.swift */,
-				4AC715802220E3EC00868214 /* LoginViewController.swift */,
+				4A2F48B1221F95CA00FDBC93 /* CreateAccountVC.swift */,
+				4AC715802220E3EC00868214 /* LoginVC.swift */,
 			);
 			path = Login_Signup;
 			sourceTree = "<group>";
@@ -203,7 +251,7 @@
 		4AC7157D2220E09A00868214 /* Divisions */ = {
 			isa = PBXGroup;
 			children = (
-				4AC7157E2220E0B100868214 /* DivisionsCollectionViewController.swift */,
+				4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */,
 			);
 			path = Divisions;
 			sourceTree = "<group>";
@@ -429,22 +477,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC715742220DBD800868214 /* TournamentCreationViewController.swift in Sources */,
-				4A2F48B2221F95CA00FDBC93 /* CreateAccountViewController.swift in Sources */,
-				4AC7157A2220DF7000868214 /* AdminTabViewController.swift in Sources */,
-				4AC7157C2220E05F00868214 /* AdminTournamentsCollectionViewController.swift in Sources */,
-				4AC715812220E3EC00868214 /* LoginViewController.swift in Sources */,
+				4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */,
+				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
+				4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */,
+				4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */,
+				4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */,
+				4AC715812220E3EC00868214 /* LoginVC.swift in Sources */,
+				4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */,
+				4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
-				4AFF71DC22238C4E0038707F /* TournamentMainViewController.swift in Sources */,
+				4A73E44A2224949000786CE1 /* SummaryVC.swift in Sources */,
+				4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */,
 				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
-				4AC7157F2220E0B100868214 /* DivisionsCollectionViewController.swift in Sources */,
+				4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */,
+				4A73E4482224943E00786CE1 /* FishSpeciesCell.swift in Sources */,
+				4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */,
 				4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */,
 				4AFF71D822233E140038707F /* Tournament.swift in Sources */,
 				4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */,
 				4AFF71D22223317B0038707F /* AdminDashboardCollectionCell.swift in Sources */,
 				4AFF71D4222331910038707F /* DivsionCollectionViewCell.swift in Sources */,
 				4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */,
+				4A73E4422224934700786CE1 /* SplitTableViewCell.swift in Sources */,
 				4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */,
+				4A73E44D222494E600786CE1 /* CreateDivisionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
