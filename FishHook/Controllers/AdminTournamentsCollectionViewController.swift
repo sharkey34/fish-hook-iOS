@@ -68,17 +68,8 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: If add button selected then segue to tournament creation else go to details of tournament.
         if indexPath.row > tournaments.count || tournaments.count == 0 {
-            let window = UIWindow(frame: UIScreen.main.bounds)
-            
-            let vc = TournamentCreationViewController()
-            let mainVc = TournamentMainViewController()
-            let navVc = UINavigationController()
-                        
-            vc.viewControllers = [mainVc, navVc]
-            
-            window.rootViewController = vc
-            window.makeKeyAndVisible()
-            
+         
+            performSegue(withIdentifier: "toTournament", sender: self)
             
         } else {
             // TODO ORRR make this the active tournament.
