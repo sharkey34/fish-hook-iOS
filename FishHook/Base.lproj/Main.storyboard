@@ -208,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="798.4375" y="17.578125"/>
         </scene>
-        <!--View Controller-->
+        <!--Tournament Main View Controller-->
         <scene sceneID="a5i-eU-ciY">
             <objects>
-                <viewController id="Dbz-O8-7pi" sceneMemberID="viewController">
+                <viewController id="Dbz-O8-7pi" customClass="TournamentMainViewController" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EGK-zC-zZG">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -268,10 +268,10 @@
             </objects>
             <point key="canvasLocation" x="2413" y="696"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Tournament Creation View Controller-->
         <scene sceneID="34f-K6-4bw">
             <objects>
-                <splitViewController id="D7z-Dt-Fle" sceneMemberID="viewController">
+                <splitViewController id="D7z-Dt-Fle" customClass="TournamentCreationViewController" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="E65-Z5-6Gk" kind="relationship" relationship="masterViewController" id="P66-Is-wZo"/>
                         <segue destination="Dbz-O8-7pi" kind="relationship" relationship="detailViewController" id="B8e-OE-7bc"/>

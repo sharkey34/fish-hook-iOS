@@ -19,6 +19,7 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
 
         self.navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Admin Dashboard"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,10 +31,9 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -63,6 +63,29 @@ class AdminTournamentsCollectionViewController: UICollectionViewController {
         }
         return cell
     }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: If add button selected then segue to tournament creation else go to details of tournament.
+        if indexPath.row > tournaments.count || tournaments.count == 0 {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let vc = TournamentCreationViewController()
+            let mainVc = TournamentMainViewController()
+            let navVc = UINavigationController()
+                        
+            vc.viewControllers = [mainVc, navVc]
+            
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
+            
+            
+        } else {
+            // TODO ORRR make this the active tournament.
+        }
+    }
+    
+    
     
     // MARK: UICollectionViewDelegate
 
