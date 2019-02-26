@@ -9,82 +9,96 @@
 import UIKit
 
 class SelectSpeciesVC: UITableViewController {
+    
+    var fishSpecies = [Fish]()
+    var filteredSpecies = [Fish]()
+    
+    
+    // Creating a searchController.
+    var searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
+        navigationItem.title = TournamentSetup.Fish.rawValue
+        
+        getAndParseFishSpecies()
+        searchControllerSetup()
     }
-
-    // MARK: - Table view data source
-
+    
+    
+    func getAndParseFishSpecies(){
+          // TODO: Download Fish Species.
+        
+    }
+    
+    func searchControllerSetup(){
+        // Setting up search controller.
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        
+        // Setting up the searchBar of search controller.
+        searchController.searchBar.scopeButtonTitles = [Water.Fresh.rawValue, Water.Salt.rawValue]
+        searchController.searchBar.delegate = self
+        
+        // Adding the searchBar to the tableViewController.
+        navigationItem.searchController = searchController
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // TODO: Possibly set custom row height
+        
+        return filteredSpecies.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+ 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-    */
+}
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+extension SelectSpeciesVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //        // Getting the text entered into the search bar.
+        //        let enteredText = searchController.searchBar.text
+        //
+        //        // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
+        //        let selectedScope = searchController.searchBar.selectedScopeButtonIndex
+        //        let scopeTitles = searchController.searchBar.scopeButtonTitles
+        //        let scope = scopeTitles![selectedScope]
+        //
+        //        // Setting the filtered array equal to the locationArray.
+        //        filteredLocations = locationArray
+        //
+        //        // Filtering by entered text.
+        //        if enteredText != ""{
+        //            filteredLocations = filteredLocations.filter({$0.city.lowercased().range(of: enteredText!.lowercased()) != nil})
+        //        }
+        //
+        //        // Filtering by scope.
+        //        if scope != "All"{
+        //            filteredLocations = filteredLocations.filter({$0.state.range(of: scope) != nil})
+        //        }
+        //
+        //        // Reloading the tableView.
+        //        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    // Updating the results for the when the selected scope has changed.
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResults(for: searchController)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

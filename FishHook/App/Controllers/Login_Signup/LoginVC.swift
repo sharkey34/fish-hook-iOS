@@ -48,7 +48,7 @@ class LoginVC: UIViewController {
 //            Auth.auth().sendPasswordReset(withEmail: email) { error in
 //                // ...
 //            }
-            let passwordAlert = Alert.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
+            let passwordAlert = Utils.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
             self.present(passwordAlert, animated: true, completion: nil)
         case 1:
             // TODO: Properly validate entries.

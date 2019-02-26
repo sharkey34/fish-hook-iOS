@@ -47,7 +47,7 @@ class CreateAccountVC: UIViewController {
                     "email": email
                 ],
                 completion: { (error) in if let err = error {
-                    let alert = Alert.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
+                    let alert = Utils.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     do{

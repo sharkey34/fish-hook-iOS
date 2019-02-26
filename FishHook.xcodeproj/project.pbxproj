@@ -15,7 +15,6 @@
 		4A35F985221B0D4900664FF2 /* FishHookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F984221B0D4900664FF2 /* FishHookTests.swift */; };
 		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
 		4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9D2221EBE0006DE8B9 /* User.swift */; };
-		4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */; };
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
 		4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */; };
 		4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */; };
@@ -26,11 +25,12 @@
 		4A73E44D222494E600786CE1 /* CreateDivisionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */; };
 		4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */; };
 		4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4502224952300786CE1 /* RunDatesVC.swift */; };
-		4A73E45522249BF800786CE1 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E45422249BF800786CE1 /* Water.swift */; };
-		4A73E45722249C3B00786CE1 /* TournamentSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E45622249C3B00786CE1 /* TournamentSetup.swift */; };
+		4A73E45522249BF800786CE1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E45422249BF800786CE1 /* Enums.swift */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AA55318221E5D3200D835BA /* Pods_FishHookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FEFB33E123C0A3716270BE /* Pods_FishHookTests.framework */; };
 		4AA55319221E5D3500D835BA /* Pods_FishHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */; };
+		4AB210992225DBC500735881 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210982225DBC500735881 /* Fish.swift */; };
+		4AB2109D2225E48400735881 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109C2225E48400735881 /* Utils.swift */; };
 		4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* CreateTournamentVC.swift */; };
 		4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabVC.swift */; };
 		4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */; };
@@ -69,7 +69,6 @@
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
 		4A5C3C9D2221EBE0006DE8B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableVC.swift; sourceTree = "<group>"; };
@@ -80,9 +79,10 @@
 		4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDivisionVC.swift; sourceTree = "<group>"; };
 		4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpeciesVC.swift; sourceTree = "<group>"; };
 		4A73E4502224952300786CE1 /* RunDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDatesVC.swift; sourceTree = "<group>"; };
-		4A73E45422249BF800786CE1 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
-		4A73E45622249C3B00786CE1 /* TournamentSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSetup.swift; sourceTree = "<group>"; };
+		4A73E45422249BF800786CE1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AB210982225DBC500735881 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
+		4AB2109C2225E48400735881 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4AC715732220DBD800868214 /* CreateTournamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournamentVC.swift; sourceTree = "<group>"; };
 		4AC715792220DF7000868214 /* AdminTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabVC.swift; sourceTree = "<group>"; };
 		4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionAdminVC.swift; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 			children = (
 				4A5C3C9D2221EBE0006DE8B9 /* User.swift */,
 				4AFF71D722233E140038707F /* Tournament.swift */,
+				4AB210982225DBC500735881 /* Fish.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,7 +168,6 @@
 		4A35F96E221B0D4800664FF2 /* FishHook */ = {
 			isa = PBXGroup;
 			children = (
-				4A73E45322249BD800786CE1 /* Enums */,
 				4A73E452222498F000786CE1 /* App */,
 				4A5C3C9A2221EB89006DE8B9 /* Utiilties */,
 				4AC715752220DBEB00868214 /* TournamentCreation */,
@@ -194,9 +194,10 @@
 		4A5C3C9A2221EB89006DE8B9 /* Utiilties */ = {
 			isa = PBXGroup;
 			children = (
+				4A73E45422249BF800786CE1 /* Enums.swift */,
 				4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */,
-				4A5C3C9F2221EC4F006DE8B9 /* Alert.swift */,
 				4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */,
+				4AB2109C2225E48400735881 /* Utils.swift */,
 			);
 			path = Utiilties;
 			sourceTree = "<group>";
@@ -233,15 +234,6 @@
 				4AFF71CC222331030038707F /* Cells */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		4A73E45322249BD800786CE1 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				4A73E45422249BF800786CE1 /* Water.swift */,
-				4A73E45622249C3B00786CE1 /* TournamentSetup.swift */,
-			);
-			path = Enums;
 			sourceTree = "<group>";
 		};
 		4AC715752220DBEB00868214 /* TournamentCreation */ = {
@@ -493,10 +485,12 @@
 			files = (
 				4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
+				4AB2109D2225E48400735881 /* Utils.swift in Sources */,
 				4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */,
+				4AB210992225DBC500735881 /* Fish.swift in Sources */,
 				4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */,
 				4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */,
-				4A73E45522249BF800786CE1 /* Water.swift in Sources */,
+				4A73E45522249BF800786CE1 /* Enums.swift in Sources */,
 				4AC715812220E3EC00868214 /* LoginVC.swift in Sources */,
 				4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */,
 				4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */,
@@ -512,9 +506,7 @@
 				4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */,
 				4AFF71D22223317B0038707F /* AdminDashboardCollectionCell.swift in Sources */,
 				4AFF71D4222331910038707F /* DivsionCollectionViewCell.swift in Sources */,
-				4A5C3CA02221EC4F006DE8B9 /* Alert.swift in Sources */,
 				4A73E4422224934700786CE1 /* SplitTableViewCell.swift in Sources */,
-				4A73E45722249C3B00786CE1 /* TournamentSetup.swift in Sources */,
 				4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */,
 				4A73E44D222494E600786CE1 /* CreateDivisionVC.swift in Sources */,
 			);

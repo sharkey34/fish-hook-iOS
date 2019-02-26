@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func switchViewControllers() {
+    // Changing the root view controllers.
+    func changeRoot() {
         guard let window = window else {return}
         
         let tabBarBoard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)

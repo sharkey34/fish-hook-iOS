@@ -20,7 +20,7 @@ class TournamentsCollectionAdminVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Admin Dashboard"
         
         // Uncomment the following line to preserve selection between presentations
@@ -56,7 +56,6 @@ class TournamentsCollectionAdminVC: UICollectionViewController {
         if indexPath.row > tournaments.count || tournaments.count == 0 {
             // TODO: Add image
             cell.tournamentImage.image = UIImage(named: "Plus")
-            cell.dateLabel.text = "Add"
             cell.dateLabel.textColor = UIColor.blue
         } else {
             // TODO: Normal setup

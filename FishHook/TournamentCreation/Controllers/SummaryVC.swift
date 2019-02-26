@@ -13,12 +13,13 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
+        navigationItem.title = TournamentSetup.Summary.rawValue
     }
 
     @IBAction func pressed(_ sender: UIButton) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.switchViewControllers()
+        appDelegate.changeRoot()
     }
 }

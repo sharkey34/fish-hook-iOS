@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TournamentSetup: String {
+enum TournamentSetup: String {
     case Basic = "Basic Details"
     case Dates = "Run Dates"
     case Fish = "Fish Species"
