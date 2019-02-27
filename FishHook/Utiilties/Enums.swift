@@ -39,5 +39,14 @@ enum Metrics: String {
     case Length = "Length"
 }
 
+// Tab bar titles
+enum TabTitles: String {
+    case Dashboard = "Dashboard"
+    case Profile = "Profile"
+    case Weather = "Weather"
+    case Map = "Map"
+    case TrophyWall = "Trophy Wall"
+    case Leaderboard = "Leaderboard"
+}
 
 // TODO: Tab icons

@@ -39,6 +39,8 @@
 		4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */; };
 		4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */; };
 		4AC715812220E3EC00868214 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715802220E3EC00868214 /* LoginVC.swift */; };
+		4AF27E262226F5DD003A8A21 /* AwardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF27E252226F5DD003A8A21 /* AwardsVC.swift */; };
+		4AF27E282226F904003A8A21 /* PrizesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF27E272226F904003A8A21 /* PrizesTableViewCell.swift */; };
 		4AFF71D22223317B0038707F /* AdminDashboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D12223317B0038707F /* AdminDashboardCollectionCell.swift */; };
 		4AFF71D4222331910038707F /* DivsionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D3222331910038707F /* DivsionCollectionViewCell.swift */; };
 		4AFF71D822233E140038707F /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF71D722233E140038707F /* Tournament.swift */; };
@@ -94,6 +96,8 @@
 		4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionAdminVC.swift; sourceTree = "<group>"; };
 		4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionsCollectionVC.swift; sourceTree = "<group>"; };
 		4AC715802220E3EC00868214 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4AF27E252226F5DD003A8A21 /* AwardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsVC.swift; sourceTree = "<group>"; };
+		4AF27E272226F904003A8A21 /* PrizesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizesTableViewCell.swift; sourceTree = "<group>"; };
 		4AFF71D12223317B0038707F /* AdminDashboardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardCollectionCell.swift; sourceTree = "<group>"; };
 		4AFF71D3222331910038707F /* DivsionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivsionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AFF71D722233E140038707F /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				4A73E4412224934700786CE1 /* SplitTableViewCell.swift */,
 				4A73E4442224940700786CE1 /* CreateDivisionCell.swift */,
 				4A73E4472224943E00786CE1 /* FishSpeciesCell.swift */,
+				4AF27E272226F904003A8A21 /* PrizesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */,
 				4A73E4502224952300786CE1 /* RunDatesVC.swift */,
 				4AB210A32226406400735881 /* DivisionDetailsVC.swift */,
+				4AF27E252226F5DD003A8A21 /* AwardsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -509,8 +515,10 @@
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
 				4A73E44A2224949000786CE1 /* SummaryVC.swift in Sources */,
 				4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */,
+				4AF27E262226F5DD003A8A21 /* AwardsVC.swift in Sources */,
 				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
 				4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */,
+				4AF27E282226F904003A8A21 /* PrizesTableViewCell.swift in Sources */,
 				4A73E4482224943E00786CE1 /* FishSpeciesCell.swift in Sources */,
 				4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */,
 				4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */,
