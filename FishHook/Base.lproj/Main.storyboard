@@ -276,29 +276,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yzQ-pV-fOK">
-                                            <rect key="frame" x="16" y="7" width="64" height="55.5"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hpP-mC-NDo">
-                                            <rect key="frame" x="96" y="0.0" width="208" height="69.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hpP-mC-NDo">
+                                            <rect key="frame" x="32" y="0.0" width="256" height="69.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="leading" secondItem="yzQ-pV-fOK" secondAttribute="trailing" constant="16" id="0vP-He-b4g"/>
-                                        <constraint firstItem="yzQ-pV-fOK" firstAttribute="height" secondItem="xkw-yn-bqn" secondAttribute="height" multiplier="0.8" id="20q-JK-FYr"/>
-                                        <constraint firstItem="yzQ-pV-fOK" firstAttribute="width" secondItem="xkw-yn-bqn" secondAttribute="width" multiplier="0.2" id="2Mt-fJ-fSX"/>
-                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="centerY" secondItem="xkw-yn-bqn" secondAttribute="centerY" id="7bz-s8-cxM"/>
-                                        <constraint firstItem="yzQ-pV-fOK" firstAttribute="centerY" secondItem="xkw-yn-bqn" secondAttribute="centerY" id="Cvi-oI-g3c"/>
-                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="height" secondItem="xkw-yn-bqn" secondAttribute="height" id="Kj2-WC-Hre"/>
-                                        <constraint firstAttribute="trailing" secondItem="hpP-mC-NDo" secondAttribute="trailing" constant="16" id="fYP-5k-6Ae"/>
-                                        <constraint firstItem="yzQ-pV-fOK" firstAttribute="leading" secondItem="xkw-yn-bqn" secondAttribute="leading" constant="16" id="h3j-Pa-TTV"/>
+                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="centerX" secondItem="xkw-yn-bqn" secondAttribute="centerX" id="7c7-xb-jMk"/>
+                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="centerY" secondItem="xkw-yn-bqn" secondAttribute="centerY" id="hLf-xx-xC0"/>
+                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="height" secondItem="xkw-yn-bqn" secondAttribute="height" id="lvE-Rr-Na4"/>
+                                        <constraint firstItem="hpP-mC-NDo" firstAttribute="width" secondItem="xkw-yn-bqn" secondAttribute="width" multiplier="0.8" id="yFn-Y3-igf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checked" destination="yzQ-pV-fOK" id="I8x-ju-Jbc"/>
                                     <outlet property="title" destination="hpP-mC-NDo" id="VWH-r7-r9H"/>
                                 </connections>
                             </tableViewCell>

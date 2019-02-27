@@ -16,7 +16,6 @@ class SelectSpeciesVC: UITableViewController {
     var selectedSpecies = [Fish]()
     var db: Firestore?
     
-    
     // Creating a searchController.
     var searchController = UISearchController(searchResultsController: nil)
 
@@ -62,7 +61,7 @@ class SelectSpeciesVC: UITableViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.backgroundColor = UIColor.white
         // Setting up the searchBar of search controller.
-        searchController.searchBar.scopeButtonTitles = [Water.Fresh.rawValue, Water.Salt.rawValue]
+        searchController.searchBar.scopeButtonTitles = [Water.Both.rawValue , Water.Fresh.rawValue, Water.Salt.rawValue]
         searchController.searchBar.delegate = self
         
         // Adding the searchBar to the tableViewController.
@@ -116,29 +115,28 @@ class SelectSpeciesVC: UITableViewController {
 extension SelectSpeciesVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        //        // Getting the text entered into the search bar.
-        //        let enteredText = searchController.searchBar.text
-        //
-        //        // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
-        //        let selectedScope = searchController.searchBar.selectedScopeButtonIndex
-        //        let scopeTitles = searchController.searchBar.scopeButtonTitles
-        //        let scope = scopeTitles![selectedScope]
-        //
-        //        // Setting the filtered array equal to the locationArray.
-        //        filteredLocations = locationArray
-        //
-        //        // Filtering by entered text.
-        //        if enteredText != ""{
-        //            filteredLocations = filteredLocations.filter({$0.city.lowercased().range(of: enteredText!.lowercased()) != nil})
-        //        }
-        //
-        //        // Filtering by scope.
-        //        if scope != "All"{
-        //            filteredLocations = filteredLocations.filter({$0.state.range(of: scope) != nil})
-        //        }
-        //
-        //        // Reloading the tableView.
-        //        tableView.reloadData()
+                // Getting the text entered into the search bar.
+                let enteredText = searchController.searchBar.text
+        
+                // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
+                let scopeIndex = searchController.searchBar.selectedScopeButtonIndex
+                let scopeTitles = searchController.searchBar.scopeButtonTitles
+                let scope = scopeTitles![scopeIndex]
+        
+                // Setting the filtered array equal to the locationArray.
+                filteredSpecies = fishSpecies
+        
+                // Filtering by entered text.
+                if enteredText != ""{
+                    filteredSpecies = filteredSpecies.filter({$0.name.lowercased().range(of: enteredText!.lowercased()) != nil})
+                }
+        
+                // Filtering by scope.
+                if scope != Water.Both.rawValue {
+                    filteredSpecies = filteredSpecies.filter({$0.type == scopeIndex})
+                }
+                // Reloading the tableView.
+                tableView.reloadData()
     }
     
     // Updating the results for the when the selected scope has changed.

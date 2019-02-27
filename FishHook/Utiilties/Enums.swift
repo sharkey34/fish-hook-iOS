@@ -22,6 +22,7 @@ enum TournamentSetup: String {
 enum Water: String {
     case Fresh = "Freshwater"
     case Salt = "Saltwater"
+    case Both = "Both"
 }
 
 // Participant types
