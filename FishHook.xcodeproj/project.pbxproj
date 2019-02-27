@@ -31,6 +31,9 @@
 		4AA55319221E5D3500D835BA /* Pods_FishHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A241B8E7AA1AEB7F09BCF47 /* Pods_FishHook.framework */; };
 		4AB210992225DBC500735881 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210982225DBC500735881 /* Fish.swift */; };
 		4AB2109D2225E48400735881 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109C2225E48400735881 /* Utils.swift */; };
+		4AB2109F2226380C00735881 /* Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109E2226380C00735881 /* Division.swift */; };
+		4AB210A12226388000735881 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210A02226388000735881 /* Award.swift */; };
+		4AB210A42226406400735881 /* DivisionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210A32226406400735881 /* DivisionDetailsVC.swift */; };
 		4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* CreateTournamentVC.swift */; };
 		4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabVC.swift */; };
 		4AC7157C2220E05F00868214 /* TournamentsCollectionAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */; };
@@ -83,6 +86,9 @@
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AB210982225DBC500735881 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		4AB2109C2225E48400735881 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4AB2109E2226380C00735881 /* Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Division.swift; sourceTree = "<group>"; };
+		4AB210A02226388000735881 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		4AB210A32226406400735881 /* DivisionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionDetailsVC.swift; sourceTree = "<group>"; };
 		4AC715732220DBD800868214 /* CreateTournamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournamentVC.swift; sourceTree = "<group>"; };
 		4AC715792220DF7000868214 /* AdminTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabVC.swift; sourceTree = "<group>"; };
 		4AC7157B2220E05F00868214 /* TournamentsCollectionAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionAdminVC.swift; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 				4A5C3C9D2221EBE0006DE8B9 /* User.swift */,
 				4AFF71D722233E140038707F /* Tournament.swift */,
 				4AB210982225DBC500735881 /* Fish.swift */,
+				4AB2109E2226380C00735881 /* Division.swift */,
+				4AB210A02226388000735881 /* Award.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 				4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */,
 				4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */,
 				4A73E4502224952300786CE1 /* RunDatesVC.swift */,
+				4AB210A32226406400735881 /* DivisionDetailsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -483,8 +492,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AB210A42226406400735881 /* DivisionDetailsVC.swift in Sources */,
 				4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */,
+				4AB210A12226388000735881 /* Award.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
+				4AB2109F2226380C00735881 /* Division.swift in Sources */,
 				4AB2109D2225E48400735881 /* Utils.swift in Sources */,
 				4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */,
 				4AB210992225DBC500735881 /* Fish.swift in Sources */,

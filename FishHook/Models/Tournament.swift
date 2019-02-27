@@ -17,10 +17,10 @@ class Tournaments {
     var created: String
     
     
-    init(id: String, name: String, image: UIImage, created: String) {
-        self.id = id
-        self.name = name
-        self.image = image
-        self.created = created
+    init(_id: String, _name: String, _image: UIImage, _created: String) {
+        self.id = _id
+        self.name = _name
+        self.image = _image
+        self.created = _created
     }
 }

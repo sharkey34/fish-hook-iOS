@@ -15,7 +15,7 @@ class TournamentsCollectionAdminVC: UICollectionViewController {
     
     // TODO: Make this double for both Admins and regular users.
     
-    var tournaments: [Tournaments] = []
+    var tournaments = [Tournaments]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +39,7 @@ class TournamentsCollectionAdminVC: UICollectionViewController {
     
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        if tournaments.count > 0 {
-            return tournaments.count + 1
-        } else {
-            return 1
-        }
+        return tournaments.count + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

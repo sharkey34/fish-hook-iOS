@@ -14,6 +14,7 @@ enum TournamentSetup: String {
     case Dates = "Run Dates"
     case Fish = "Fish Species"
     case Divisions = "Divisions"
+    case DivisionDetails = "Division Details"
     case Awards = "Awards"
     case Summary = "Tournament Summary"
 }

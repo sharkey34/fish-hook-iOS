@@ -43,7 +43,7 @@ class SelectSpeciesVC: UITableViewController {
                     let name = doc.data()["name"] as! String
                     let type = doc.data()["type"] as! Int
                     
-                    let newFish = Fish(name: name, type: type, checked: false, weight: nil, length: nil)
+                    let newFish = Fish(_name: name, _type: type, _checked: false, _weight: nil, _length: nil)
                     self.fishSpecies.append(newFish)
                 }
                 self.filteredSpecies = self.fishSpecies

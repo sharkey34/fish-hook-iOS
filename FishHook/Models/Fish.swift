@@ -15,11 +15,11 @@ class Fish {
     var weight: Double?
     var Length: Double?
     
-    init(name: String, type: Int, checked: Bool, weight: Double?, length: Double?) {
-        self.name = name
-        self.type = type
-        self.checked = checked
-        self.weight = weight
-        self.Length = length
+    init(_name: String, _type: Int, _checked: Bool, _weight: Double?, _length: Double?) {
+        self.name = _name
+        self.type = _type
+        self.checked = _checked
+        self.weight = _weight
+        self.Length = _length
     }
 }

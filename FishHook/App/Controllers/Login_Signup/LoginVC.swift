@@ -76,7 +76,7 @@ class LoginVC: UIViewController {
                                 let last = map["last"] as! String
                                 
                                 do {
-                                    try UserDefaults.standard.set(currentUser: User(uid: uid, first: first, last: last, email: email), forKey: "currentUser")
+                                    try UserDefaults.standard.set(currentUser: User(_uid: uid, _first: first, _last: last, _email: email), forKey: "currentUser")
                                 } catch {
                                     print("Error saving User to Defaults")
                                 }

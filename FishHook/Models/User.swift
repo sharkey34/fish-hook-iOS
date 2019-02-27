@@ -17,11 +17,11 @@ class User: NSObject, NSCoding {
     var email: String
     
     // Super init
-    init(uid:String,first:String,last:String,email:String) {
-        self.uid = uid
-        self.firstName = first
-        self.lastName = last
-        self.email = email
+    init(_uid:String,_first:String,_last:String,_email:String) {
+        self.uid = _uid
+        self.firstName = _first
+        self.lastName = _last
+        self.email = _email
     }
     
     // Decoding and assigning properties

@@ -38,7 +38,7 @@ class CreateAccountVC: UIViewController {
             
             guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {return}
      
-            let currentUser = User(uid: uid, first: first, last: last, email: email)
+            let currentUser = User(_uid: uid, _first: first, _last: last, _email: email)
             
             self.db!.collection("users").document(uid).setData(
                 [
