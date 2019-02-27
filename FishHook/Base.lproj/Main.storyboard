@@ -265,7 +265,7 @@
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="2hI-o0-kmB" customClass="TournamentTableVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -446,7 +446,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjU-68-FKE">
-                                <rect key="frame" x="336.5" y="452" width="95" height="36"/>
+                                <rect key="frame" x="336.5" y="425.5" width="95" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Award"/>
                                 <connections>
@@ -454,7 +454,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kyN-OU-39D">
-                                <rect key="frame" x="0.0" y="615.5" width="768" height="358.5"/>
+                                <rect key="frame" x="0.0" y="513" width="768" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="SE4-qe-ep2" style="IBUITableViewCellStyleDefault" id="gce-7N-Noh">
@@ -483,7 +483,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kyN-OU-39D" firstAttribute="height" secondItem="r62-nv-sX2" secondAttribute="height" multiplier="0.35" id="BmP-bi-Vh4"/>
+                            <constraint firstItem="kyN-OU-39D" firstAttribute="height" secondItem="r62-nv-sX2" secondAttribute="height" multiplier="0.45" id="BmP-bi-Vh4"/>
                             <constraint firstItem="o4A-F6-9Vv" firstAttribute="centerY" secondItem="8ti-3b-gmp" secondAttribute="centerY" multiplier="0.45" id="DRa-Mi-9eA"/>
                             <constraint firstItem="8ti-3b-gmp" firstAttribute="bottom" secondItem="kyN-OU-39D" secondAttribute="bottom" id="Fvd-Fq-34f"/>
                             <constraint firstItem="kBF-2B-bFO" firstAttribute="centerX" secondItem="8ti-3b-gmp" secondAttribute="centerX" id="Gfx-1k-eMF"/>
@@ -494,11 +494,15 @@
                             <constraint firstItem="o4A-F6-9Vv" firstAttribute="centerX" secondItem="8ti-3b-gmp" secondAttribute="centerX" id="Tg9-RG-tjT"/>
                             <constraint firstItem="kyN-OU-39D" firstAttribute="centerX" secondItem="8ti-3b-gmp" secondAttribute="centerX" id="VfW-7O-vNz"/>
                             <constraint firstItem="kBF-2B-bFO" firstAttribute="centerY" secondItem="8ti-3b-gmp" secondAttribute="centerY" multiplier="0.3" id="XoQ-i9-4d6"/>
-                            <constraint firstItem="gjU-68-FKE" firstAttribute="centerY" secondItem="8ti-3b-gmp" secondAttribute="centerY" multiplier="0.9" id="uxR-5S-owK"/>
+                            <constraint firstItem="gjU-68-FKE" firstAttribute="centerY" secondItem="8ti-3b-gmp" secondAttribute="centerY" multiplier="0.85" id="uxR-5S-owK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8ti-3b-gmp"/>
                     </view>
                     <navigationItem key="navigationItem" id="ndv-LB-vuc"/>
+                    <connections>
+                        <outlet property="divisionName" destination="kBF-2B-bFO" id="0Gg-y9-mSp"/>
+                        <outlet property="sponsorName" destination="o4A-F6-9Vv" id="KYt-X2-CME"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooh-sf-nj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -513,7 +517,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-ib-sXa">
-                                <rect key="frame" x="0.0" y="615.5" width="768" height="358.5"/>
+                                <rect key="frame" x="0.0" y="513" width="768" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="B04-gC-LGt" customClass="PrizesTableViewCell" customModule="FishHook" customModuleProvider="target">
@@ -597,11 +601,17 @@
                             <constraint firstItem="pAN-ib-sXa" firstAttribute="width" secondItem="kmc-vS-VsV" secondAttribute="width" id="a1U-DR-gvm"/>
                             <constraint firstItem="CPa-lx-0US" firstAttribute="centerY" secondItem="4Ms-nq-Og4" secondAttribute="centerY" multiplier="0.3" id="eNA-Xh-Ry6"/>
                             <constraint firstItem="jOt-7u-MgK" firstAttribute="centerY" secondItem="4Ms-nq-Og4" secondAttribute="centerY" multiplier="0.75" id="hXy-9N-QYX"/>
-                            <constraint firstItem="pAN-ib-sXa" firstAttribute="height" secondItem="kmc-vS-VsV" secondAttribute="height" multiplier="0.35" id="hjk-VT-oYw"/>
+                            <constraint firstItem="pAN-ib-sXa" firstAttribute="height" secondItem="kmc-vS-VsV" secondAttribute="height" multiplier="0.45" id="hjk-VT-oYw"/>
                             <constraint firstItem="pdn-Hk-SXd" firstAttribute="width" secondItem="kmc-vS-VsV" secondAttribute="width" multiplier="0.7" id="imo-qH-nZ5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Ms-nq-Og4"/>
                     </view>
+                    <connections>
+                        <outlet property="awardName" destination="CPa-lx-0US" id="YcU-Mf-Wju"/>
+                        <outlet property="fishSpecies" destination="H10-4h-8Gm" id="alk-ki-fNE"/>
+                        <outlet property="prizeCount" destination="jOt-7u-MgK" id="YOX-xC-3gU"/>
+                        <outlet property="sponsorName" destination="pdn-Hk-SXd" id="Ktt-0v-ZUM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyT-6h-hJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -622,15 +632,25 @@
                                     <action selector="pressed:" destination="3sy-Vx-XXR" eventType="touchUpInside" id="xcI-l0-J87"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-xh-z0M">
+                                <rect key="frame" x="249.5" y="133" width="269" height="256"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ul2-xh-z0M" firstAttribute="width" secondItem="TWz-vy-qdm" secondAttribute="width" multiplier="0.35" id="FVh-Ki-eLq"/>
                             <constraint firstItem="daX-op-NNQ" firstAttribute="centerY" secondItem="Foh-XY-bQk" secondAttribute="centerY" id="Mte-x3-0YE"/>
+                            <constraint firstItem="Ul2-xh-z0M" firstAttribute="height" secondItem="TWz-vy-qdm" secondAttribute="height" multiplier="0.25" id="Mv5-ff-WA1"/>
                             <constraint firstItem="daX-op-NNQ" firstAttribute="centerX" secondItem="Foh-XY-bQk" secondAttribute="centerX" id="auq-FS-7h4"/>
+                            <constraint firstItem="Ul2-xh-z0M" firstAttribute="centerX" secondItem="Foh-XY-bQk" secondAttribute="centerX" id="bME-M2-IIU"/>
+                            <constraint firstItem="Ul2-xh-z0M" firstAttribute="centerY" secondItem="Foh-XY-bQk" secondAttribute="centerY" multiplier="0.5" id="byi-ui-yjK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Foh-XY-bQk"/>
                     </view>
                     <navigationItem key="navigationItem" id="tCl-aG-Cro"/>
+                    <connections>
+                        <outlet property="image" destination="Ul2-xh-z0M" id="QOR-gs-KLx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTA-cb-eYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -644,17 +664,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RunDates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf9-88-u0I">
-                                <rect key="frame" x="347" y="511.5" width="74.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuS-vZ-cg3" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="70" width="768" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vf9-88-u0I" firstAttribute="centerX" secondItem="ZcE-pt-DpE" secondAttribute="centerX" id="Byd-hC-9y7"/>
-                            <constraint firstItem="vf9-88-u0I" firstAttribute="centerY" secondItem="ZcE-pt-DpE" secondAttribute="centerY" id="Nvs-qc-GNV"/>
+                            <constraint firstItem="CuS-vZ-cg3" firstAttribute="top" secondItem="ZcE-pt-DpE" secondAttribute="top" id="fg2-Bz-71l"/>
+                            <constraint firstItem="CuS-vZ-cg3" firstAttribute="leading" secondItem="ZcE-pt-DpE" secondAttribute="leading" id="ihu-mR-lf1"/>
+                            <constraint firstItem="CuS-vZ-cg3" firstAttribute="centerX" secondItem="ZcE-pt-DpE" secondAttribute="centerX" id="rg7-6B-nH2"/>
+                            <constraint firstItem="CuS-vZ-cg3" firstAttribute="height" secondItem="rae-2J-VSr" secondAttribute="height" multiplier="0.5" id="uzd-ov-vC8"/>
+                            <constraint firstItem="ZcE-pt-DpE" firstAttribute="trailing" secondItem="CuS-vZ-cg3" secondAttribute="trailing" id="vdh-Zf-4DW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZcE-pt-DpE"/>
                     </view>
@@ -960,6 +981,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5RI-Ml-uSW"/>
-        <segue reference="LFA-oN-rzn"/>
+        <segue reference="EhG-wx-BBF"/>
     </inferredMetricsTieBreakers>
 </document>

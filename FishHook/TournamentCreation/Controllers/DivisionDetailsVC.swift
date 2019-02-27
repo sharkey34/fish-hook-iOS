@@ -9,7 +9,9 @@
 import UIKit
 
 class DivisionDetailsVC: UIViewController {
-
+    @IBOutlet weak var divisionName: UITextField!
+    @IBOutlet weak var sponsorName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,3 +19,15 @@ class DivisionDetailsVC: UIViewController {
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
     }
 }
+
+
+//extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
+//
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    }
+//}

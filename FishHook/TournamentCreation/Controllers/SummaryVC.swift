@@ -9,7 +9,8 @@
 import UIKit
 
 class SummaryVC: UIViewController {
-
+    @IBOutlet weak var image: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

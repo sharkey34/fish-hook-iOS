@@ -98,7 +98,6 @@ class SelectSpeciesVC: UITableViewController {
             cell.accessoryType = .none
             selectedSpecies.removeAll { (fish) -> Bool in
                 if fish.name == selected.name {
-                    print("Already checked")
                     return true
                 } else {
                     return false
