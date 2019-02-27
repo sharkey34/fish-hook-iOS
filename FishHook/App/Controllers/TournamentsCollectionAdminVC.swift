@@ -56,6 +56,7 @@ class TournamentsCollectionAdminVC: UICollectionViewController {
         if indexPath.row > tournaments.count || tournaments.count == 0 {
             // TODO: Add image
             cell.tournamentImage.image = UIImage(named: "Plus")
+            cell.dateLabel.text = ""
             cell.dateLabel.textColor = UIColor.blue
         } else {
             // TODO: Normal setup

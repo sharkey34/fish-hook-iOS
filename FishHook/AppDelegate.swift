@@ -14,11 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
+
         // Setting Navigation bar appearance
         UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -26,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+
     
     // Changing the root view controllers.
     func changeRoot() {

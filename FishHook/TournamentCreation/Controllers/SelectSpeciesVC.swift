@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class SelectSpeciesVC: UITableViewController {
     
     var fishSpecies = [Fish]()
     var filteredSpecies = [Fish]()
+    var selectedSpecies = [Fish]()
+    var db: Firestore?
     
     
     // Creating a searchController.
@@ -19,6 +22,8 @@ class SelectSpeciesVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Firestore.firestore()
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Fish.rawValue
@@ -29,16 +34,33 @@ class SelectSpeciesVC: UITableViewController {
     
     
     func getAndParseFishSpecies(){
-          // TODO: Download Fish Species.
-        
+        db?.collection("fish").getDocuments(completion: { (document, error) in
+            if let err = error {
+                print("Error retreving fish species." + " " + err.localizedDescription)
+                // TODO: alert the user.
+            } else {
+                for doc in document!.documents {
+                    
+                    let name = doc.data()["name"] as! String
+                    let type = doc.data()["type"] as! Int
+                    
+                    let newFish = Fish(name: name, type: type, checked: false, weight: nil, length: nil)
+                    self.fishSpecies.append(newFish)
+                }
+                self.filteredSpecies = self.fishSpecies
+                self.tableView.reloadData()
+            }
+        })
     }
     
     func searchControllerSetup(){
         // Setting up search controller.
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.definesPresentationContext = true
         searchController.searchResultsUpdater = self
-        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.backgroundColor = UIColor.white
         // Setting up the searchBar of search controller.
         searchController.searchBar.scopeButtonTitles = [Water.Fresh.rawValue, Water.Salt.rawValue]
         searchController.searchBar.delegate = self
@@ -53,19 +75,41 @@ class SelectSpeciesVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Possibly set custom row height
-        
         return filteredSpecies.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let fish = filteredSpecies[indexPath.row]
+        
+        cell.textLabel?.text = fish.name
+        cell.accessoryType = fish.checked ? .checkmark : .none
         return cell
     }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else {return}
+        let selected = filteredSpecies[indexPath.row]
+        
+        // If the fish is already checked then removing the item. Otherwise checking the item and adding to the array.
+        if selected.checked {
+            selected.checked = false
+            cell.accessoryType = .none
+            selectedSpecies.removeAll { (fish) -> Bool in
+                if fish.name == selected.name {
+                    print("Already checked")
+                    return true
+                } else {
+                    return false
+                }
+            }
+        } else {
+            selected.checked = true
+            cell.accessoryType = .checkmark
+            selectedSpecies.append(selected)
+        }
     }
 }
 
