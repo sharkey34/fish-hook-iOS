@@ -502,6 +502,7 @@
                     <connections>
                         <outlet property="divisionName" destination="kBF-2B-bFO" id="0Gg-y9-mSp"/>
                         <outlet property="sponsorName" destination="o4A-F6-9Vv" id="KYt-X2-CME"/>
+                        <outlet property="tableView" destination="kyN-OU-39D" id="O5k-EF-bC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooh-sf-nj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -516,7 +517,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-ib-sXa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-ib-sXa">
                                 <rect key="frame" x="0.0" y="513" width="768" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -533,7 +534,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJj-yG-8Vw">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prize Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJj-yG-8Vw">
                                                     <rect key="frame" x="93" y="7" width="537.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -618,6 +619,7 @@
                         <outlet property="fishSpecies" destination="H10-4h-8Gm" id="alk-ki-fNE"/>
                         <outlet property="prizeCount" destination="jOt-7u-MgK" id="YOX-xC-3gU"/>
                         <outlet property="sponsorName" destination="pdn-Hk-SXd" id="Ktt-0v-ZUM"/>
+                        <outlet property="tableView" destination="pAN-ib-sXa" id="r01-nJ-auF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyT-6h-hJY" userLabel="First Responder" sceneMemberID="firstResponder"/>

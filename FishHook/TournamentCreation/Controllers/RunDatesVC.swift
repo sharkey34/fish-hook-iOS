@@ -26,8 +26,6 @@ class RunDatesVC: UIViewController {
     }
     
     func setUpCalendar(){
-        calendar.delegate = self
-        calendar.dataSource = self
         calendar.allowsMultipleSelection = true
         calendar.swipeToChooseGesture.isEnabled = true
         

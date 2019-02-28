@@ -12,6 +12,7 @@ class DivisionDetailsVC: UIViewController {
     @IBOutlet weak var divisionName: UITextField!
     @IBOutlet weak var sponsorName: UITextField!
     
+    @IBOutlet weak var tableView: UITableView!
     var awards = [Award]()
     
     override func viewDidLoad() {
