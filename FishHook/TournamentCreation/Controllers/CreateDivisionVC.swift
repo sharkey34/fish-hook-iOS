@@ -19,8 +19,14 @@ class CreateDivisionVC: UICollectionViewController {
 
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Divisions.rawValue
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+
         
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    @objc func doneSelected(sender: UIBarButtonItem) {
+        // TODO: Add newly created division to the realm database along with all award data.
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -11,18 +11,33 @@ import FSCalendar
 
 class RunDatesVC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var startTime: UIDatePicker!
+    @IBOutlet weak var endTime: UIDatePicker!
     
+    var start: String?
+    var end: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // TODO: Set initial start dates and variable values
         
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Dates.rawValue
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
         
         setUpCalendar()
         
+    }
+    
+    @IBAction func timeChange(_ sender: UIDatePicker) {
+    }
+    
+    
+    @objc func doneSelected(sender: UIBarButtonItem) {
+        // TODO: Validate at least one day has been selected and start and end times
+        // TODO: Save the run dates to the database
     }
     
     func setUpCalendar(){

@@ -28,6 +28,7 @@ enum Water: String {
 
 // Participant types
 enum Participants: String {
+    case Participants = "Participants"
     case Angler = "Angler"
     case Boat = "Boat"
     case Captain = "Captain"

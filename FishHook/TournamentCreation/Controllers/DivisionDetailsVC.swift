@@ -20,6 +20,13 @@ class DivisionDetailsVC: UIViewController {
 
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        
+    }
+    
+    @objc func doneSelected(sender: UIBarButtonItem) {
+        // TODO: Verify at least one Division has been created.
+        // TODO: Save to Realm and Dismiss controller.
     }
 }
 

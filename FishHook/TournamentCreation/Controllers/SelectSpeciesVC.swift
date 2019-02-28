@@ -13,6 +13,7 @@ class SelectSpeciesVC: UITableViewController {
     
     var fishSpecies = [Fish]()
     var filteredSpecies = [Fish]()
+    // TODO: DELETE can just loop through normal array and check true or false.
     var selectedSpecies = [Fish]()
     var db: Firestore?
     
@@ -26,9 +27,16 @@ class SelectSpeciesVC: UITableViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Fish.rawValue
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+
         
         getAndParseFishSpecies()
         searchControllerSetup()
+    }
+    
+    @objc func doneSelected(sender: UIBarButtonItem){
+        // TODO: Validate at least one fish Species has been selected.
+        // TODO: Save all selected fish species to the Realm Database.
     }
     
     
