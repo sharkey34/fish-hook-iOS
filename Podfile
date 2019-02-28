@@ -10,7 +10,6 @@ target 'FishHook' do
   target 'FishHookTests' do
     inherit! :search_paths
     # Pods for testing
-pod 'RealmSwift'
   end
 pod 'Firebase/Core'
 pod 'Firebase/Auth'

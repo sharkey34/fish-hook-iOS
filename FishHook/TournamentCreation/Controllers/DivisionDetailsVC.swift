@@ -12,6 +12,8 @@ class DivisionDetailsVC: UIViewController {
     @IBOutlet weak var divisionName: UITextField!
     @IBOutlet weak var sponsorName: UITextField!
     
+    var awards = [Award]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,13 +23,21 @@ class DivisionDetailsVC: UIViewController {
 }
 
 
-//extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 0
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    }
-//}
+extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+       return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return awards.count
+    }
+    
+    
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = awards[indexPath.row].name
+        return cell
+    }
+}

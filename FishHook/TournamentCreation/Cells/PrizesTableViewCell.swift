@@ -9,16 +9,14 @@
 import UIKit
 
 class PrizesTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var prizeName: UITextField!
+    @IBOutlet weak var prizeNum: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }
