@@ -41,13 +41,22 @@ class RunDatesVC: UIViewController {
 
 extension RunDatesVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
+    // TODO: Format the dates.
+    
     // Datasource
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         // TODO: Change for AutoLayout
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // TODO: Get the date selected.
-//        self.configureVisibleCells()
+        // add selected date to the array
+        
+        print("Selected " + date.description)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("Deselected " + date.description)
+        
+        // TODO: Remove date from array.
     }
 }
