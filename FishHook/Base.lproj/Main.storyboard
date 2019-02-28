@@ -265,7 +265,7 @@
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="2hI-o0-kmB" customClass="TournamentTableVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -656,7 +656,7 @@
             </objects>
             <point key="canvasLocation" x="3916" y="2235"/>
         </scene>
-        <!--Run DatesVC-->
+        <!--Data Source-->
         <scene sceneID="Ka1-Os-AcU">
             <objects>
                 <viewController id="9d3-Vo-XDP" customClass="RunDatesVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
@@ -667,6 +667,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuS-vZ-cg3" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="70" width="768" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9d3-Vo-XDP" id="OQN-xM-fmF"/>
+                                    <outlet property="delegate" destination="9d3-Vo-XDP" id="iKa-ya-MWV"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -680,6 +684,9 @@
                         <viewLayoutGuide key="safeArea" id="ZcE-pt-DpE"/>
                     </view>
                     <navigationItem key="navigationItem" id="rBd-c2-kmU"/>
+                    <connections>
+                        <outlet property="calendar" destination="CuS-vZ-cg3" id="toS-nk-Usi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKb-ga-Ouw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
