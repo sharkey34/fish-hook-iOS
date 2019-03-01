@@ -19,13 +19,13 @@ class CreateDivisionVC: UICollectionViewController {
 
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Divisions.rawValue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
 
         
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    @objc func doneSelected(sender: UIBarButtonItem) {
+    @objc func saveSelected(sender: UIBarButtonItem) {
         
         // Validating
         guard divisions.count > 0 else {
@@ -68,12 +68,5 @@ class CreateDivisionVC: UICollectionViewController {
         // TODO: Segue when the add button is selected.
         
         performSegue(withIdentifier: "toDivisionDetails", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailsVC = segue.destination as? DivisionDetailsVC {
-            
-            detailsVC.divisonCreated = divisions.count > 0 ? true : false
-        }
     }
 }

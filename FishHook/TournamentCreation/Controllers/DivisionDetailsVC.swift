@@ -15,8 +15,6 @@ class DivisionDetailsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var awards = [Award]()
     
-    var divisonCreated: Bool!
-    
     // Doesn't necessarily need to have rewards for each division
     
     override func viewDidLoad() {
@@ -24,18 +22,31 @@ class DivisionDetailsVC: UIViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
         
     }
     
-    @objc func doneSelected(sender: UIBarButtonItem) {
+    @objc func saveSelected(sender: UIBarButtonItem) {
 
-        if !divisonCreated {
-            //TODO: Validation
-        } else {
-            // No need to force user to create another division.
+        //TODO: Validation
+        guard !divisionName.isNullOrWhitespace(), awards.count > 0 else {
+            
+            let alert = Utils.basicAlert(title: "Invalid Division Details", message: "Please enter valid information for this Division", Button: "OK")
+            
+            self.present(alert, animated: true, completion: nil)
+            return
         }
-        // TODO: Save to Realm and Dismiss controller.
+        
+//        let name = divisionName.text!
+//        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
+        
+        // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
+        
+    }
+    
+    @objc func cancelSelected(sender: UIBarButtonItem){
+        dismiss(animated: true, completion: nil)
     }
 }
 

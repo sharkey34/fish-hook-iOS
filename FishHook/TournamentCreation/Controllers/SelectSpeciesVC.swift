@@ -28,13 +28,13 @@ class SelectSpeciesVC: UITableViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Fish.rawValue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
 
         
         searchControllerSetup()
     }
     
-    @objc func doneSelected(sender: UIBarButtonItem){
+    @objc func saveSelected(sender: UIBarButtonItem){
         
         // Validating at least one fish Species has been selected.
         guard selectedSpecies.count > 0 else {

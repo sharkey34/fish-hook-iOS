@@ -28,7 +28,7 @@ class BasicDetailsVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         imagePicker.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Basic.rawValue
     }
@@ -41,7 +41,7 @@ class BasicDetailsVC: UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    @objc func doneSelected(sender: UIBarButtonItem){
+    @objc func saveSelected(sender: UIBarButtonItem){
         var name = false
         var type = false
         var metric = false

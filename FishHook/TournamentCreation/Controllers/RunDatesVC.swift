@@ -27,7 +27,7 @@ class RunDatesVC: UIViewController {
         // Setting initial start dates and variable values
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Dates.rawValue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         
         setUpCalendar()
     }
@@ -53,7 +53,7 @@ class RunDatesVC: UIViewController {
     }
     
     
-    @objc func doneSelected(sender: UIBarButtonItem) {
+    @objc func saveSelected(sender: UIBarButtonItem) {
         
         
         // TODO: Validate at least one day has been selected and start and end times

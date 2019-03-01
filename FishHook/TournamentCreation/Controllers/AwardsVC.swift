@@ -23,13 +23,26 @@ class AwardsVC: UIViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Awards.rawValue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
     }
     
-    @objc func doneSelected(sender: UIBarButtonItem) {
+    @objc func saveSelected(sender: UIBarButtonItem) {
         // TODO: verify inputs.
+        guard !awardName.isNullOrWhitespace(), !fishSpecies.isNullOrWhitespace(), prizes.count > 0 else {
+            
+            let alert = Utils.basicAlert(title: "Invalid Award Entries", message: "Please make sure to fill out all fields correctly. You must also have added at least one prize.", Button: "OK")
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
         // TODO: Save to Realm and dismiss controller
+        
+        
+    }
+    
+    @objc func cancelSelected(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func StepperChange(_ sender: UIStepper) {
@@ -37,6 +50,8 @@ class AwardsVC: UIViewController {
         // TODO: Check and remove item from array when cell deleted.
         let count = Int(sender.value)
 
+        
+        // TODO: Fix implementation
         if itemCount > count  && prizes.count == count && count > 0{
             prizes.remove(at: count - 1)
             print(prizes)
@@ -60,6 +75,7 @@ extension AwardsVC: UITableViewDelegate, UITableViewDataSource {
         return itemCount
     }
     
+    // Setting cells values.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PrizesTableViewCell else {return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)}
         
@@ -76,10 +92,17 @@ extension AwardsVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         // TODO: Add an edit button or some way to allow the user to edit the textfields
-        if let text = textField.text {
+        
+        guard !textField.isNullOrWhitespace() else {
+            let alert = Utils.basicAlert(title: "Invalid Prize", message: "Please make sure the entry is not left empty or does not contain only spaces.", Button: "OK")
             
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let text = textField.text!
             prizes.append(text)
             textField.isEnabled = false
-        }
+        
     }
 }
