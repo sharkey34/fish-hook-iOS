@@ -26,7 +26,19 @@ class CreateDivisionVC: UICollectionViewController {
     }
     
     @objc func doneSelected(sender: UIBarButtonItem) {
-        // TODO: Add newly created division to the realm database along with all award data.
+        
+        // Validating
+        guard divisions.count > 0 else {
+            
+            let alert = Utils.basicAlert(title: "No Divisions added", message: "Please add at least one General divison for your tournament.", Button: "OK")
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        // TODO: Add divisions to Realm()
+        
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -56,5 +68,12 @@ class CreateDivisionVC: UICollectionViewController {
         // TODO: Segue when the add button is selected.
         
         performSegue(withIdentifier: "toDivisionDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsVC = segue.destination as? DivisionDetailsVC {
+            
+            detailsVC.divisonCreated = divisions.count > 0 ? true : false
+        }
     }
 }

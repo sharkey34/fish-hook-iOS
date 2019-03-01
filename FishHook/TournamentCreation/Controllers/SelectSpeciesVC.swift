@@ -24,19 +24,29 @@ class SelectSpeciesVC: UITableViewController {
         super.viewDidLoad()
         
         db = Firestore.firestore()
+        getAndParseFishSpecies()
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Fish.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
 
         
-        getAndParseFishSpecies()
         searchControllerSetup()
     }
     
     @objc func doneSelected(sender: UIBarButtonItem){
-        // TODO: Validate at least one fish Species has been selected.
+        
+        // Validating at least one fish Species has been selected.
+        guard selectedSpecies.count > 0 else {
+            
+            let alert = Utils.basicAlert(title: "No Fish Selected", message: "Please select the Fish Species that can be caught in your tournament.", Button: "OK")
+            
+            present(alert, animated: true, completion: nil)
+            return
+        }
         // TODO: Save all selected fish species to the Realm Database.
+        
+        
     }
     
     
@@ -44,7 +54,11 @@ class SelectSpeciesVC: UITableViewController {
         db?.collection("fish").getDocuments(completion: { (document, error) in
             if let err = error {
                 print("Error retreving fish species." + " " + err.localizedDescription)
-                // TODO: alert the user.
+                
+                // alert the user.
+                let alert = Utils.basicAlert(title: "Error retreving fish species", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+                
             } else {
                 for doc in document!.documents {
                     
