@@ -28,9 +28,20 @@ class AwardsVC: UIViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
+        
+        // TODO: Add check for prize.count eqaul to number of cells that way we can alert the user if a prize cell is left empty.
+        
+        // Getting all the final values entered in the prize cells
+        guard let cells = tableView.visibleCells as? [PrizesTableViewCell] else {return}
+        
+        for cell in cells {
+            if !cell.prizeName.isNullOrWhitespace() {
+                prizes.append(cell.prizeName.text!)
+            }
+        }
+        
         // TODO: verify inputs.
         guard !awardName.isNullOrWhitespace(), !fishSpecies.isNullOrWhitespace(), prizes.count > 0 else {
-            
             let alert = Utils.basicAlert(title: "Invalid Award Entries", message: "Please make sure to fill out all fields correctly. You must also have added at least one prize.", Button: "OK")
             self.present(alert, animated: true, completion: nil)
             
@@ -42,22 +53,12 @@ class AwardsVC: UIViewController {
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
+    // Incrementing count and reloading tableview
     @IBAction func StepperChange(_ sender: UIStepper) {
-        
-        // TODO: Check and remove item from array when cell deleted.
-        let count = Int(sender.value)
-
-        
-        // TODO: Fix implementation
-        if itemCount > count  && prizes.count == count && count > 0{
-            prizes.remove(at: count - 1)
-            print(prizes)
-        }
-        
-        itemCount = count
+        itemCount = Int(sender.value)
         prizeCount.text = itemCount.description
         tableView.reloadData()
     }
@@ -99,10 +100,5 @@ extension AwardsVC: UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-        let text = textField.text!
-            prizes.append(text)
-            textField.isEnabled = false
-        
     }
 }

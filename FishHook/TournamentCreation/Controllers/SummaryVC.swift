@@ -17,17 +17,18 @@ class SummaryVC: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Summary.rawValue
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
+        let button = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(submitSelected(sender:)))
+        navigationItem.rightBarButtonItem = button
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
     }
     
-    @objc func saveSelected(sender: UIBarButtonItem) {
+    @objc func submitSelected(sender: UIBarButtonItem) {
         // TODO: Get all the information from the local database.
         // TODO: Push all data to Firestorea and create the tournament.
     }
-
-    @IBAction func pressed(_ sender: UIButton) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.changeRoot()
+    
+    @objc func cancelSelected(sender: UIBarButtonItem) {
+        // TODO: Dismissing the controller may be all that is needed
+        dismiss(animated: true, completion: nil)
     }
 }

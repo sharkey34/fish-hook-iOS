@@ -24,23 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         return true
-    }
-
-    
-    // Changing the root view controllers.
-    func changeRoot() {
-        guard let window = window else {return}
-        
-        let tabBarBoard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let viewController = tabBarBoard.instantiateViewController(withIdentifier: "AdminTabVC") as! UITabBarController
-        viewController.view.layoutIfNeeded()
-        
-        UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-            window.rootViewController = viewController
-        }, completion: nil)
-        
-    }
-    
+    }    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

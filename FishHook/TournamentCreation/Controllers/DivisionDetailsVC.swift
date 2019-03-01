@@ -46,7 +46,7 @@ class DivisionDetailsVC: UIViewController {
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem){
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 }
 

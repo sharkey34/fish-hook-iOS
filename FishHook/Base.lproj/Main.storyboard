@@ -744,13 +744,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daX-op-NNQ">
-                                <rect key="frame" x="361" y="507" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="pressed:" destination="3sy-Vx-XXR" eventType="touchUpInside" id="xcI-l0-J87"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-xh-z0M">
                                 <rect key="frame" x="249.5" y="133" width="269" height="256"/>
                             </imageView>
@@ -758,9 +751,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ul2-xh-z0M" firstAttribute="width" secondItem="TWz-vy-qdm" secondAttribute="width" multiplier="0.35" id="FVh-Ki-eLq"/>
-                            <constraint firstItem="daX-op-NNQ" firstAttribute="centerY" secondItem="Foh-XY-bQk" secondAttribute="centerY" id="Mte-x3-0YE"/>
                             <constraint firstItem="Ul2-xh-z0M" firstAttribute="height" secondItem="TWz-vy-qdm" secondAttribute="height" multiplier="0.25" id="Mv5-ff-WA1"/>
-                            <constraint firstItem="daX-op-NNQ" firstAttribute="centerX" secondItem="Foh-XY-bQk" secondAttribute="centerX" id="auq-FS-7h4"/>
                             <constraint firstItem="Ul2-xh-z0M" firstAttribute="centerX" secondItem="Foh-XY-bQk" secondAttribute="centerX" id="bME-M2-IIU"/>
                             <constraint firstItem="Ul2-xh-z0M" firstAttribute="centerY" secondItem="Foh-XY-bQk" secondAttribute="centerY" multiplier="0.5" id="byi-ui-yjK"/>
                         </constraints>
