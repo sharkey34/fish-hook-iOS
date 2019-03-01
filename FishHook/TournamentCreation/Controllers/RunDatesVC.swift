@@ -16,41 +16,78 @@ class RunDatesVC: UIViewController {
     
     var start: String?
     var end: String?
+    var timeFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: Set initial DatePicker times to 12:00 PM
+  
+        timeSetup()
         
-        // TODO: Set initial start dates and variable values
-        
-        
+        // Setting initial start dates and variable values
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Dates.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneSelected(sender:)))
         
         setUpCalendar()
-        
     }
     
+    func timeSetup(){
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        timeFormatter.locale = Locale(identifier: "en_US")
+        start = timeFormatter.string(from: startTime.date)
+        end = timeFormatter.string(from: endTime.date)
+    }
+    
+    // getting time from DatePicker 
     @IBAction func timeChange(_ sender: UIDatePicker) {
+        switch sender.tag {
+        case 0:
+            start = timeFormatter.string(from: sender.date)
+        case 1:
+            end = timeFormatter.string(from: sender.date)
+        default:
+            print("Invalid Sender")
+        }
     }
     
     
     @objc func doneSelected(sender: UIBarButtonItem) {
+        
+        
         // TODO: Validate at least one day has been selected and start and end times
+        guard calendar.selectedDates.count > 0 else {
+            let alert = Utils.basicAlert(title: "No Dates Selected", message: "Please Select a valid range of dates for your tournament", Button: "OK")
+            present(alert, animated: true, completion:  nil)
+            return
+        }
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .medium
+        dateFormat.timeStyle = .none
+        dateFormat.locale = Locale(identifier: "en_US")
+    
+        // Sorting dates by ascending
+        let sortedDates = calendar.selectedDates.sorted(by: {$0 < $1})
+        
+        // Getting the start and end dates
+        let startDate = "\(dateFormat.string(from: sortedDates[0])) at \(start!)"
+        let endDate = "\(dateFormat.string(from: sortedDates[sortedDates.count - 1])) at \(end!)"
+        
+        print(startDate)
+        print(endDate)
+        
         // TODO: Save the run dates to the database
+    
     }
     
+    // Calendar setup
     func setUpCalendar(){
         calendar.allowsMultipleSelection = true
         calendar.swipeToChooseGesture.isEnabled = true
-        
-        // NO idea what is going on
-//        calendar.swipeToChooseGesture.isEnabled = true // Swipe-To-Choose
         let scopeGesture = UIPanGestureRecognizer(target: calendar, action: #selector(calendar.handleScopeGesture(_:)));
         calendar.addGestureRecognizer(scopeGesture)
-//        calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
-        
-
     }
 }
 
@@ -60,18 +97,14 @@ extension RunDatesVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     
     // Datasource
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        // TODO: Change for AutoLayout
+        
+        // Setting height after layout change.
+        self.calendar.frame.size.height = bounds.height
+
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // add selected date to the array
-        
-        print("Selected " + date.description)
-    }
-    
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("Deselected " + date.description)
-        
-        // TODO: Remove date from array.
+    // Setting minimum date
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
