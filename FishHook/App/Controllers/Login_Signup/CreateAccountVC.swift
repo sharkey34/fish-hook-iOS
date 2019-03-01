@@ -22,35 +22,58 @@ class CreateAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     setUp()
+    }
+    
+    // TODO: Add UITextfield Delegate method didEndEditing to check if entry is currently valid in real-time and display error to user.
+    
+    func setUp(){
+        // Setting up Firestore and addign a tap gesture to the signup button.
         db = Firestore.firestore()
         let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped(sender:)))
         signUp.addGestureRecognizer(tap)
     }
     
-    
     @objc
     func signUpTapped(sender: UITapGestureRecognizer){
         
-       
-        guard let first = first.text, let last = last.text, let email = email.text, let password = password.text else {return}
+        // Validating inputs are not null or all spaces and validating password is of valid length and email is valid.
+        guard !first.isNullOrWhitespace(), !last.isNullOrWhitespace(), !email.isNullOrWhitespace(),
+            email.isValidEmail(), !password.isNullOrWhitespace(), password.isValidPassword() else {
+                
+                let alert = Utils.basicAlert(title: "Invalid Entry", message: "One or more entries are invalid. Please fix and try agiain", Button: "OK")
+                
+                self.present(alert, animated: true, completion: nil)
+                return
+        }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+        let emailText = email.text!
+        let firstName = first.text!
+        let lastName = last.text!
+        let passwordText = password.text!
+        
+        // Firebase Auth to create the user.
+        Auth.auth().createUser(withEmail: emailText, password: passwordText) { (result, error) in
             
             guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {return}
-     
-            let currentUser = User(_uid: uid, _first: first, _last: last, _email: email)
             
+            let currentUser = User(_uid: uid, _first: firstName, _last: lastName, _email: emailText)
+            
+            // Saving Data to Firestore
             self.db!.collection("users").document(uid).setData(
                 [
-                    "first":first,
-                    "last": last,
-                    "email": email
+                    "first":firstName,
+                    "last": lastName,
+                    "email": emailText
                 ],
                 completion: { (error) in if let err = error {
+                    
+                    // TODO: Change to custom toast or something of the like since this will not display.
                     let alert = Utils.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     do{
+                        // Saving currentUser to UserDefaults
                         try UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
                         self.performSegue(withIdentifier: "createToAdmin", sender: self)
                     } catch {

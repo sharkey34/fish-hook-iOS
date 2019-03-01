@@ -21,6 +21,11 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUp()
+    }
+    
+    // Performing intial setup.
+    func setUp(){
         db = Firestore.firestore()
         
         // Setting time to take a Firebase Timestamp instead of a System Date
@@ -51,20 +56,30 @@ class LoginVC: UIViewController {
             let passwordAlert = Utils.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
             self.present(passwordAlert, animated: true, completion: nil)
         case 1:
-            // TODO: Properly validate entries.
-            guard let emailText = email.text, let passwordText = password.text else {return}
+            // Properly validating entries.
+            
+            guard !email.isNullOrWhitespace(), email.isValidEmail(), !password.isNullOrWhitespace(), password.isValidPassword() else {
+                
+                let alert = Utils.basicAlert(title: "Invalid Entry", message: "Email and/or password are invalid.", Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            let emailText = email.text!
+            let passwordText = password.text!
             
             Auth.auth().signIn(withEmail: emailText, password: passwordText) { (result, error) in
                 
+                // Alerting the user if there is a Firestore error.
                 guard let _ = result, error == nil else {
                     print(error!.localizedDescription)
+                    let alert = Utils.basicAlert(title: "Firestore Error", message: error!.localizedDescription, Button: "OK")
+                    self.present(alert, animated: true, completion: nil)
                     return
                 }
                 
                 if let uid = Auth.auth().currentUser?.uid {
-                    
                     let ref = self.db.collection("users").document(uid)
-                    
                     ref.getDocument(completion: { (document, error) in
                         
                         if let doc = document, document!.exists{
