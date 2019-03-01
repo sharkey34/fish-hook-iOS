@@ -57,7 +57,6 @@ class LoginVC: UIViewController {
             self.present(passwordAlert, animated: true, completion: nil)
         case 1:
             // Properly validating entries.
-            
             guard !email.isNullOrWhitespace(), email.isValidEmail(), !password.isNullOrWhitespace(), password.isValidPassword() else {
                 
                 let alert = Utils.basicAlert(title: "Invalid Entry", message: "Email and/or password are invalid.", Button: "OK")
@@ -83,7 +82,7 @@ class LoginVC: UIViewController {
                     ref.getDocument(completion: { (document, error) in
                         
                         if let doc = document, document!.exists{
-                            // TODO: Map the data and save the user information to currentUser.
+                            // Mapping the data and save the user information to currentUser.
                             if let map = doc.data(){
                                 
                                 let email = map["email"] as! String

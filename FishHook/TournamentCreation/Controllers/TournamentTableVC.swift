@@ -18,12 +18,6 @@ class TournamentTableVC: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Tournament Setup"
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,9 +27,8 @@ class TournamentTableVC: UITableViewController {
         tableView.backgroundColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
     }
  
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         // TODO: Make fit for each device.
         tableView.rowHeight = view.frame.height / 10
         return 1
@@ -50,7 +43,7 @@ class TournamentTableVC: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SplitTableViewCell else {
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         }
-        // TODO: cell setup
+        // cell setup
         cell.title.text = titles[indexPath.row].rawValue
         cell.selectionStyle = .blue
         cell.backgroundColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
@@ -61,6 +54,7 @@ class TournamentTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        // Seguing to the proper view dependent on the cell selected.
         switch titles[indexPath.row] {
         case TournamentSetup.Basic:
             performSegue(withIdentifier: "toBasic", sender: self)

@@ -232,14 +232,14 @@
 			isa = PBXGroup;
 			children = (
 				4AC715732220DBD800868214 /* CreateTournamentVC.swift */,
-				4AFF71DB22238C4E0038707F /* BasicDetailsVC.swift */,
 				4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */,
-				4A73E4492224949000786CE1 /* SummaryVC.swift */,
-				4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */,
-				4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */,
+				4AFF71DB22238C4E0038707F /* BasicDetailsVC.swift */,
 				4A73E4502224952300786CE1 /* RunDatesVC.swift */,
+				4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */,
+				4A73E44C222494E600786CE1 /* CreateDivisionVC.swift */,
 				4AB210A32226406400735881 /* DivisionDetailsVC.swift */,
 				4AF27E252226F5DD003A8A21 /* AwardsVC.swift */,
+				4A73E4492224949000786CE1 /* SummaryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

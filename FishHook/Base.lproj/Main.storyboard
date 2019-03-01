@@ -254,7 +254,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RT1-tT-ita">
+                            <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RT1-tT-ita">
                                 <rect key="frame" x="186.5" y="663" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-BK-HYM">
@@ -275,10 +275,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-Sa-3pQ">
+                            <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-Sa-3pQ">
                                 <rect key="frame" x="590" y="611" width="51" height="31"/>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5hZ-Db-O3d">
+                            <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5hZ-Db-O3d">
                                 <rect key="frame" x="590" y="663" width="51" height="31"/>
                             </switch>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-1q-4Lr">
@@ -357,13 +357,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kla-TR-W19"/>
                     <connections>
-                        <outlet property="fresh" destination="chL-2G-ZFE" id="0dT-8O-zJ4"/>
-                        <outlet property="length" destination="5hZ-Db-O3d" id="3wJ-m6-uco"/>
                         <outlet property="logo" destination="f43-Op-9Kr" id="O3v-HJ-JBR"/>
-                        <outlet property="salt" destination="RT1-tT-ita" id="lnq-m2-G6D"/>
                         <outlet property="tableview" destination="zEq-1q-4Lr" id="bow-RW-GMg"/>
                         <outlet property="tournamentName" destination="bjD-Ml-F38" id="zgG-t6-lhm"/>
-                        <outlet property="weight" destination="pTK-Sa-3pQ" id="L4S-AQ-M5A"/>
+                        <outletCollection property="waterType" destination="chL-2G-ZFE" collectionClass="NSMutableArray" id="h5x-LM-moP"/>
+                        <outletCollection property="waterType" destination="RT1-tT-ita" collectionClass="NSMutableArray" id="42K-9E-OPZ"/>
+                        <outletCollection property="metrics" destination="pTK-Sa-3pQ" collectionClass="NSMutableArray" id="dBT-j0-ZiT"/>
+                        <outletCollection property="metrics" destination="5hZ-Db-O3d" collectionClass="NSMutableArray" id="om7-uC-qQJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxf-1d-IBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -798,7 +798,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wrg-s8-mcq">
-                                <rect key="frame" x="230.5" y="627.5" width="153.5" height="102.5"/>
+                                <rect key="frame" x="231" y="628" width="153" height="102"/>
                                 <date key="date" timeIntervalSinceReferenceDate="573087307.92996299">
                                     <!--2019-02-28 22:55:07 +0000-->
                                 </date>
@@ -813,7 +813,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rN8-Nj-wX0">
-                                <rect key="frame" x="230.5" y="784" width="153.5" height="102.5"/>
+                                <rect key="frame" x="231" y="784" width="153" height="103"/>
                                 <date key="date" timeIntervalSinceReferenceDate="573087603.49198198">
                                     <!--2019-02-28 23:00:03 +0000-->
                                 </date>
