@@ -16,6 +16,7 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var last: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var adminSwitch: UISwitch!
     
     var db: Firestore?
     
@@ -55,16 +56,21 @@ class CreateAccountVC: UIViewController {
         // Firebase Auth to create the user.
         Auth.auth().createUser(withEmail: emailText, password: passwordText) { (result, error) in
             
-            guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {return}
-            
-            let currentUser = User(_uid: uid, _first: firstName, _last: lastName, _email: emailText)
-            
+            guard let _ = result, let uid = Auth.auth().currentUser?.uid, error == nil else {
+                
+                if let err = error {
+                    let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                    self.present(alert,animated: true,completion: nil)
+                }
+                return
+            }
             // Saving Data to Firestore
             self.db!.collection("users").document(uid).setData(
                 [
                     "first":firstName,
                     "last": lastName,
-                    "email": emailText
+                    "email": emailText,
+                    "admin": self.adminSwitch.isOn
                 ],
                 completion: { (error) in if let err = error {
                     
@@ -72,13 +78,10 @@ class CreateAccountVC: UIViewController {
                     let alert = Utils.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    do{
-                        // Saving currentUser to UserDefaults
-                        try UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
-                        self.performSegue(withIdentifier: "createToAdmin", sender: self)
-                    } catch {
-                        print("Error saving current user to defaults.")
-                    }
+                    // Saving currentUser to UserDefaults
+                    let currentUser = User(_uid: uid, _admin: self.adminSwitch.isOn, _first: firstName, _last: lastName, _email: emailText)
+                    UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
+                    self.performSegue(withIdentifier: "createToDashboard", sender: self)
                 }
             })
         }

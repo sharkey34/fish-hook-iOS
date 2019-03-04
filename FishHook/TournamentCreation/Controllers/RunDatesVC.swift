@@ -72,14 +72,20 @@ class RunDatesVC: UIViewController {
         let sortedDates = calendar.selectedDates.sorted(by: {$0 < $1})
         
         // Getting the start and end dates
-        let startDate = "\(dateFormat.string(from: sortedDates[0])) at \(start!)"
-        let endDate = "\(dateFormat.string(from: sortedDates[sortedDates.count - 1])) at \(end!)"
+        let startDate = dateFormat.string(from: sortedDates[0])
+        let endDate = dateFormat.string(from: sortedDates[sortedDates.count - 1])
         
         print(startDate)
         print(endDate)
         
         // TODO: Save the run dates to the database
-    
+        Global.tournament.startDate = startDate
+        Global.tournament.endDate = endDate
+        Global.tournament.startTime = start!
+        Global.tournament.endTime = end!
+        
+        let alert = Utils.basicAlert(title: "Saved", message: "Dates have been successfully saved.", Button: "OK")
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Calendar setup

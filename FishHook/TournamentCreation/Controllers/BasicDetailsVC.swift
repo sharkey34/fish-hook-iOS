@@ -51,28 +51,44 @@ class BasicDetailsVC: UIViewController {
         // Validating User entries
         if !tournamentName.isNullOrWhitespace() {
             name = true
+            
+            Global.tournament.name = tournamentName.text!
         }
         
         for toggle in waterType {
             if toggle.isOn {
                 type = true
+                
+                if toggle.tag == 0 {
+                    Global.tournament.waterType.append("Fresh")
+                } else {
+                    Global.tournament.waterType.append("Salt")
+                }
             }
         }
         
         for toggle in metrics {
             if toggle.isOn {
                 metric = true
+                
+                if toggle.tag == 2 {
+                    Global.tournament.metrics.append("Weight")
+                } else {
+                    Global.tournament.metrics.append("Length")
+                }
             }
         }
         
         for p in participants {
             if p.1 {
                 participant = true
+                Global.tournament.participants?.append(p.0.rawValue)
             }
         }
         
-        if let _ = logo.image {
+        if let image = logo.image {
             tournamentLogo = true
+            Global.tournament.logo = image
         }
         
         // TODO: Validate entries
@@ -80,6 +96,8 @@ class BasicDetailsVC: UIViewController {
             // TODO: Save to database
             saveBasicDetails()
             
+            let a = Utils.basicAlert(title: "Saved", message: "Basic Details have been saved. ", Button: "OK")
+            self.present(a,animated: true, completion: nil)
         } else {
             let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
             self.present(alert, animated: true, completion: nil)
@@ -87,7 +105,8 @@ class BasicDetailsVC: UIViewController {
     }
     
     func saveBasicDetails(){
-        print("Saving to Database")
+        // TODO
+        
     }
 }
 

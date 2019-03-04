@@ -27,6 +27,12 @@ class DivisionDetailsVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Temporary
+        awards = Global.awards
+        tableView.reloadData()
+    }
+    
     @objc func saveSelected(sender: UIBarButtonItem) {
 
         //TODO: Validation
@@ -42,7 +48,14 @@ class DivisionDetailsVC: UIViewController {
 //        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
         
         // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
+        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
+//
+//        let alert = Utils.basicAlert(title: "Saved", message: "Division has ben saved", Button: "OK")
+//        self.present(alert, animated: true , completion: nil)
         
+        Global.awards.removeAll()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem){

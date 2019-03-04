@@ -21,6 +21,8 @@ class AwardsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewdidload")
+        
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Awards.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
@@ -48,8 +50,14 @@ class AwardsVC: UIViewController {
             return
         }
         // TODO: Save to Realm and dismiss controller
+        Global.awards.append(Award(_name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
         
         
+        
+//        let alert = Utils.basicAlert(title: "Saved", message: "Award has been added to division ", Button: "OK")
+//        self.present(alert, animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem) {

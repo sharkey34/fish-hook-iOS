@@ -23,8 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
+        
+        UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
+        
         return true
-    }    
+    }
+
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -45,8 +45,10 @@ class SelectSpeciesVC: UITableViewController {
             return
         }
         // TODO: Save all selected fish species to the Realm Database.
+        Global.tournament.fishSpecies = selectedSpecies
         
-        
+        let alert = Utils.basicAlert(title: "Saved", message: "Fish Species have been saved", Button: "OK")
+        self.present(alert,animated: true,completion: nil)
     }
     
     

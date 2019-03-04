@@ -11,12 +11,11 @@ import Foundation
 class Division {
     
     var id: String?
-    var name: String
+    var name: String?
     var sponsor: String?
     var awards: [Award]?
     
-    
-    init(_id: String?, _name: String, _sponsor: String?, _awards: [Award]?) {
+    init(_id: String?, _name: String?, _sponsor: String?, _awards: [Award]?) {
         self.id = _id
         self.name = _name
         self.sponsor = _sponsor
