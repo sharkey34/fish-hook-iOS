@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class SelectSpeciesVC: UITableViewController {
     
@@ -16,12 +17,22 @@ class SelectSpeciesVC: UITableViewController {
     // TODO: DELETE can just loop through normal array and check true or false.
     var selectedSpecies = [Fish]()
     var db: Firestore?
-    
     // Creating a searchController.
     var searchController = UISearchController(searchResultsController: nil)
+    
+    // Core Data variables.
+    private var managedContext: NSManagedObjectContext!
+    private var entity: NSEntityDescription!
+    private var tournamentData: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Core Data Setup
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
+        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+        
         
         db = Firestore.firestore()
         getAndParseFishSpecies()
@@ -44,8 +55,8 @@ class SelectSpeciesVC: UITableViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        // TODO: Save all selected fish species to the Realm Database.
-        Global.tournament.fishSpecies = selectedSpecies
+        // Save all selected fish species to the Realm Database.
+        tournamentData.setValue(fishSpecies, forKey: "fish")
         
         let alert = Utils.basicAlert(title: "Saved", message: "Fish Species have been saved", Button: "OK")
         self.present(alert,animated: true,completion: nil)

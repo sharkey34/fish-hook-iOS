@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
 class CreateDivisionVC: UICollectionViewController {
     
     var divisions = [Division]()
+    
+    // Core Data variables.
+    private var managedContext: NSManagedObjectContext!
+    private var entity: NSEntityDescription!
+    private var tournamentData: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Core Data Setup
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
+        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
     
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Divisions.rawValue
@@ -80,5 +91,11 @@ class CreateDivisionVC: UICollectionViewController {
         // TODO: Segue when the add button is selected.
         
         performSegue(withIdentifier: "toDivisionDetails", sender: self)
+    }
+    
+    
+    @IBAction func unwindFromDivisionDetails(segue: UIStoryboardSegue) {
+        
+    
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import CoreData
 
 class RunDatesVC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
@@ -17,11 +18,21 @@ class RunDatesVC: UIViewController {
     var start: String?
     var end: String?
     var timeFormatter = DateFormatter()
+    
+    // Core Data variables.
+    private var managedContext: NSManagedObjectContext!
+    private var entity: NSEntityDescription!
+    private var tournamentData: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: Set initial DatePicker times to 12:00 PM
+        
+        // Core Data Setup
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
+        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
   
+        // TODO: Set initial DatePicker times to 12:00 PM
         timeSetup()
         
         // Setting initial start dates and variable values
@@ -75,14 +86,11 @@ class RunDatesVC: UIViewController {
         let startDate = dateFormat.string(from: sortedDates[0])
         let endDate = dateFormat.string(from: sortedDates[sortedDates.count - 1])
         
-        print(startDate)
-        print(endDate)
-        
         // TODO: Save the run dates to the database
-        Global.tournament.startDate = startDate
-        Global.tournament.endDate = endDate
-        Global.tournament.startTime = start!
-        Global.tournament.endTime = end!
+        tournamentData.setValue(startDate, forKey: "startDate")
+        tournamentData.setValue(start!, forKey: "startTime")
+        tournamentData.setValue(end!, forKey: "endTime")
+        tournamentData.setValue(endDate, forKey: "endDate")
         
         let alert = Utils.basicAlert(title: "Saved", message: "Dates have been successfully saved.", Button: "OK")
         self.present(alert, animated: true, completion: nil)

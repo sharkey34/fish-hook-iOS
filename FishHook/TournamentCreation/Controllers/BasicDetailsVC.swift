@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 class BasicDetailsVC: UIViewController {
+    
     @IBOutlet weak var tournamentName: UITextField!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet var waterType: [UISwitch]!
     @IBOutlet var metrics: [UISwitch]!
     
+    // Core Data variables.
+    private var managedContext: NSManagedObjectContext!
+    private var entity: NSEntityDescription!
+    private var tournamentData: NSManagedObject!
+    
     var participants = [(Participants.Angler, false), (Participants.Captain, false), (Participants.Boat, false)]
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Core Data Setup
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
+        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+
+        
         setUp()
     }
     
@@ -42,71 +56,74 @@ class BasicDetailsVC: UIViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem){
-        var name = false
-        var type = false
-        var metric = false
-        var participant = false
-        var tournamentLogo = false
         
         // Validating User entries
+        
+        var tName: String?
         if !tournamentName.isNullOrWhitespace() {
-            name = true
-            
-            Global.tournament.name = tournamentName.text!
+            tName = tournamentName.text!
         }
         
+        
+        var waterTypes = [String]()
         for toggle in waterType {
             if toggle.isOn {
-                type = true
-                
                 if toggle.tag == 0 {
-                    Global.tournament.waterType.append("Fresh")
+                    waterTypes.append("Fresh")
                 } else {
-                    Global.tournament.waterType.append("Salt")
+                    waterTypes.append("Salt")
                 }
             }
         }
         
+        var metricArr = [String]()
         for toggle in metrics {
             if toggle.isOn {
-                metric = true
-                
                 if toggle.tag == 2 {
-                    Global.tournament.metrics.append("Weight")
+                    metricArr.append("Weight")
                 } else {
-                    Global.tournament.metrics.append("Length")
+                    metricArr.append("Length")
                 }
             }
         }
         
+        var participantArr = [String]()
         for p in participants {
             if p.1 {
-                participant = true
-                Global.tournament.participants?.append(p.0.rawValue)
+                participantArr.append(p.0.rawValue)
             }
         }
         
+        var logoImage: UIImage?
         if let image = logo.image {
-            tournamentLogo = true
-            Global.tournament.logo = image
+            logoImage = image
         }
         
-        // TODO: Validate entries
-        if name && type && metric && participant && tournamentLogo {
-            // TODO: Save to database
-            saveBasicDetails()
-            
-            let a = Utils.basicAlert(title: "Saved", message: "Basic Details have been saved. ", Button: "OK")
-            self.present(a,animated: true, completion: nil)
-        } else {
-            let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func saveBasicDetails(){
-        // TODO
+        // Validate entries
         
+        guard let name = tName, let image = logoImage, waterTypes.count > 0, metricArr.count > 0, participantArr.count > 0  else {
+     
+                let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        var imageData: Data?
+        do {
+            imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
+        } catch{
+            print(error.localizedDescription)
+        }
+        
+        tournamentData.setValue(imageData, forKey: "logo")
+        tournamentData.setValue(name, forKey: "tName")
+        tournamentData.setValue(waterTypes, forKey: "waterType")
+        tournamentData.setValue(metricArr, forKey: "metrics")
+        tournamentData.setValue(participantArr, forKey: "participants")
+        
+        
+        let alert = Utils.basicAlert(title: "Saved", message: "Basic Tournament details have been saved", Button: "OK")
+        present(alert, animated: true, completion: nil)
     }
 }
 

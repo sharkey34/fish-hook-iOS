@@ -9,17 +9,20 @@
 import UIKit
 
 class DivisionDetailsVC: UIViewController {
+    
     @IBOutlet weak var divisionName: UITextField!
     @IBOutlet weak var sponsorName: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var awards = [Award]()
+    var newDivision: Division?
     
     // Doesn't necessarily need to have rewards for each division
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.delegate = self
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
@@ -29,7 +32,7 @@ class DivisionDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Temporary
-        awards = Global.awards
+//        awards = Global.awards
         tableView.reloadData()
     }
     
@@ -43,17 +46,17 @@ class DivisionDetailsVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-//        let name = divisionName.text!
-//        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
-        
+    
         // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
-        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
-//
-//        let alert = Utils.basicAlert(title: "Saved", message: "Division has ben saved", Button: "OK")
-//        self.present(alert, animated: true , completion: nil)
         
-        Global.awards.removeAll()
+//
+//        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
+//        Global.awards.removeAll()
+            newDivision = Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards)
+        
+        // Maybe
+        awards.removeAll()
+        
         
         navigationController?.popViewController(animated: true)
     }
@@ -80,5 +83,15 @@ extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = awards[indexPath.row].name
         return cell
+    }
+}
+
+
+extension DivisionDetailsVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        guard let cdVC = viewController as? CreateDivisionVC else {return}
+        
     }
 }

@@ -148,4 +148,27 @@ class SummaryVC: UIViewController {
             labels[6].text = Global.tournament.fishSpecies.count.description
         }
     }
+    
+    
+//    // Loading data from CoreData
+//    func loadAndTest(){
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TournamentData")
+//        do{
+//            let data: [NSManagedObject] = try managedContext.fetch(fetchRequest)
+//
+//            for obj in data {
+//
+//
+//                print(obj.value(forKey: "tName") as? String)
+//
+//                var participants = obj.value(forKey: "participants") as? [String]
+//
+//                print(participants)
+//
+//
+//            }
+//        } catch {
+//            assertionFailure()
+//        }
+//    }
 }
