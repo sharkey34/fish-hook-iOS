@@ -22,7 +22,6 @@ class DivisionDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.delegate = self
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
@@ -54,15 +53,31 @@ class DivisionDetailsVC: UIViewController {
 //        Global.awards.removeAll()
             newDivision = Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards)
         
-        // Maybe
-        awards.removeAll()
-        
-        
-        navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindToCreate", sender: self)
+    
+//        navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem){
-        navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindToCreate", sender: self)
+    }
+    
+    
+    // Sending Division
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cdVC = segue.destination as? CreateDivisionVC else {return}
+        
+        print("willShow CreateDivision")
+        
+        if let createdDivision = newDivision {
+            cdVC.divisions.append(createdDivision)
+        }
+    }
+    
+    
+    
+    @IBAction func unwindToDetails(segue: UIStoryboardSegue) {
+        
     }
 }
 
@@ -83,15 +98,5 @@ extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = awards[indexPath.row].name
         return cell
-    }
-}
-
-
-extension DivisionDetailsVC: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        
-        guard let cdVC = viewController as? CreateDivisionVC else {return}
-        
     }
 }

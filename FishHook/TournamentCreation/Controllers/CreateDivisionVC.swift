@@ -54,11 +54,14 @@ class CreateDivisionVC: UICollectionViewController {
             return
         }
         
-        // TODO: Add divisions to Realm()
+        // TODO: Add divisions to CoreData
+        
+        tournamentData.setValue(divisions, forKey: "divisions")
+        
         let alert = Utils.basicAlert(title: "Saved", message: "All Divisions and their details have been saved", Button: "OK")
         present(alert, animated: true, completion: nil)
         
-        Global.tournament.divisions = Global.divisions
+//        Global.tournament.divisions = Global.divisions
         
     }
 
@@ -95,7 +98,7 @@ class CreateDivisionVC: UICollectionViewController {
     
     
     @IBAction func unwindFromDivisionDetails(segue: UIStoryboardSegue) {
-        
+        print("Unwind segue")
     
     }
 }

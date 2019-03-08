@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Division {
-    
+class Division: NSObject, NSCoding {
+
     var id: String?
     var name: String?
     var sponsor: String?
@@ -20,5 +20,19 @@ class Division {
         self.name = _name
         self.sponsor = _sponsor
         self.awards = _awards
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(sponsor, forKey: "sponsor")
+        aCoder.encode(awards, forKey: "awards")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.id = aDecoder.decodeObject(forKey: "id") as? String
+        self.name = aDecoder.decodeObject(forKey: "name") as? String
+        self.sponsor = aDecoder.decodeObject(forKey: "sponsor") as? String
+        self.awards = aDecoder.decodeObject(forKey: "awards") as? [Award]
     }
 }

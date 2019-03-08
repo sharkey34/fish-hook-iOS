@@ -389,7 +389,7 @@
         <scene sceneID="QlL-Om-bd2">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="2hI-o0-kmB" customClass="TournamentTableVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -620,9 +620,11 @@
                         <outlet property="divisionName" destination="kBF-2B-bFO" id="0Gg-y9-mSp"/>
                         <outlet property="sponsorName" destination="o4A-F6-9Vv" id="KYt-X2-CME"/>
                         <outlet property="tableView" destination="kyN-OU-39D" id="O5k-EF-bC8"/>
+                        <segue destination="PRK-Lw-WVe" kind="unwind" identifier="unwindToCreate" unwindAction="unwindFromDivisionDetailsWithSegue:" id="K5J-sv-PZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooh-sf-nj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PRK-Lw-WVe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5423" y="2337"/>
         </scene>
@@ -737,9 +739,11 @@
                         <outlet property="prizeCount" destination="jOt-7u-MgK" id="YOX-xC-3gU"/>
                         <outlet property="sponsorName" destination="pdn-Hk-SXd" id="Ktt-0v-ZUM"/>
                         <outlet property="tableView" destination="pAN-ib-sXa" id="r01-nJ-auF"/>
+                        <segue destination="PMB-9p-L0Q" kind="unwind" identifier="unwindToDetails" unwindAction="unwindToDetailsWithSegue:" id="XrX-M6-nYN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyT-6h-hJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PMB-9p-L0Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5423" y="3036"/>
         </scene>

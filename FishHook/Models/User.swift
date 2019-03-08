@@ -26,22 +26,22 @@ class User: NSObject, NSCoding {
         self.email = _email
     }
     
-    // Decoding and assigning properties
-    required init?(coder aDecoder: NSCoder) {
-
-        self.uid = (aDecoder.decodeObject(forKey: "uid") as! String)
-        self.admin = (aDecoder.decodeBool(forKey: "admin"))
-        self.firstName = (aDecoder.decodeObject(forKey: "first") as! String)
-        self.lastName = (aDecoder.decodeObject(forKey: "last") as! String)
-        self.email = (aDecoder.decodeObject(forKey: "email") as! String)
-    }
-    
     // Encoding properties
     func encode(with aCoder: NSCoder) {
         aCoder.encode(uid, forKey: "uid")
         aCoder.encode(admin, forKey: "admin")
         aCoder.encode(firstName, forKey: "first")
         aCoder.encode(lastName, forKey: "last")
-        aCoder.encode(email, forKey: "email")        
+        aCoder.encode(email, forKey: "email")
+    }
+    
+    // Decoding and assigning properties
+    required init?(coder aDecoder: NSCoder) {
+
+        self.uid = aDecoder.decodeObject(forKey: "uid") as! String
+        self.admin = aDecoder.decodeBool(forKey: "admin")
+        self.firstName = aDecoder.decodeObject(forKey: "first") as! String
+        self.lastName = aDecoder.decodeObject(forKey: "last") as! String
+        self.email = aDecoder.decodeObject(forKey: "email") as! String
     }
 }

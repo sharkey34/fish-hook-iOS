@@ -13,15 +13,15 @@ class AwardsVC: UIViewController {
     @IBOutlet weak var sponsorName: UITextField!
     @IBOutlet weak var fishSpecies: UITextField!
     @IBOutlet weak var prizeCount: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
-    var prizes = [String]()
+    
     var itemCount: Int = 0
+    var prizes = [String]()
+    var newAward: Award?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("viewdidload")
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Awards.rawValue
@@ -49,19 +49,16 @@ class AwardsVC: UIViewController {
             
             return
         }
-        // TODO: Save to Realm and dismiss controller
-        Global.awards.append(Award(_name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
+        // Save to Realm and dismiss controller
         
+        newAward = Award(_name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!)
         
-        
-//        let alert = Utils.basicAlert(title: "Saved", message: "Award has been added to division ", Button: "OK")
-//        self.present(alert, animated: true, completion: nil)
-        
-        navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindToDetails", sender: self)
     }
     
+    
     @objc func cancelSelected(sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindToDetails", sender: self)
     }
     
     // Incrementing count and reloading tableview
@@ -69,6 +66,16 @@ class AwardsVC: UIViewController {
         itemCount = Int(sender.value)
         prizeCount.text = itemCount.description
         tableView.reloadData()
+    }
+    
+    // Passing Data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("willShow DivisionDetails")
+        guard let dVC = segue.destination as? DivisionDetailsVC else {return}
+        
+        if let award = newAward {
+            dVC.awards.append(award)
+        }
     }
 }
 
@@ -97,6 +104,7 @@ extension AwardsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// Textfield Extension
 extension AwardsVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
