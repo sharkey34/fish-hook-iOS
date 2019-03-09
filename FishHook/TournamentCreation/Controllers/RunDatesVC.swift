@@ -22,15 +22,15 @@ class RunDatesVC: UIViewController {
     // Core Data variables.
     private var managedContext: NSManagedObjectContext!
     private var entity: NSEntityDescription!
-    private var tournamentData: NSManagedObject!
+    private var newTournament: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Core Data Setup
         managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
-        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
+        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
   
         // TODO: Set initial DatePicker times to 12:00 PM
         timeSetup()
@@ -87,10 +87,10 @@ class RunDatesVC: UIViewController {
         let endDate = dateFormat.string(from: sortedDates[sortedDates.count - 1])
         
         // TODO: Save the run dates to the database
-        tournamentData.setValue(startDate, forKey: "startDate")
-        tournamentData.setValue(start!, forKey: "startTime")
-        tournamentData.setValue(end!, forKey: "endTime")
-        tournamentData.setValue(endDate, forKey: "endDate")
+        newTournament.setValue(startDate, forKey: "startDate")
+        newTournament.setValue(start!, forKey: "startTime")
+        newTournament.setValue(end!, forKey: "endTime")
+        newTournament.setValue(endDate, forKey: "endDate")
         
         let alert = Utils.basicAlert(title: "Saved", message: "Dates have been successfully saved.", Button: "OK")
         self.present(alert, animated: true, completion: nil)

@@ -23,15 +23,15 @@ class SelectSpeciesVC: UITableViewController {
     // Core Data variables.
     private var managedContext: NSManagedObjectContext!
     private var entity: NSEntityDescription!
-    private var tournamentData: NSManagedObject!
+    private var newTournament: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Core Data Setup
         managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
-        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
+        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
         
         
         db = Firestore.firestore()
@@ -56,7 +56,7 @@ class SelectSpeciesVC: UITableViewController {
             return
         }
         // Save all selected fish species to the Realm Database.
-        tournamentData.setValue(fishSpecies, forKey: "fish")
+        newTournament.setValue(fishSpecies, forKey: "fish")
         
         let alert = Utils.basicAlert(title: "Saved", message: "Fish Species have been saved", Button: "OK")
         self.present(alert,animated: true,completion: nil)

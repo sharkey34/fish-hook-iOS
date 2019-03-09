@@ -68,15 +68,15 @@ class AwardsVC: UIViewController {
         tableView.reloadData()
     }
     
-    // Passing Data
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("willShow DivisionDetails")
-        guard let dVC = segue.destination as? DivisionDetailsVC else {return}
-        
-        if let award = newAward {
-            dVC.awards.append(award)
-        }
-    }
+//    // Passing Data
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        print("willShow DivisionDetails")
+//        guard let dVC = segue.destination as? DivisionDetailsVC else {return}
+//
+//        if let award = newAward {
+//            dVC.awards.append(award)
+//        }
+//    }
 }
 
 // Tableview callbacks

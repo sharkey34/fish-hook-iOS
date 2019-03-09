@@ -20,7 +20,7 @@ class BasicDetailsVC: UIViewController {
     // Core Data variables.
     private var managedContext: NSManagedObjectContext!
     private var entity: NSEntityDescription!
-    private var tournamentData: NSManagedObject!
+    private var newTournament: NSManagedObject!
     
     var participants = [(Participants.Angler, false), (Participants.Captain, false), (Participants.Boat, false)]
     var imagePicker = UIImagePickerController()
@@ -30,8 +30,8 @@ class BasicDetailsVC: UIViewController {
         
         // Core Data Setup
         managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
-        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
+        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
 
         
         setUp()
@@ -108,19 +108,20 @@ class BasicDetailsVC: UIViewController {
             return
         }
         
-        var imageData: Data?
-        do {
-            imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
-        } catch{
-            print(error.localizedDescription)
-        }
+//        var imageData: Data?
+//        do {
+//            imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
+//        } catch{
+//            print(error.localizedDescription)
+//        }
         
-        tournamentData.setValue(imageData, forKey: "logo")
-        tournamentData.setValue(name, forKey: "tName")
-        tournamentData.setValue(waterTypes, forKey: "waterType")
-        tournamentData.setValue(metricArr, forKey: "metrics")
-        tournamentData.setValue(participantArr, forKey: "participants")
-        
+        // Maybe
+        let imageData = image.pngData()
+        newTournament.setValue(imageData, forKey: "logo")
+        newTournament.setValue(name, forKey: "tName")
+        newTournament.setValue(waterTypes, forKey: "waterType")
+        newTournament.setValue(metricArr, forKey: "metrics")
+        newTournament.setValue(participantArr, forKey: "participants")
         
         let alert = Utils.basicAlert(title: "Saved", message: "Basic Tournament details have been saved", Button: "OK")
         present(alert, animated: true, completion: nil)
@@ -161,6 +162,8 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+
 extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Getting the image from the picker and setting it in the imageView
@@ -171,7 +174,7 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
         } else if let original = info[.originalImage] as? UIImage {
             logo.image = original
         } else {
-            // TODO: Present the user with an Alert
+            // Present the user with an Alert
             print("No image selected.")
         }
         

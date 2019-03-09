@@ -32,7 +32,7 @@ class DivisionDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Temporary
 //        awards = Global.awards
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
@@ -63,21 +63,27 @@ class DivisionDetailsVC: UIViewController {
     }
     
     
-    // Sending Division
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cdVC = segue.destination as? CreateDivisionVC else {return}
-        
-        print("willShow CreateDivision")
-        
-        if let createdDivision = newDivision {
-            cdVC.divisions.append(createdDivision)
-        }
-    }
-    
+//    // Sending Division
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let cdVC = segue.destination as? CreateDivisionVC else {return}
+//
+//        print("willShow CreateDivision")
+//
+//        if let createdDivision = newDivision {
+//            cdVC.divisions.append(createdDivision)
+//        }
+//    }
+//
     
     
     @IBAction func unwindToDetails(segue: UIStoryboardSegue) {
+        guard let aVC = segue.source as? AwardsVC else {return}
         
+        if let award = aVC.newAward {
+            awards.append(award)
+
+            self.tableView.reloadData()
+        }
     }
 }
 

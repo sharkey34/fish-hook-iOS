@@ -18,15 +18,15 @@ class CreateDivisionVC: UICollectionViewController {
     // Core Data variables.
     private var managedContext: NSManagedObjectContext!
     private var entity: NSEntityDescription!
-    private var tournamentData: NSManagedObject!
+    private var newTournament: NSManagedObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Core Data Setup
         managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "TournamentData", in: managedContext)
-        tournamentData = NSManagedObject(entity: entity, insertInto: managedContext)
+        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
+        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
     
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Divisions.rawValue
@@ -38,8 +38,8 @@ class CreateDivisionVC: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Temporary
-        divisions = Global.divisions
-        self.collectionView.reloadData()
+//        divisions = Global.divisions
+//        self.collectionView.reloadData()
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
@@ -55,15 +55,48 @@ class CreateDivisionVC: UICollectionViewController {
         }
         
         // TODO: Add divisions to CoreData
-        
-        tournamentData.setValue(divisions, forKey: "divisions")
+        newTournament.setValue(divisions, forKey: "divisions")
         
         let alert = Utils.basicAlert(title: "Saved", message: "All Divisions and their details have been saved", Button: "OK")
         present(alert, animated: true, completion: nil)
         
+        for div in divisions {
+            print(div.awards?.count)
+        }
+        
+        loadAndTest()
 //        Global.tournament.divisions = Global.divisions
         
     }
+    
+    
+        // Loading data from CoreData
+        func loadAndTest(){
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NewTournament")
+            do{
+                let data: [NSManagedObject] = try managedContext.fetch(fetchRequest)
+    
+                for obj in data {
+                    
+                    guard let d = obj.value(forKey: "divisions") as? [Division] else {return}
+                    
+                    for dv in d {
+                        print(dv.name)
+                        
+                        let a = dv.awards
+                        
+                        guard let award = a else {return}
+                        
+                        for aw in award {
+                            print(aw.name)
+                        }
+                    }
+                    
+                }
+            } catch {
+                assertionFailure()
+            }
+        }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -82,7 +115,7 @@ class CreateDivisionVC: UICollectionViewController {
             cell.image.image = UIImage(named: "Plus")
             cell.title.text = ""
         } else {
-            // TODO: Add default image.
+            // Add default image.
             cell.image.image = UIImage(named: "Division")
             cell.title.text = divisions[indexPath.row].name
             cell.isUserInteractionEnabled = false
@@ -91,14 +124,18 @@ class CreateDivisionVC: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Segue when the add button is selected.
-        
+        // Segue when the add button is selected.
         performSegue(withIdentifier: "toDivisionDetails", sender: self)
     }
     
     
     @IBAction func unwindFromDivisionDetails(segue: UIStoryboardSegue) {
-        print("Unwind segue")
-    
+        
+        guard let dvVC = segue.source as? DivisionDetailsVC else {return}
+        
+        if let newDivision = dvVC.newDivision {
+            divisions.append(newDivision)
+            self.collectionView.reloadData()
+        }
     }
 }

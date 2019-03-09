@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
@@ -20,6 +21,11 @@ class TournamentsCollectionVC: UICollectionViewController {
     var currentUser: User?
     var editingTournaments = false
     
+    // Core Data variables.
+    private var managedContext: NSManagedObjectContext!
+    private var entity: NSEntityDescription!
+    private var newTournament: NSManagedObject!
+    
     // TODO: Make this double for both Admins and regular users.
     var tournaments = [Tournament]()
 
@@ -29,12 +35,35 @@ class TournamentsCollectionVC: UICollectionViewController {
         db = Firestore.firestore()
         storage = Storage.storage()
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
-
+        
+        
+        // Core Data Setup
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
+        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        
+//        deleteCoreData()
+        
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Dashboard"
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
+    }
+    
+    
+    // Temporary Delete Method to clear the Core data store upon load
+    func deleteCoreData(){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NewTournament")
+        
+        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do{
+            try managedContext.execute(batchDelete)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
