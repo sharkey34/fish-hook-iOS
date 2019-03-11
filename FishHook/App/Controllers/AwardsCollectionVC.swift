@@ -7,83 +7,87 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-private let reuseIdentifier = "Cell"
 
 class AwardsCollectionVC: UICollectionViewController {
+    
+    var dID: String?
+    var aID: String?
+    var awards = [Award]()
+    var db: Firestore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        db = Firestore.firestore()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        // TODO: Fetching the awards.
+        fetchAwards()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    // Fetching the awards for the chosen division from fireStore.
+    func fetchAwards(){
+        guard let id = dID else {return}
+        db.collection("awards").whereField("dID", isEqualTo: id).getDocuments { (documents, error) in
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated:  true, completion: nil)
+            }
+            guard let docs = documents?.documents else {return}
+            
+            for doc in docs {
+                let map = doc.data()
+                let id = doc.documentID
+                let name = map["name"] as! String
+                let fish = map["fish"] as! String
+                let prizes = map["prizes"] as! [String]
+                let sponsor = map["sponsor"] as? String
+                
+                self.awards.append(Award(_id: id, _name: name, _sponsor: sponsor, _prizes: prizes, _fishSpecies: fish))
+            }
+            self.collectionView.reloadData()
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return awards.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AwardsCollectionViewCell else {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        }
         // Configure the cell
-    
+        cell.awardsIV.image = UIImage(named: "Awards")
+        cell.awardsLabel.text = awards[indexPath.row].name
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Transition to official posts for the specific division and award.
+        
+        aID = awards[indexPath.row].id
+        performSegue(withIdentifier: "toOfficial", sender: self)
     }
-    */
-
+    
+    // Sending Award Id to official Leaderboard.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toOfficial" {
+            guard let oVC = segue.destination as? OfficialVC else {return}
+            oVC.aID = aID
+        }
+    }
 }

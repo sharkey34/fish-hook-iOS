@@ -42,20 +42,15 @@ class AwardsVC: UIViewController {
             }
         }
         
-        // TODO: verify inputs.
+        // verify inputs.
         guard !awardName.isNullOrWhitespace(), !fishSpecies.isNullOrWhitespace(), prizes.count > 0 else {
             let alert = Utils.basicAlert(title: "Invalid Award Entries", message: "Please make sure to fill out all fields correctly. You must also have added at least one prize.", Button: "OK")
             self.present(alert, animated: true, completion: nil)
             
             return
         }
-        // TODO: Save to Realm and dismiss controller
-        Global.awards.append(Award(_name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
-        
-        
-        
-        //        let alert = Utils.basicAlert(title: "Saved", message: "Award has been added to division ", Button: "OK")
-        //        self.present(alert, animated: true, completion: nil)
+     
+        Global.awards.append(Award(_id: nil, _name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
         
         navigationController?.popViewController(animated: true)
     }

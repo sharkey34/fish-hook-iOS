@@ -9,6 +9,8 @@
 import UIKit
 
 class OfficialVC: UITableViewController {
+    
+    var aID: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
