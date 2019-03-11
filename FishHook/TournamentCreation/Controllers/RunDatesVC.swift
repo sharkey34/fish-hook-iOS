@@ -17,11 +17,11 @@ class RunDatesVC: UIViewController {
     var start: String?
     var end: String?
     var timeFormatter = DateFormatter()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Set initial DatePicker times to 12:00 PM
-  
+        
         timeSetup()
         
         // Setting initial start dates and variable values
@@ -40,7 +40,7 @@ class RunDatesVC: UIViewController {
         end = timeFormatter.string(from: endTime.date)
     }
     
-    // getting time from DatePicker 
+    // getting time from DatePicker
     @IBAction func timeChange(_ sender: UIDatePicker) {
         switch sender.tag {
         case 0:
@@ -67,19 +67,25 @@ class RunDatesVC: UIViewController {
         dateFormat.dateStyle = .medium
         dateFormat.timeStyle = .none
         dateFormat.locale = Locale(identifier: "en_US")
-    
+        
         // Sorting dates by ascending
         let sortedDates = calendar.selectedDates.sorted(by: {$0 < $1})
         
         // Getting the start and end dates
-        let startDate = "\(dateFormat.string(from: sortedDates[0])) at \(start!)"
-        let endDate = "\(dateFormat.string(from: sortedDates[sortedDates.count - 1])) at \(end!)"
+        let startDate = dateFormat.string(from: sortedDates[0])
+        let endDate = dateFormat.string(from: sortedDates[sortedDates.count - 1])
         
         print(startDate)
         print(endDate)
         
         // TODO: Save the run dates to the database
-    
+        Global.tournament.startDate = startDate
+        Global.tournament.endDate = endDate
+        Global.tournament.startTime = start!
+        Global.tournament.endTime = end!
+        
+        let alert = Utils.basicAlert(title: "Saved", message: "Dates have been successfully saved.", Button: "OK")
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Calendar setup
@@ -100,7 +106,7 @@ extension RunDatesVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         
         // Setting height after layout change.
         self.calendar.frame.size.height = bounds.height
-
+        
     }
     
     // Setting minimum date

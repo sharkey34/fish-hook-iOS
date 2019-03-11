@@ -27,8 +27,14 @@ class DivisionDetailsVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Temporary
+        awards = Global.awards
+        tableView.reloadData()
+    }
+    
     @objc func saveSelected(sender: UIBarButtonItem) {
-
+        
         //TODO: Validation
         guard !divisionName.isNullOrWhitespace(), awards.count > 0 else {
             
@@ -38,11 +44,18 @@ class DivisionDetailsVC: UIViewController {
             return
         }
         
-//        let name = divisionName.text!
-//        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
+        //        let name = divisionName.text!
+        //        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
         
         // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
+        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
+        //
+        //        let alert = Utils.basicAlert(title: "Saved", message: "Division has ben saved", Button: "OK")
+        //        self.present(alert, animated: true , completion: nil)
         
+        Global.awards.removeAll()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem){
@@ -52,17 +65,17 @@ class DivisionDetailsVC: UIViewController {
 
 
 extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
+        return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return awards.count
     }
     
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = awards[indexPath.row].name

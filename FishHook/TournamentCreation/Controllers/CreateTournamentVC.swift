@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateTournamentVC: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Hiding the navigationBar
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.

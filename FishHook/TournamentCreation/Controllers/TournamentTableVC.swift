@@ -11,13 +11,17 @@ import UIKit
 class TournamentTableVC: UITableViewController {
     
     private let titles = [TournamentSetup.Basic, TournamentSetup.Dates, TournamentSetup.Fish, TournamentSetup.Divisions, TournamentSetup.Summary]
-
-    // TODO: Possible delete the initial basic and select the basic view right away and highlight then segue after.
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         navigationItem.title = "Tournament Setup"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    @objc func cancelSelected(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +32,6 @@ class TournamentTableVC: UITableViewController {
     }
  
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         // TODO: Make fit for each device.
         tableView.rowHeight = view.frame.height / 10
         return 1
@@ -40,14 +43,11 @@ class TournamentTableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SplitTableViewCell else {
-            return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         // cell setup
-        cell.title.text = titles[indexPath.row].rawValue
-        cell.selectionStyle = .blue
+        cell.textLabel?.text = titles[indexPath.row].rawValue
         cell.backgroundColor = UIColor(displayP3Red: 25/255, green: 132/255, blue: 236/255, alpha: 1)
-        cell.title.textColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.white
         return cell
     }
     

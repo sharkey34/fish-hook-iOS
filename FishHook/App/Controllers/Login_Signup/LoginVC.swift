@@ -78,6 +78,8 @@ class LoginVC: UIViewController {
                 }
                 
                 if let uid = Auth.auth().currentUser?.uid {
+                    
+                    print(uid)
                     let ref = self.db.collection("users").document(uid)
                     ref.getDocument(completion: { (document, error) in
                         
@@ -88,16 +90,14 @@ class LoginVC: UIViewController {
                                 let email = map["email"] as! String
                                 let first = map["first"] as! String
                                 let last = map["last"] as! String
+                                let admin = map["admin"] as! Bool
+            
+                            UserDefaults.standard.set(currentUser: User(_uid: uid, _admin: admin, _first: first, _last: last, _email: email), forKey: "currentUser")
                                 
-                                do {
-                                    try UserDefaults.standard.set(currentUser: User(_uid: uid, _first: first, _last: last, _email: email), forKey: "currentUser")
-                                } catch {
-                                    print("Error saving User to Defaults")
-                                }
                             }
+                            self.performSegue(withIdentifier: "loginToDashboard", sender: self)
                         }
                     })
-                    self.performSegue(withIdentifier: "loginToAdmin", sender: self)
                 }
             }
         case 2:
