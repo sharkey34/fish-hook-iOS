@@ -21,6 +21,7 @@ class SummaryVC: UIViewController {
     var storage: Storage?
     var tournamentUID: String?
     var tournamentCode: String?
+    var divisionID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +51,18 @@ class SummaryVC: UIViewController {
         if isValidTournament() {
             guard let tUID = tournamentUID, let tCode = tournamentCode else {return}
             
+            var fishID: [String]?
+            for id in Global.tournament.fishSpecies{
+                fishID?.append(id.id)
+            }
+            
             // TODO: Add image to storage
             db?.collection("tournaments").document(tUID).setData(
                 [
                     "code": tCode,
                     "name":Global.tournament.name!,
                     "participants":Global.tournament.participants!,
+                    "fish": fishID ?? [],
                     "waterType": Global.tournament.waterType,
                     "metrics":Global.tournament.metrics,
                     "startDate": Global.tournament.startDate!,
@@ -64,11 +71,62 @@ class SummaryVC: UIViewController {
                     "endTime" : Global.tournament.endTime!
                 ]
                 , completion: { (err) in
+                    
+                    // TODO: Save division
+                    saveDivisions(tUID: tUID)
+                    
                     if let error = err {
                         let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
                         self.present(alert, animated: true, completion: nil)
                     }
             })
+            
+            
+            // Function to Save Divisions
+            func saveDivisions(tUID: String){
+                
+                for division in Global.divisions {
+                    guard let divID = db?.collection("divisions").document().documentID else {return}
+                    db?.collection("divisions").document(divID).setData(
+                            [
+                                "tID": tUID,
+                                "name": division.name!,
+                                "sponsor": division.sponsor ?? ""
+                            ], completion: { (error) in
+                            // Save Awards
+                                saveAwards(division: division, divID: divID)
+                            
+                            if let err = error {
+                            let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                            self.present(alert, animated: true, completion: nil)
+                            }
+                    })
+                }
+            }
+            
+            
+            // Saving the awards for each division.
+            func saveAwards(division: Division, divID: String){
+                
+                guard let divAwards = division.awards else {return}
+                
+                for award in divAwards{
+                    db?.collection("awards").addDocument(data:
+                        [
+                            "dID": divID,
+                            "name": award.name!,
+                            "sponsor": award.sponsor ?? "",
+                            "fish": award.fishSpecies!,
+                            "prizes": award.prizes!
+                        ]
+                        , completion: { (error) in
+                            if let err = error {
+                                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                    })
+                }
+            }
             
             // Getting the userID from Firebase
             guard let userID = Auth.auth().currentUser?.uid else {
