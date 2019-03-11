@@ -9,5 +9,6 @@
 import UIKit
 
 class DivsionCollectionViewCell: UICollectionViewCell {
-    
+    @IBOutlet weak var divisionIV: UIImageView!
+    @IBOutlet weak var divisionLabel: UILabel!
 }

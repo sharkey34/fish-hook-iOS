@@ -72,7 +72,8 @@ class TournamentsCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AdminDashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
+       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
+
         // Configure the cell
         if indexPath.row == tournaments.count || tournaments.count == 0 {
             // Add image
@@ -85,6 +86,15 @@ class TournamentsCollectionVC: UICollectionViewController {
             // TODO: Get and set image from storage.
             cell.tournamentImage.image = UIImage(named: "DefaultTournament")
             cell.dateLabel.text = dates
+        
+            // TODO: Check isActivated porperty instead
+            if let code = t.id, let activeCode = UserDefaults.standard.string(forKey: "activeTournament"){
+                if code == activeCode {
+                    cell.activeLabel.text = "Activated"
+                    cell.activeView.backgroundColor = UIColor.green
+                    cell.activeView.layer.cornerRadius = 10
+                }
+            }
         }
         return cell
     }
@@ -92,24 +102,49 @@ class TournamentsCollectionVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: If add button selected then segue to tournament creation else go to details of tournament.
-        guard let user = currentUser else {return}
-        
+        guard let user = currentUser, let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionCell else {return}
+
         if user.admin {
             if indexPath.row == tournaments.count || tournaments.count == 0 {
                 performSegue(withIdentifier: "toTournament", sender: self)
             } else {
-                // TODO ORRR make this the active tournament.
+                // Checking if tournament is already activated.
+                if cell.activeLabel.text != "Activated"{
+                    let alert = tournamentSelected(index: indexPath.row, cell: cell)
+                    present(alert, animated: true, completion: nil)
+                }
             }
         } else {
-            // TODO: Pop up modal for user to add a tournament.
+            // Pop up modal for user to add a tournament.
             if indexPath.row == tournaments.count || tournaments.count == 0 {
                 presentAddModal()
             } else {
-                // TODO ORRR make this the active tournament.
+                // make this the active tournament.
+                // Checking if tournament is already activated.
+                if cell.activeLabel.text != "Activated"{
+                    let alert = tournamentSelected(index: indexPath.row, cell: cell)
+                    present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
     
+    // Setting up the tournament alert to activate the tournament.
+    func tournamentSelected(index: Int, cell: DashboardCollectionCell) -> UIAlertController {
+        let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
+        
+        let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
+            cell.activeLabel.text = "Activated"
+            cell.activeView.backgroundColor = UIColor.green
+            cell.activeView.layer.cornerRadius = 10
+            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(activate)
+        alertController.addAction(cancel)
+        return alertController
+    }
     
     // Setting up and presenting modal to add a tournament
     func presentAddModal(){
@@ -135,24 +170,9 @@ class TournamentsCollectionVC: UICollectionViewController {
         present(addController, animated: true, completion: nil)
     }
     
-    
-    func addTournamentToUser(id: String){
-        guard let uid = currentUser?.uid else {return}
-        
-        // Adding tournament code to user
-        db?.collection("users").document(uid).updateData(
-            [
-                "tournaments": FieldValue.arrayUnion([id])
-            ], completion: { (err) in
-                if let error = err {
-                    let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
-                    self.present(alert, animated: true, completion: nil)
-                }
-        })
-    }
-    
+    // Getting the tournaments by the code entered
+    // TODO: Check against registered participants as well.
     func fetchTournamentByCode(code: String){
-        
         db?.collection("tournaments").whereField("code", isEqualTo: code).getDocuments(completion: { (doc, err) in
             // TODO: Retrieve the tournament document.
             
@@ -172,7 +192,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
                     
-                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code))
+                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false))
                     self.addTournamentToUser(id: id)
                     
                     self.collectionView.reloadData()
@@ -183,6 +203,22 @@ class TournamentsCollectionVC: UICollectionViewController {
                 let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
             }
+        })
+    }
+    
+    // Adding the tournaments to the user in firestore.
+    func addTournamentToUser(id: String){
+        guard let uid = currentUser?.uid else {return}
+        
+        // Adding tournament code to user
+        db?.collection("users").document(uid).updateData(
+            [
+                "tournaments": FieldValue.arrayUnion([id])
+            ], completion: { (err) in
+                if let error = err {
+                    let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
+                    self.present(alert, animated: true, completion: nil)
+                }
         })
     }
     
@@ -212,6 +248,7 @@ class TournamentsCollectionVC: UICollectionViewController {
         for tournament in tournamentIDS {
             db?.collection("tournaments").document(tournament).getDocument(completion: { (doc, err) in
                 
+                let id = doc?.documentID
                 if let map = doc?.data() {
                     
                     let code = map["code"] as! String
@@ -224,7 +261,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
                     
-                    self.tournaments.append(Tournament(_id: nil, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code))
+                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false))
                     
                     self.collectionView.reloadData()
                 } else if let error = err {
@@ -233,5 +270,14 @@ class TournamentsCollectionVC: UICollectionViewController {
                 }
             })
         }
+    }
+    
+    
+    
+    // Hopefully setting the active tournament to the newly created tournament.
+    @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {
+        
+        guard let sVC = segue.source as? SummaryVC else {return}
+        UserDefaults.standard.set(sVC.tournamentUID, forKey: "activeTournament")
     }
 }

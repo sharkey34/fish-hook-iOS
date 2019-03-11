@@ -51,9 +51,9 @@ class SummaryVC: UIViewController {
         if isValidTournament() {
             guard let tUID = tournamentUID, let tCode = tournamentCode else {return}
             
-            var fishID: [String]?
+            var fishID = [String]()
             for id in Global.tournament.fishSpecies{
-                fishID?.append(id.id)
+                fishID.append(id.id)
             }
             
             // TODO: Add image to storage
@@ -62,7 +62,7 @@ class SummaryVC: UIViewController {
                     "code": tCode,
                     "name":Global.tournament.name!,
                     "participants":Global.tournament.participants!,
-                    "fish": fishID ?? [],
+                    "fish": fishID,
                     "waterType": Global.tournament.waterType,
                     "metrics":Global.tournament.metrics,
                     "startDate": Global.tournament.startDate!,
@@ -146,8 +146,9 @@ class SummaryVC: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
             })
+            
             // Going back to the Dashboard
-            dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "toDashboard", sender: self)
         }
     }
     

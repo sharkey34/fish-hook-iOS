@@ -8,8 +8,10 @@
 
 import UIKit
 
-class AdminDashboardCollectionCell: UICollectionViewCell {
+class DashboardCollectionCell: UICollectionViewCell {
     @IBOutlet weak var tournamentImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var activeView: UIView!
+    @IBOutlet weak var activeLabel: UILabel!
     
 }
