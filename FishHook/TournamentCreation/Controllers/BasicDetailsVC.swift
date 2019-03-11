@@ -7,33 +7,19 @@
 //
 
 import UIKit
-import CoreData
 
 class BasicDetailsVC: UIViewController {
-    
     @IBOutlet weak var tournamentName: UITextField!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet var waterType: [UISwitch]!
     @IBOutlet var metrics: [UISwitch]!
     
-    // Core Data variables.
-    private var managedContext: NSManagedObjectContext!
-    private var entity: NSEntityDescription!
-    private var newTournament: NSManagedObject!
-    
     var participants = [(Participants.Angler, false), (Participants.Captain, false), (Participants.Boat, false)]
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Core Data Setup
-        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
-        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
-
-        
         setUp()
     }
     
@@ -56,75 +42,71 @@ class BasicDetailsVC: UIViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem){
+        var name = false
+        var type = false
+        var metric = false
+        var participant = false
+        var tournamentLogo = false
         
         // Validating User entries
-        
-        var tName: String?
         if !tournamentName.isNullOrWhitespace() {
-            tName = tournamentName.text!
+            name = true
+            
+            Global.tournament.name = tournamentName.text!
         }
         
-        
-        var waterTypes = [String]()
         for toggle in waterType {
             if toggle.isOn {
+                type = true
+                
                 if toggle.tag == 0 {
-                    waterTypes.append("Fresh")
+                    Global.tournament.waterType.append("Fresh")
                 } else {
-                    waterTypes.append("Salt")
+                    Global.tournament.waterType.append("Salt")
                 }
             }
         }
         
-        var metricArr = [String]()
         for toggle in metrics {
             if toggle.isOn {
+                metric = true
+                
                 if toggle.tag == 2 {
-                    metricArr.append("Weight")
+                    Global.tournament.metrics.append("Weight")
                 } else {
-                    metricArr.append("Length")
+                    Global.tournament.metrics.append("Length")
                 }
             }
         }
         
-        var participantArr = [String]()
         for p in participants {
             if p.1 {
-                participantArr.append(p.0.rawValue)
+                participant = true
+                Global.tournament.participants?.append(p.0.rawValue)
             }
         }
         
-        var logoImage: UIImage?
         if let image = logo.image {
-            logoImage = image
+            tournamentLogo = true
+            Global.tournament.logo = image
         }
         
-        // Validate entries
-        
-        guard let name = tName, let image = logoImage, waterTypes.count > 0, metricArr.count > 0, participantArr.count > 0  else {
-     
-                let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
-                self.present(alert, animated: true, completion: nil)
-            return
+        // TODO: Validate entries
+        if name && type && metric && participant && tournamentLogo {
+            // TODO: Save to database
+            saveBasicDetails()
+            
+            let a = Utils.basicAlert(title: "Saved", message: "Basic Details have been saved. ", Button: "OK")
+            self.present(a,animated: true, completion: nil)
+        } else {
+            let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func saveBasicDetails(){
+        // TODO
         
-//        var imageData: Data?
-//        do {
-//            imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
-//        } catch{
-//            print(error.localizedDescription)
-//        }
-        
-        // Maybe
-        let imageData = image.pngData()
-        newTournament.setValue(imageData, forKey: "logo")
-        newTournament.setValue(name, forKey: "tName")
-        newTournament.setValue(waterTypes, forKey: "waterType")
-        newTournament.setValue(metricArr, forKey: "metrics")
-        newTournament.setValue(participantArr, forKey: "participants")
-        
-        let alert = Utils.basicAlert(title: "Saved", message: "Basic Tournament details have been saved", Button: "OK")
-        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -154,15 +136,13 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: Check the selected tableView item
-    
+        
         let checked = !(participants[indexPath.row].1)
         
         participants[indexPath.row].1 = checked
         tableView.cellForRow(at: indexPath)?.accessoryType = checked ? .checkmark : .none
     }
 }
-
-
 
 extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -174,7 +154,7 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
         } else if let original = info[.originalImage] as? UIImage {
             logo.image = original
         } else {
-            // Present the user with an Alert
+            // TODO: Present the user with an Alert
             print("No image selected.")
         }
         

@@ -9,13 +9,11 @@
 import UIKit
 
 class DivisionDetailsVC: UIViewController {
-    
     @IBOutlet weak var divisionName: UITextField!
     @IBOutlet weak var sponsorName: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var awards = [Award]()
-    var newDivision: Division?
     
     // Doesn't necessarily need to have rewards for each division
     
@@ -31,12 +29,12 @@ class DivisionDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Temporary
-//        awards = Global.awards
-//        tableView.reloadData()
+        awards = Global.awards
+        tableView.reloadData()
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
-
+        
         //TODO: Validation
         guard !divisionName.isNullOrWhitespace(), awards.count > 0 else {
             
@@ -45,61 +43,39 @@ class DivisionDetailsVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-    
+        
+        //        let name = divisionName.text!
+        //        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
+        
         // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
+        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
+        //
+        //        let alert = Utils.basicAlert(title: "Saved", message: "Division has ben saved", Button: "OK")
+        //        self.present(alert, animated: true , completion: nil)
         
-//
-//        Global.divisions.append(Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
-//        Global.awards.removeAll()
-            newDivision = Division(_id: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards)
+        Global.awards.removeAll()
         
-        performSegue(withIdentifier: "unwindToCreate", sender: self)
-    
-//        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem){
-        performSegue(withIdentifier: "unwindToCreate", sender: self)
-    }
-    
-    
-//    // Sending Division
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let cdVC = segue.destination as? CreateDivisionVC else {return}
-//
-//        print("willShow CreateDivision")
-//
-//        if let createdDivision = newDivision {
-//            cdVC.divisions.append(createdDivision)
-//        }
-//    }
-//
-    
-    
-    @IBAction func unwindToDetails(segue: UIStoryboardSegue) {
-        guard let aVC = segue.source as? AwardsVC else {return}
-        
-        if let award = aVC.newAward {
-            awards.append(award)
-
-            self.tableView.reloadData()
-        }
+        navigationController?.popViewController(animated: true)
     }
 }
 
 
 extension DivisionDetailsVC: UITableViewDelegate, UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
+        return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return awards.count
     }
     
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = awards[indexPath.row].name

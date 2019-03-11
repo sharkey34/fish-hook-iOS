@@ -33,7 +33,7 @@ class SummaryVC: UIViewController {
         
         // Cast as String
         tournamentCode = tournamentUID?.prefix(6).lowercased()
-
+        
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Summary.rawValue
         
@@ -79,9 +79,9 @@ class SummaryVC: UIViewController {
             }
             // Adding tournament to user
             db?.collection("users").document(userID).updateData(
-            [
-                "tournaments": FieldValue.arrayUnion([tUID])
-            ]
+                [
+                    "tournaments": FieldValue.arrayUnion([tUID])
+                ]
                 , completion: { (err) in
                     if let error = err {
                         let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
@@ -108,7 +108,7 @@ class SummaryVC: UIViewController {
         }
         return true
     }
-
+    
     func setLabelValues() {
         // TODO: Check that needed things are filled out
         
@@ -148,27 +148,4 @@ class SummaryVC: UIViewController {
             labels[6].text = Global.tournament.fishSpecies.count.description
         }
     }
-    
-    
-//    // Loading data from CoreData
-//    func loadAndTest(){
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TournamentData")
-//        do{
-//            let data: [NSManagedObject] = try managedContext.fetch(fetchRequest)
-//
-//            for obj in data {
-//
-//
-//                print(obj.value(forKey: "tName") as? String)
-//
-//                var participants = obj.value(forKey: "participants") as? [String]
-//
-//                print(participants)
-//
-//
-//            }
-//        } catch {
-//            assertionFailure()
-//        }
-//    }
 }

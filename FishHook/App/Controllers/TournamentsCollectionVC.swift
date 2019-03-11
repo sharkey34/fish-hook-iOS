@@ -20,50 +20,26 @@ class TournamentsCollectionVC: UICollectionViewController {
     var storage: Storage?
     var currentUser: User?
     var editingTournaments = false
-    
-    // Core Data variables.
-    private var managedContext: NSManagedObjectContext!
-    private var entity: NSEntityDescription!
-    private var newTournament: NSManagedObject!
-    
     // TODO: Make this double for both Admins and regular users.
     var tournaments = [Tournament]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        setUp()
+    }
+    
+    func setUp(){
         db = Firestore.firestore()
         storage = Storage.storage()
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
-        
-        
-        // Core Data Setup
-        managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        entity = NSEntityDescription.entity(forEntityName: "NewTournament", in: managedContext)
-        newTournament = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        
-//        deleteCoreData()
-        
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Dashboard"
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-           navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
-    }
-    
-    
-    // Temporary Delete Method to clear the Core data store upon load
-    func deleteCoreData(){
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NewTournament")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
         
-        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do{
-            try managedContext.execute(batchDelete)
-        } catch {
-            print(error.localizedDescription)
-        }
+//        deleteCoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
