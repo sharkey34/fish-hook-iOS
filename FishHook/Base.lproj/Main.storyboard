@@ -1357,10 +1357,92 @@
                             <outlet property="delegate" destination="jex-Nr-lzn" id="X4K-4w-ZwO"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="rVS-Ur-Ba1" kind="show" identifier="toAddCatch" id="4b0-Rz-Fdc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pY8-d2-M55" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="894.53125" y="3501.5625"/>
+        </scene>
+        <!--Add Official CatchVC-->
+        <scene sceneID="ZXg-ce-ftN">
+            <objects>
+                <viewController id="rVS-Ur-Ba1" customClass="AddOfficialCatchVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jKL-jD-O6L">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h4d-1C-l9U">
+                                <rect key="frame" x="153.5" y="107.5" width="461" height="307"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhu-X0-k9t">
+                                <rect key="frame" x="331" y="452" width="106" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Take Picture"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="rVS-Ur-Ba1" eventType="touchUpInside" id="ioU-86-3ZM"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Angler Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6j-9o-7Xb">
+                                <rect key="frame" x="153.5" y="559" width="461" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Metric" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfl-2E-bfA">
+                                <rect key="frame" x="153.5" y="716" width="461" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fish Species" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HtI-G0-QrE">
+                                <rect key="frame" x="153.5" y="637.5" width="461" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3I-gE-mD3">
+                                <rect key="frame" x="353" y="843.5" width="62" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="rVS-Ur-Ba1" eventType="touchUpInside" id="eSc-3a-h2O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s6j-9o-7Xb" firstAttribute="width" secondItem="jKL-jD-O6L" secondAttribute="width" multiplier="0.6" id="2Tj-1v-vVh"/>
+                            <constraint firstItem="h4d-1C-l9U" firstAttribute="width" secondItem="jKL-jD-O6L" secondAttribute="width" multiplier="0.6" id="4RM-Qg-nX1"/>
+                            <constraint firstItem="HtI-G0-QrE" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="4V9-Ud-yw7"/>
+                            <constraint firstItem="d3I-gE-mD3" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="1.65" id="A9c-WS-rd8"/>
+                            <constraint firstItem="d3I-gE-mD3" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="Dx7-Xd-i9M"/>
+                            <constraint firstItem="h4d-1C-l9U" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="0.5" id="MNV-Tf-mXp"/>
+                            <constraint firstItem="HtI-G0-QrE" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="1.25" id="Omf-Jf-4vz"/>
+                            <constraint firstItem="h4d-1C-l9U" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="Rj4-0g-Aeg"/>
+                            <constraint firstItem="fhu-X0-k9t" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="WSl-k7-Pfv"/>
+                            <constraint firstItem="s6j-9o-7Xb" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="1.1" id="Xea-hx-eEP"/>
+                            <constraint firstItem="pfl-2E-bfA" firstAttribute="width" secondItem="jKL-jD-O6L" secondAttribute="width" multiplier="0.6" id="cpI-TO-Vb4"/>
+                            <constraint firstItem="fhu-X0-k9t" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="0.9" id="gUT-Ii-X5w"/>
+                            <constraint firstItem="s6j-9o-7Xb" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="jJP-er-Pds"/>
+                            <constraint firstItem="h4d-1C-l9U" firstAttribute="height" secondItem="jKL-jD-O6L" secondAttribute="height" multiplier="0.3" id="r8H-fQ-JeX"/>
+                            <constraint firstItem="pfl-2E-bfA" firstAttribute="centerX" secondItem="V0p-db-xFr" secondAttribute="centerX" id="xxG-Oi-pgK"/>
+                            <constraint firstItem="HtI-G0-QrE" firstAttribute="width" secondItem="jKL-jD-O6L" secondAttribute="width" multiplier="0.6" id="yJW-ms-pmD"/>
+                            <constraint firstItem="pfl-2E-bfA" firstAttribute="centerY" secondItem="V0p-db-xFr" secondAttribute="centerY" multiplier="1.4" id="zSn-pb-dkm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V0p-db-xFr"/>
+                    </view>
+                    <connections>
+                        <outlet property="catchIV" destination="h4d-1C-l9U" id="gmP-zz-6oC"/>
+                        <outlet property="emailTF" destination="s6j-9o-7Xb" id="Pa6-PM-Zcs"/>
+                        <outlet property="fishTF" destination="HtI-G0-QrE" id="OQy-Lr-2Jz"/>
+                        <outlet property="metricTF" destination="pfl-2E-bfA" id="CDN-HY-UEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQK-Q7-ODU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="3502"/>
         </scene>
         <!--Admin TabVC-->
         <scene sceneID="jTa-dR-cJ7">

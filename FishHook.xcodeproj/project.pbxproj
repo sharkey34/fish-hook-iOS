@@ -13,6 +13,7 @@
 		4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F976221B0D4900664FF2 /* Assets.xcassets */; };
 		4A35F97A221B0D4900664FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */; };
 		4A35F985221B0D4900664FF2 /* FishHookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F984221B0D4900664FF2 /* FishHookTests.swift */; };
+		4A515BAE22372443009B94EE /* AddOfficialCatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */; };
 		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
 		4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9D2221EBE0006DE8B9 /* User.swift */; };
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
@@ -78,6 +79,7 @@
 		4A35F980221B0D4900664FF2 /* FishHookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishHookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F984221B0D4900664FF2 /* FishHookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishHookTests.swift; sourceTree = "<group>"; };
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfficialCatchVC.swift; sourceTree = "<group>"; };
 		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
 		4A5C3C9D2221EBE0006DE8B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */,
 				4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */,
 				4AB0D93F2236193D0056BC73 /* OfficialVC.swift */,
+				4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */,
 				4AC715762220DC6500868214 /* Login_Signup */,
 			);
 			path = Controllers;
@@ -545,6 +548,7 @@
 				4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */,
 				4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
+				4A515BAE22372443009B94EE /* AddOfficialCatchVC.swift in Sources */,
 				4A73E44A2224949000786CE1 /* SummaryVC.swift in Sources */,
 				4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */,
 				4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */,

@@ -37,9 +37,8 @@ class TournamentsCollectionVC: UICollectionViewController {
         navigationItem.title = "Dashboard"
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
         
-//        deleteCoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
