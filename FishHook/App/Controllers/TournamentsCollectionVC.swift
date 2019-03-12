@@ -78,6 +78,8 @@ class TournamentsCollectionVC: UICollectionViewController {
             // Add image
             cell.tournamentImage.image = UIImage(named: "Plus")
             cell.dateLabel.text = ""
+            cell.activeLabel.text = ""
+            cell.activeView.backgroundColor = UIColor.white
         } else {
             let t = tournaments[indexPath.row]
             let dates = "\(t.startDate!) - \(t.endDate!)"
@@ -91,6 +93,10 @@ class TournamentsCollectionVC: UICollectionViewController {
                 if code == activeCode {
                     cell.activeLabel.text = "Activated"
                     cell.activeView.backgroundColor = UIColor.green
+                    cell.activeView.layer.cornerRadius = 10
+                } else {
+                    cell.activeLabel.text = ""
+                    cell.activeView.backgroundColor = UIColor.white
                     cell.activeView.layer.cornerRadius = 10
                 }
             }
@@ -137,6 +143,7 @@ class TournamentsCollectionVC: UICollectionViewController {
             cell.activeView.backgroundColor = UIColor.green
             cell.activeView.layer.cornerRadius = 10
             UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
+            self.collectionView.reloadData()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -194,6 +201,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false))
                     self.addTournamentToUser(id: id)
                     
+                    UserDefaults.standard.set(id, forKey: "activeTournament")
                     self.collectionView.reloadData()
                     
                     return
@@ -233,8 +241,12 @@ class TournamentsCollectionVC: UICollectionViewController {
                 for id in ids {
                     userTournamentIDs.append(id)
                 }
-                self.fetchTournaments(tournamentIDS: userTournamentIDs)
                 
+                if userTournamentIDs.count <= 0 {
+                    UserDefaults.standard.set(nil, forKey: "activeTournament")
+                } else {
+                    self.fetchTournaments(tournamentIDS: userTournamentIDs)
+                }
             } else if let error = err {
                 let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
                 self.present(alert,animated: true,completion: nil)
@@ -271,12 +283,11 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
     }
     
-    
-    
     // Hopefully setting the active tournament to the newly created tournament.
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {
         
         guard let sVC = segue.source as? SummaryVC else {return}
         UserDefaults.standard.set(sVC.tournamentUID, forKey: "activeTournament")
+        self.collectionView.reloadData()
     }
 }

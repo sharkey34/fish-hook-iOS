@@ -19,10 +19,17 @@ class DivisionsCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        divisions.removeAll()
         // Fetch Divisions
         if let tID = UserDefaults.standard.string(forKey: "activeTournament") {
+            print(tID)
             fetchDivisions(tID: tID)
+        } else {
+            let alert = Utils.basicAlert(title: "No Tournament Active", message: "Please add a tournament to continue", Button: "OK")
+            present(alert, animated: true, completion: nil)
         }
     }
 
@@ -59,7 +66,7 @@ class DivisionsCollectionVC: UICollectionViewController {
   
             } else {
                 guard let docs = documents?.documents else {return}
-                
+                print(docs.count)
                 for doc in docs {
                     let map = doc.data()
                     

@@ -123,6 +123,7 @@ extension AddOfficialCatchVC: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let original = info[.originalImage] as? UIImage {
             catchImage = original
+            catchIV.image = catchImage
         } else {
             // TODO: Present the user with an Alert
             print("No image Returned.")

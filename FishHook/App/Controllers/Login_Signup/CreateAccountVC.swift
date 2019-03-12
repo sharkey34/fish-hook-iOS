@@ -81,6 +81,7 @@ class CreateAccountVC: UIViewController {
                     // Saving currentUser to UserDefaults
                     let currentUser = User(_uid: uid, _admin: self.adminSwitch.isOn, _first: firstName, _last: lastName, _email: emailText)
                     UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
+                    UserDefaults.standard.set(nil, forKey: "activeTournament")
                     self.performSegue(withIdentifier: "createToDashboard", sender: self)
                 }
             })

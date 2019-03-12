@@ -20,8 +20,11 @@ class AwardsCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
-
-        // TODO: Fetching the awards.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        awards.removeAll()
+        // Fetching the awards.
         fetchAwards()
     }
     
@@ -53,13 +56,11 @@ class AwardsCollectionVC: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return awards.count
     }
 
@@ -77,7 +78,6 @@ class AwardsCollectionVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Transition to official posts for the specific division and award.
-        
         aID = awards[indexPath.row].id
         performSegue(withIdentifier: "toOfficial", sender: self)
     }
