@@ -39,6 +39,7 @@ class AddOfficialCatchVC: UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    
     @IBAction func submit(_ sender: UIButton) {
         guard !metricTF.isNullOrWhitespace(), !fishTF.isNullOrWhitespace(), emailTF.isValidEmail() else {
             let alert = Utils.basicAlert(title: "Invalid Entries", message: "Please make sure the entries are valid and not empty.", Button: "OK")
@@ -46,34 +47,39 @@ class AddOfficialCatchVC: UIViewController {
             return
         }
         
+        // Getting catchID
         catchID = db.collection("official").document().documentID
-        
 
+        // Getting the entered user and fullname
         db.collection("users").whereField("email", isEqualTo: emailTF.text!).getDocuments(source: .default, completion: { (documents, error) in
             if let err = error {
-                
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
             } else {
                 if let docs = documents?.documents {
-                    for doc in docs {
-                        self.userID = doc.documentID
-                        let map = doc.data()
-                        
-                        let first = map["first"] as! String
-                        let last = map["last"] as! String
-                        self.fullName = "\(first) \(last)"
-                    }
-                   self.addCatch()
+                    
+                    if docs.count > 0 {
+                        for doc in docs {
+                            self.userID = doc.documentID
+                            let map = doc.data()
+                            
+                            let first = map["first"] as! String
+                            let last = map["last"] as! String
+                            self.fullName = "\(first) \(last)"
+                            self.addCatch()
+                        }
+                    }else {
+                        let alert = Utils.basicAlert(title: "Error", message: "No user with that email found. Please double check you entered the correct email.", Button: "OK")
+                        self.present(alert, animated: true, completion: nil)
+                }
                 }
             }
         })
     }
     
+    // Adding the catch to the user.
     func addCatch(){
-        
         guard let id = catchID else {return}
-        
         db.collection("users").document(userID!).updateData(
             [
                 "catches": FieldValue.arrayUnion([id])
@@ -88,6 +94,7 @@ class AddOfficialCatchVC: UIViewController {
         }
     }
     
+    // Adding all catch data to FireStore
     func addOfficialCatch(){
         
         db.collection("official").document(catchID!).setData(
