@@ -58,7 +58,6 @@ class BasicDetailsVC: UIViewController {
         for toggle in waterType {
             if toggle.isOn {
                 type = true
-                
                 if toggle.tag == 0 {
                     Global.tournament.waterType.append("Fresh")
                 } else {
@@ -70,7 +69,6 @@ class BasicDetailsVC: UIViewController {
         for toggle in metrics {
             if toggle.isOn {
                 metric = true
-                
                 if toggle.tag == 2 {
                     Global.tournament.metrics.append("Weight")
                 } else {
@@ -136,9 +134,7 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: Check the selected tableView item
-        
         let checked = !(participants[indexPath.row].1)
-        
         participants[indexPath.row].1 = checked
         tableView.cellForRow(at: indexPath)?.accessoryType = checked ? .checkmark : .none
     }
@@ -157,7 +153,6 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
             // TODO: Present the user with an Alert
             print("No image selected.")
         }
-        
         dismiss(animated: true, completion: nil)
     }
 }

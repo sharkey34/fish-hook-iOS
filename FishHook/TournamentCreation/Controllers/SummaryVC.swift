@@ -81,6 +81,14 @@ class SummaryVC: UIViewController {
                     }
             })
             
+            // Resetting values
+            func resetGlobal(){
+                Global.tournament = Tournament(_id: nil, _name: nil, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: [String](), _waterType: [String](), _metrics: [String](), _startDate: nil, _endDate: nil, _startTime: nil, _endTime: nil, _code: nil, _isActive: false)
+                
+                Global.divisions = [Division]()
+                Global.awards = [Award]()
+            }
+            
             
             // Function to Save Divisions
             func saveDivisions(tUID: String){
@@ -107,7 +115,6 @@ class SummaryVC: UIViewController {
             
             // Saving the awards for each division.
             func saveAwards(division: Division, divID: String){
-                
                 guard let divAwards = division.awards else {return}
                 
                 for award in divAwards{
@@ -148,6 +155,7 @@ class SummaryVC: UIViewController {
             })
             
             // Going back to the Dashboard
+            resetGlobal()
             performSegue(withIdentifier: "toDashboard", sender: self)
         }
     }

@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-extension UITextField {
+extension UITextField: UITextFieldDelegate {
+    
+    open override func awakeFromNib() {
+        delegate = self
+    }
     
     // Making sure the text is not empty or all spaces
     func isNullOrWhitespace() -> Bool {
@@ -40,5 +44,17 @@ extension UITextField {
         } else {
             return false
         }
+    }
+    
+    // Checking entered text length
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let count = textField.text?.count ?? 0
+        
+        if range.length + range.location > count {
+            return false
+        }
+        let newText = count + string.count - range.length
+        return newText <= 30
     }
 }

@@ -28,6 +28,7 @@ class LoginVC: UIViewController {
     func setUp(){
         db = Firestore.firestore()
         
+        
         // Setting time to take a Firebase Timestamp instead of a System Date
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true

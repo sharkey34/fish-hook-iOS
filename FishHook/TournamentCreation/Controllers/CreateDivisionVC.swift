@@ -32,17 +32,12 @@ class CreateDivisionVC: UICollectionViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
-        
         // Validating
         guard divisions.count > 0 else {
-            
             let alert = Utils.basicAlert(title: "No Divisions added", message: "Please add at least one General divison for your tournament.", Button: "OK")
-            
             self.present(alert, animated: true, completion: nil)
-            
             return
         }
-        
         // TODO: Add divisions to Realm()
         let alert = Utils.basicAlert(title: "Saved", message: "All Divisions and their details have been saved", Button: "OK")
         present(alert, animated: true, completion: nil)

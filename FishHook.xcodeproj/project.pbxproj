@@ -28,7 +28,7 @@
 		4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */; };
 		4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4502224952300786CE1 /* RunDatesVC.swift */; };
 		4A73E45522249BF800786CE1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E45422249BF800786CE1 /* Enums.swift */; };
-		4A854EE12228AD720008CD67 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A854EE02228AD720008CD67 /* TextFieldValidation.swift */; };
+		4A854EE12228AD720008CD67 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A854EE02228AD720008CD67 /* TextFieldExtension.swift */; };
 		4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A8689C42231EA39009719CD /* FishHook.xcdatamodeld */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AB0D936223573D60056BC73 /* CoreDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */; };
@@ -95,7 +95,7 @@
 		4A73E44E2224950600786CE1 /* SelectSpeciesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpeciesVC.swift; sourceTree = "<group>"; };
 		4A73E4502224952300786CE1 /* RunDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDatesVC.swift; sourceTree = "<group>"; };
 		4A73E45422249BF800786CE1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		4A854EE02228AD720008CD67 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
+		4A854EE02228AD720008CD67 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		4A8689C52231EA39009719CD /* FishHook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FishHook.xcdatamodel; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSingleton.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 				4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */,
 				4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */,
 				4AB2109C2225E48400735881 /* Utils.swift */,
-				4A854EE02228AD720008CD67 /* TextFieldValidation.swift */,
+				4A854EE02228AD720008CD67 /* TextFieldExtension.swift */,
 				4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */,
 			);
 			path = Utiilties;
@@ -543,7 +543,7 @@
 				4AB0D93C223618020056BC73 /* AwardsCollectionViewCell.swift in Sources */,
 				4A515BB022373FF2009B94EE /* Catch.swift in Sources */,
 				4AB210992225DBC500735881 /* Fish.swift in Sources */,
-				4A854EE12228AD720008CD67 /* TextFieldValidation.swift in Sources */,
+				4A854EE12228AD720008CD67 /* TextFieldExtension.swift in Sources */,
 				4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */,
 				4AC7157C2220E05F00868214 /* TournamentsCollectionVC.swift in Sources */,
 				4A73E45522249BF800786CE1 /* Enums.swift in Sources */,
