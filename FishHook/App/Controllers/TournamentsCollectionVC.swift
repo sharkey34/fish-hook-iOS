@@ -20,25 +20,13 @@ class TournamentsCollectionVC: UICollectionViewController {
     var storage: Storage?
     var currentUser: User?
     var editingTournaments = false
-    // TODO: Make this double for both Admins and regular users.
     var tournaments = [Tournament]()
+    var deleteImages = [UIImageView]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setUp()
-    }
-    
-    func setUp(){
-        db = Firestore.firestore()
-        storage = Storage.storage()
-        currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.title = "Dashboard"
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editSelected(sender:)))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,20 +36,45 @@ class TournamentsCollectionVC: UICollectionViewController {
         fetchTournamentIDS()
     }
     
-    @objc func editSelected(sender: UIBarButtonItem){
-//        editingTournaments = !editingTournaments
-//
-//        if editingTournaments {
-//            for cell in collectionView.visibleCells {
-//                cell.backgroundColor = UIColor.red
-//            }
-//        } else {
-//            for cell in collectionView.visibleCells {
-//                cell.backgroundColor = UIColor.white
-//            }
-//        }
+    // initial setup.
+    func setUp(){
+        db = Firestore.firestore()
+        storage = Storage.storage()
+        currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.title = "Dashboard"
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        navigationItem.rightBarButtonItem = editButtonItem
     }
-
+    
+    //ACTIONS
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        for iv in deleteImages {
+            iv.isHidden = !isEditing
+        }
+    }
+    
+    // Setting up the tournament alert to activate the tournament.
+    func tournamentSelected(index: Int, cell: DashboardCollectionCell) -> UIAlertController {
+        let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
+        
+        let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
+            cell.activeLabel.text = "Activated"
+            cell.activeView.backgroundColor = UIColor.green
+            cell.activeView.layer.cornerRadius = 10
+            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
+            self.collectionView.reloadData()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(activate)
+        alertController.addAction(cancel)
+        return alertController
+    }
+    
+    // COLLECTIONVIEW
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -75,16 +88,19 @@ class TournamentsCollectionVC: UICollectionViewController {
 
         // Configure the cell
         if indexPath.row == tournaments.count || tournaments.count == 0 {
-            // Add image
             cell.tournamentImage.image = UIImage(named: "Plus")
             cell.dateLabel.text = ""
             cell.activeLabel.text = ""
+            cell.deleteIV.isHidden = true
             cell.activeView.backgroundColor = UIColor.white
         } else {
             let t = tournaments[indexPath.row]
             let dates = "\(t.startDate!) - \(t.endDate!)"
             // Normal setup
             // TODO: Get and set image from storage.
+            // Setting up tap Gesture recognizer.
+            deleteImages.append(cell.deleteIV)
+            cell.deleteIV.isHidden = !isEditing
             cell.tournamentImage.image = UIImage(named: "DefaultTournament")
             cell.dateLabel.text = dates
         
@@ -108,24 +124,18 @@ class TournamentsCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: If add button selected then segue to tournament creation else go to details of tournament.
         guard let user = currentUser, let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionCell else {return}
-
-        if user.admin {
-            if indexPath.row == tournaments.count || tournaments.count == 0 {
+        
+        if indexPath.row == tournaments.count || tournaments.count == 0 {
+            if user.admin {
                 performSegue(withIdentifier: "toTournament", sender: self)
             } else {
-                // Checking if tournament is already activated.
-                if cell.activeLabel.text != "Activated"{
-                    let alert = tournamentSelected(index: indexPath.row, cell: cell)
-                    present(alert, animated: true, completion: nil)
-                }
+                presentAddModal()
             }
         } else {
-            // Pop up modal for user to add a tournament.
-            if indexPath.row == tournaments.count || tournaments.count == 0 {
-                presentAddModal()
+            if isEditing {
+                let active = cell.activeLabel.text == "Activated" ? true:false
+                deleteSelected(index: indexPath.row, active: active)
             } else {
-                // make this the active tournament.
-                // Checking if tournament is already activated.
                 if cell.activeLabel.text != "Activated"{
                     let alert = tournamentSelected(index: indexPath.row, cell: cell)
                     present(alert, animated: true, completion: nil)
@@ -134,23 +144,26 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
     }
     
-    // Setting up the tournament alert to activate the tournament.
-    func tournamentSelected(index: Int, cell: DashboardCollectionCell) -> UIAlertController {
-        let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
-        
-        let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
-            cell.activeLabel.text = "Activated"
-            cell.activeView.backgroundColor = UIColor.green
-            cell.activeView.layer.cornerRadius = 10
-            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
-            self.collectionView.reloadData()
-        }
+    // Alerting the user
+    func deleteSelected(index: Int, active: Bool){
+        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this tournament?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (error) in
+            
+            let id = self.tournaments[index].id
+            
+            if let tID = id {
+                self.deleteTournament(id: tID, index: index, active: active)
+            }
+        })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertController.addAction(activate)
-        alertController.addAction(cancel)
-        return alertController
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
     }
+    
+    
     
     // Setting up and presenting modal to add a tournament
     func presentAddModal(){
@@ -175,6 +188,9 @@ class TournamentsCollectionVC: UICollectionViewController {
         
         present(addController, animated: true, completion: nil)
     }
+    
+    
+    // FIREBASE
     
     // Getting the tournaments by the code entered
     // TODO: Check against registered participants as well.
@@ -282,6 +298,27 @@ class TournamentsCollectionVC: UICollectionViewController {
             })
         }
     }
+    
+    // Function to delete cell
+    func deleteTournament(id: String, index: Int, active: Bool) {
+        
+        db?.collection("tournaments").document(id).delete(completion: { (error) in
+
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                if active {
+                    UserDefaults.standard.set(nil, forKey: "activeTournament")
+                }
+                self.deleteImages.removeAll()
+                self.tournaments.remove(at: index)
+                self.collectionView.reloadData()
+            }
+        })
+    }
+    
+    // NAVIGATION
     
     // Hopefully setting the active tournament to the newly created tournament.
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {

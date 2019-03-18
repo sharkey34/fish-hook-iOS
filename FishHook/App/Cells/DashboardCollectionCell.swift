@@ -13,5 +13,5 @@ class DashboardCollectionCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activeView: UIView!
     @IBOutlet weak var activeLabel: UILabel!
-    
+    @IBOutlet weak var deleteIV: UIImageView!
 }

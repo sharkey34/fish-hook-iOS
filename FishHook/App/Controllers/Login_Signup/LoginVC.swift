@@ -80,7 +80,6 @@ class LoginVC: UIViewController {
                 
                 if let uid = Auth.auth().currentUser?.uid {
                     
-                    print(uid)
                     let ref = self.db.collection("users").document(uid)
                     ref.getDocument(completion: { (document, error) in
                         
