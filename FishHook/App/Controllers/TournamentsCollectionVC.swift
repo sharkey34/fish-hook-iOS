@@ -22,18 +22,22 @@ class TournamentsCollectionVC: UICollectionViewController {
     var editingTournaments = false
     var tournaments = [Tournament]()
     var deleteImages = [UIImageView]()
+    var load = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUp()
+        fetchTournamentIDS()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if tournaments.count > 0 {
-            tournaments.removeAll()
-        }
-        fetchTournamentIDS()
+        // TODO: Just do this once upon first load so to not fetch tournaments everytime
+//        load = true
+//        if tournaments.count > 0 {
+//            tournaments.removeAll()
+//            deleteImages.removeAll()
+//        }
     }
     
     // initial setup.
@@ -56,15 +60,16 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
     }
     
+    
     // Setting up the tournament alert to activate the tournament.
     func tournamentSelected(index: Int, cell: DashboardCollectionCell) -> UIAlertController {
         let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
         
         let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
+            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
             cell.activeLabel.text = "Activated"
             cell.activeView.backgroundColor = UIColor.green
             cell.activeView.layer.cornerRadius = 10
-            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
             self.collectionView.reloadData()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -87,7 +92,7 @@ class TournamentsCollectionVC: UICollectionViewController {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
 
         // Configure the cell
-        if indexPath.row == tournaments.count || tournaments.count == 0 {
+        if indexPath.row == tournaments.count {
             cell.tournamentImage.image = UIImage(named: "Plus")
             cell.dateLabel.text = ""
             cell.activeLabel.text = ""
@@ -101,7 +106,36 @@ class TournamentsCollectionVC: UICollectionViewController {
             // Setting up tap Gesture recognizer.
             deleteImages.append(cell.deleteIV)
             cell.deleteIV.isHidden = !isEditing
-            cell.tournamentImage.image = UIImage(named: "DefaultTournament")
+            
+            if let logo = t.logo {
+                print("Has Logo")
+                
+                cell.tournamentImage.image = logo
+            } else if let id = t.imageID {
+                
+                print("Found ID")
+                let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/tournament%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8")
+                
+                URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                    print("Downloading Image")
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    if let data = data {
+                        print("Data found")
+                        let image = UIImage(data: data)
+                        print(image)
+                        self.tournaments[indexPath.row].logo = image
+
+                        DispatchQueue.main.async {
+                            print("Setting image")
+                            cell.tournamentImage.image = image
+                        }
+                    }
+                }.resume()
+            } else {
+                cell.tournamentImage.image = UIImage(named: "DefaultTournament")
+            }
             cell.dateLabel.text = dates
         
             // TODO: Check isActivated porperty instead
@@ -206,6 +240,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let id = document.documentID
                     let code = map["code"] as! String
                     let name = map["name"] as! String
+                    let imageID = map["logo"] as? String
                     let participants = map["participants"] as! [String]
                     let waterType = map["waterType"] as! [String]
                     let metrics = map["metrics"] as! [String]
@@ -214,9 +249,9 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
                     
-                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false))
-                    self.addTournamentToUser(id: id)
+                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID))
                     
+                    self.addTournamentToUser(id: id)
                     UserDefaults.standard.set(id, forKey: "activeTournament")
                     self.collectionView.reloadData()
                     
@@ -277,9 +312,9 @@ class TournamentsCollectionVC: UICollectionViewController {
                 
                 let id = doc?.documentID
                 if let map = doc?.data() {
-                    
                     let code = map["code"] as! String
                     let name = map["name"] as! String
+                    let imageID = map["logo"] as? String
                     let participants = map["participants"] as! [String]
                     let waterType = map["waterType"] as! [String]
                     let metrics = map["metrics"] as! [String]
@@ -288,8 +323,9 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
                     
-                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false))
+                    let newTournament = Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID)
                     
+                    self.tournaments.append(newTournament)
                     self.collectionView.reloadData()
                 } else if let error = err {
                     let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
@@ -323,8 +359,13 @@ class TournamentsCollectionVC: UICollectionViewController {
     // Hopefully setting the active tournament to the newly created tournament.
     @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {
         
+        // TODO: Pass created tournament back and add it to the tournaments array
+        
         guard let sVC = segue.source as? SummaryVC else {return}
-        UserDefaults.standard.set(sVC.tournamentUID, forKey: "activeTournament")
-        self.collectionView.reloadData()
+        
+        if let t = sVC.newTournament {
+            tournaments.append(t)
+            self.collectionView.reloadData()
+        }
     }
 }

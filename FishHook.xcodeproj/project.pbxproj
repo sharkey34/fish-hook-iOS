@@ -42,6 +42,7 @@
 		4AB2109F2226380C00735881 /* Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109E2226380C00735881 /* Division.swift */; };
 		4AB210A12226388000735881 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210A02226388000735881 /* Award.swift */; };
 		4AB210A42226406400735881 /* DivisionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210A32226406400735881 /* DivisionDetailsVC.swift */; };
+		4AC210702241D69000012E9B /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */; };
 		4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* CreateTournamentVC.swift */; };
 		4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabVC.swift */; };
 		4AC7157C2220E05F00868214 /* TournamentsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionVC.swift */; };
@@ -109,6 +110,7 @@
 		4AB2109E2226380C00735881 /* Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Division.swift; sourceTree = "<group>"; };
 		4AB210A02226388000735881 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		4AB210A32226406400735881 /* DivisionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionDetailsVC.swift; sourceTree = "<group>"; };
+		4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		4AC715732220DBD800868214 /* CreateTournamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournamentVC.swift; sourceTree = "<group>"; };
 		4AC715792220DF7000868214 /* AdminTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabVC.swift; sourceTree = "<group>"; };
 		4AC7157B2220E05F00868214 /* TournamentsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionVC.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				4AB2109C2225E48400735881 /* Utils.swift */,
 				4A854EE02228AD720008CD67 /* TextFieldExtension.swift */,
 				4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */,
+				4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */,
 			);
 			path = Utiilties;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				4AB0D93E223619270056BC73 /* OfficialTableViewCell.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
 				4AB2109F2226380C00735881 /* Division.swift in Sources */,
+				4AC210702241D69000012E9B /* UIImageViewExtension.swift in Sources */,
 				4AB2109D2225E48400735881 /* Utils.swift in Sources */,
 				4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */,
 				4AB0D93C223618020056BC73 /* AwardsCollectionViewCell.swift in Sources */,

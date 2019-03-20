@@ -51,10 +51,8 @@ class DivisionsCollectionVC: UICollectionViewController {
         cell.divisionIV.image = UIImage(named: "Division")
         cell.divisionLabel.text = divisions[indexPath.row].name
         // TODO: Add Sponsored by.
-    
         return cell
     }
-    
     
     // Fetching Divisions from FireStore.
     func fetchDivisions(tID: String){
@@ -69,7 +67,6 @@ class DivisionsCollectionVC: UICollectionViewController {
                 print(docs.count)
                 for doc in docs {
                     let map = doc.data()
-                    
                     let dID = doc.documentID
                     let name = map["name"] as! String
                     let tID = map["tID"] as! String

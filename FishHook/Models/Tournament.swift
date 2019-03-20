@@ -26,8 +26,10 @@ class Tournament {
     var endDate: String?
     var startTime: String?
     var endTime: String?
+    var imageID: String?
     
-    init(_id: String?, _name: String?, _logo: UIImage?, _created: String?, _divisions: [Division], _fishSpecies: [Fish], _participants: [String], _waterType: [String], _metrics: [String], _startDate: String?, _endDate: String?, _startTime: String?, _endTime: String?, _code: String?, _isActive: Bool ) {
+    
+    init(_id: String?, _name: String?, _logo: UIImage?, _created: String?, _divisions: [Division], _fishSpecies: [Fish], _participants: [String], _waterType: [String], _metrics: [String], _startDate: String?, _endDate: String?, _startTime: String?, _endTime: String?, _code: String?, _isActive: Bool, _imageID: String? ) {
         self.id = _id
         self.name = _name
         self.logo = _logo
@@ -43,5 +45,6 @@ class Tournament {
         self.endTime = _endTime
         self.code = _code
         self.isActive = _isActive
+        self.imageID = _imageID
     }
 }

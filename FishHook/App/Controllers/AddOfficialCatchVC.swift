@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
 
 class AddOfficialCatchVC: UIViewController {
     @IBOutlet weak var catchIV: UIImageView!
@@ -22,19 +23,35 @@ class AddOfficialCatchVC: UIViewController {
     var catchID: String?
     var userID: String?
     var fullName: String?
+    var storage: Storage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      setUp()
+    }
+    
+    func setUp(){
+        storage = Storage.storage()
         db = Firestore.firestore()
         imagePicker.delegate = self
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
+        catchIV.addGestureRecognizer(tap)
     }
     
     // Opening camera when take picture is selected.
     @IBAction func takePicture(_ sender: UIButton) {
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = false
+        addImage()
+    }
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        addImage()
+    }
+    
+    func addImage(){
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
         
         self.present(imagePicker, animated: true, completion: nil)
     }
@@ -89,17 +106,20 @@ class AddOfficialCatchVC: UIViewController {
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
             } else {
-                self.addOfficialCatch()
+                let imageID = NSUUID().uuidString
+
+                self.uploadImage(imageID: imageID)
+                self.addOfficialCatch(imageID: imageID)
             }
         }
     }
     
     // Adding all catch data to FireStore
-    func addOfficialCatch(){
-        
+    func addOfficialCatch(imageID: String){
         db.collection("official").document(catchID!).setData(
             [
                 "aID": aID,
+                "imageID": imageID,
                 "userID": userID!,
                 "userName": fullName!,
                 "metric": metricTF.text!,
@@ -115,18 +135,42 @@ class AddOfficialCatchVC: UIViewController {
             }
         }
     }
+    
+    func uploadImage(imageID: String){
+        guard let storageRef = storage?.reference().child("tournament/\(imageID).jpg") else {return}
+        
+        // Local file you want to upload
+        guard let imageData = Global.tournament.logo?.jpegData(compressionQuality: 0.1) else {return}
+        
+        // Create the file metadata
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        // Upload file and metadata to the object 'images/mountains.jpg'
+        let uploadTask = storageRef.putData(imageData, metadata: metadata)
+        
+        uploadTask.observe(.progress) { snapshot in
+            // Upload reported progress
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+            
+            print(percentComplete.description)
+        }
+    }
 }
 
 extension AddOfficialCatchVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Getting the image from the picker.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let original = info[.originalImage] as? UIImage {
-            catchImage = original
-            catchIV.image = catchImage
+        
+        if let edited = info[.editedImage] as? UIImage {
+            catchIV.image = edited
+        } else if let original = info[.originalImage] as? UIImage {
+            catchIV.image = original
         } else {
             // TODO: Present the user with an Alert
-            print("No image Returned.")
+            print("No image selected.")
         }
         dismiss(animated: true, completion: nil)
     }

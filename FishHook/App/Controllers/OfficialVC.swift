@@ -8,19 +8,21 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
 
 class OfficialVC: UITableViewController {
     
     var aID: String?
+    var catches = [Catch]()
     var currentUser: User!
     var db: Firestore!
-    var catches = [Catch]()
+    var storage: Storage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         db = Firestore.firestore()
-
+        storage = Storage.storage()
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
         
         if currentUser.admin {

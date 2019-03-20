@@ -70,5 +70,4 @@ class TournamentTableVC: UITableViewController {
             performSegue(withIdentifier: "toBasic", sender: self)
         }
     }
-
 }

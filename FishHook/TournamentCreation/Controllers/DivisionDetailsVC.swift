@@ -24,7 +24,6 @@ class DivisionDetailsVC: UIViewController {
         navigationItem.title = TournamentSetup.DivisionDetails.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

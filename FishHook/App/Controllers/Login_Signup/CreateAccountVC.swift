@@ -26,6 +26,9 @@ class CreateAccountVC: UIViewController {
      setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
     // TODO: Add UITextfield Delegate method didEndEditing to check if entry is currently valid in real-time and display error to user.
     
     func setUp(){

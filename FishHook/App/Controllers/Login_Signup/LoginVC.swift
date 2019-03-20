@@ -28,7 +28,6 @@ class LoginVC: UIViewController {
     func setUp(){
         db = Firestore.firestore()
         
-        
         // Setting time to take a Firebase Timestamp instead of a System Date
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -40,6 +39,10 @@ class LoginVC: UIViewController {
             let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
             label.addGestureRecognizer(tap)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
     
     @objc

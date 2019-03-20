@@ -9,6 +9,7 @@
 import UIKit
 
 class BasicDetailsVC: UIViewController {
+    
     @IBOutlet weak var tournamentName: UITextField!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var tableview: UITableView!
@@ -31,10 +32,20 @@ class BasicDetailsVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Basic.rawValue
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
+        logo.addGestureRecognizer(tap)
     }
     
     @IBAction func addLogoTapped(_ sender: UIButton) {
-        
+        addImage()
+    }
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer){
+        addImage()
+    }
+    
+    func addImage(){
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         
