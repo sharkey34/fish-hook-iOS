@@ -17,6 +17,8 @@ class SelectSpeciesVC: UITableViewController {
     var selectedSpecies = [Fish]()
     var db: Firestore?
     
+    weak var delegate: detailDelegate?
+    
     // Creating a searchController.
     var searchController = UISearchController(searchResultsController: nil)
     
@@ -40,9 +42,8 @@ class SelectSpeciesVC: UITableViewController {
         }
         // TODO: Save all selected fish species to the Realm Database.
         Global.tournament.fishSpecies = selectedSpecies
-        
-        let alert = Utils.basicAlert(title: "Saved", message: "Fish Species have been saved", Button: "OK")
-        self.present(alert,animated: true,completion: nil)
+       
+        delegate?.pushDetail(cell: 3, indentifier: Segues.Divisions.rawValue)
     }
     
     

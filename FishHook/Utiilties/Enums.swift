@@ -50,4 +50,18 @@ enum TabTitles: String {
     case Leaderboard = "Leaderboard"
 }
 
+// Seque Identifiers
+enum Segues: String {
+    case Basic = "toBasic"
+    case Dates = "toRunDates"
+    case Fish = "toFishSpecies"
+    case Divisions = "toDivisions"
+    case Summary = "toSummary"
+    case Details = "toDivisionDetails"
+    case Dashboard = "toDashboard"
+}
+
+// TODO: Firebase
+
+
 // TODO: Tab icons

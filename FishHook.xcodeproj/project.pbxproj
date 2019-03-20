@@ -18,6 +18,7 @@
 		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
 		4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9D2221EBE0006DE8B9 /* User.swift */; };
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
+		4A5EB20E2242FBCD00499FCD /* DetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EB20D2242FBCD00499FCD /* DetailDelegate.swift */; };
 		4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */; };
 		4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */; };
 		4A73E4422224934700786CE1 /* SplitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4412224934700786CE1 /* SplitTableViewCell.swift */; };
@@ -86,6 +87,7 @@
 		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
 		4A5C3C9D2221EBE0006DE8B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4A5EB20D2242FBCD00499FCD /* DetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegate.swift; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
 		4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableVC.swift; sourceTree = "<group>"; };
 		4A73E4412224934700786CE1 /* SplitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				4A854EE02228AD720008CD67 /* TextFieldExtension.swift */,
 				4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */,
 				4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */,
+				4A5EB20D2242FBCD00499FCD /* DetailDelegate.swift */,
 			);
 			path = Utiilties;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */,
 				4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */,
 				4AF27E262226F5DD003A8A21 /* AwardsVC.swift in Sources */,
+				4A5EB20E2242FBCD00499FCD /* DetailDelegate.swift in Sources */,
 				4AB0D93A223617DA0056BC73 /* AwardsCollectionVC.swift in Sources */,
 				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
 				4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */,

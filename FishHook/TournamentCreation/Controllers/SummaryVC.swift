@@ -46,7 +46,6 @@ class SummaryVC: UIViewController {
         
         let button = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(submitSelected(sender:)))
         navigationItem.rightBarButtonItem = button
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
     }
     
     // Setting label values
@@ -181,7 +180,7 @@ class SummaryVC: UIViewController {
         newTournament = Global.tournament
         // Going back to the Dashboard
         resetGlobal()
-        performSegue(withIdentifier: "toDashboard", sender: self)
+        performSegue(withIdentifier: Segues.Dashboard.rawValue, sender: self)
     }
     
     // Saving the awards for each division.
@@ -233,11 +232,6 @@ class SummaryVC: UIViewController {
         
         Global.divisions = [Division]()
         Global.awards = [Award]()
-    }
-    
-    @objc func cancelSelected(sender: UIBarButtonItem) {
-        // TODO: Dismissing the controller may be all that is needed
-        dismiss(animated: true, completion: nil)
     }
     
     func isValidTournament() -> Bool {

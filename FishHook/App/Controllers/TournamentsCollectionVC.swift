@@ -28,16 +28,7 @@ class TournamentsCollectionVC: UICollectionViewController {
         super.viewDidLoad()
         
         setUp()
-        fetchTournamentIDS()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        // TODO: Just do this once upon first load so to not fetch tournaments everytime
-//        load = true
-//        if tournaments.count > 0 {
-//            tournaments.removeAll()
-//            deleteImages.removeAll()
-//        }
+//        fetchTournamentIDS()
     }
     
     // initial setup.
@@ -68,8 +59,6 @@ class TournamentsCollectionVC: UICollectionViewController {
         let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
             
             DispatchQueue.main.async {
-                print("active index \(index)")
-                print(self.tournaments[index].id)
                 UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
                 cell.activeLabel.text = "Activated"
                 cell.activeView.backgroundColor = UIColor.green
@@ -92,9 +81,11 @@ class TournamentsCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tournaments.count + 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DashboardCollectionCell else {return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)}
+        
+        cell.tag = indexPath.row
 
         // Configure the cell
         if indexPath.row == tournaments.count {
@@ -113,27 +104,22 @@ class TournamentsCollectionVC: UICollectionViewController {
             cell.deleteIV.isHidden = !isEditing
             
             if let logo = t.logo {
-                print("Has Logo")
-                
                 cell.tournamentImage.image = logo
             } else if let id = t.imageID {
-                
-                print("Found ID")
                 let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/tournament%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8")
                 
                 URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                    print("Downloading Image")
                     if let error = error {
                         print(error.localizedDescription)
                     }
                     if let data = data {
-                        print("Data found")
                         let image = UIImage(data: data)
                         self.tournaments[indexPath.row].logo = image
 
                         DispatchQueue.main.async {
-                            print("Setting image")
-                            cell.tournamentImage.image = image
+                            if cell.tag == indexPath.row {
+                                cell.tournamentImage.image = image
+                            }
                         }
                     }
                 }.resume()

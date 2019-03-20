@@ -13,7 +13,8 @@ private let reuseIdentifier = "Cell"
 class CreateDivisionVC: UICollectionViewController {
     
     var divisions = [Division]()
-    
+    weak var delegate: detailDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,12 +39,8 @@ class CreateDivisionVC: UICollectionViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        // TODO: Add divisions to Realm()
-        let alert = Utils.basicAlert(title: "Saved", message: "All Divisions and their details have been saved", Button: "OK")
-        present(alert, animated: true, completion: nil)
-        
         Global.tournament.divisions = Global.divisions
-        
+        delegate?.pushDetail(cell: 4, indentifier: Segues.Summary.rawValue)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -74,6 +71,6 @@ class CreateDivisionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: Segue when the add button is selected.
         
-        performSegue(withIdentifier: "toDivisionDetails", sender: self)
+        performSegue(withIdentifier: Segues.Details.rawValue, sender: self)
     }
 }

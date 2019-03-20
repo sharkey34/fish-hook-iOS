@@ -10,6 +10,8 @@ import UIKit
 
 class BasicDetailsVC: UIViewController {
     
+    weak var delegate: detailDelegate?
+
     @IBOutlet weak var tournamentName: UITextField!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var tableview: UITableView!
@@ -21,6 +23,8 @@ class BasicDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    
         setUp()
     }
     
@@ -65,36 +69,32 @@ class BasicDetailsVC: UIViewController {
             
             Global.tournament.name = tournamentName.text!
         }
-        
         for toggle in waterType {
             if toggle.isOn {
                 type = true
                 if toggle.tag == 0 {
-                    Global.tournament.waterType.append("Fresh")
+                    Global.tournament.waterType.append(Water.Fresh.rawValue)
                 } else {
-                    Global.tournament.waterType.append("Salt")
+                    Global.tournament.waterType.append(Water.Salt.rawValue)
                 }
             }
         }
-        
         for toggle in metrics {
             if toggle.isOn {
                 metric = true
                 if toggle.tag == 2 {
-                    Global.tournament.metrics.append("Weight")
+                    Global.tournament.metrics.append(Metrics.Weight.rawValue)
                 } else {
-                    Global.tournament.metrics.append("Length")
+                    Global.tournament.metrics.append(Metrics.Length.rawValue)
                 }
             }
         }
-        
         for p in participants {
             if p.1 {
                 participant = true
                 Global.tournament.participants?.append(p.0.rawValue)
             }
         }
-        
         if let image = logo.image {
             tournamentLogo = true
             Global.tournament.logo = image
@@ -102,20 +102,12 @@ class BasicDetailsVC: UIViewController {
         
         // TODO: Validate entries
         if name && type && metric && participant && tournamentLogo {
-            // TODO: Save to database
-            saveBasicDetails()
-            
-            let a = Utils.basicAlert(title: "Saved", message: "Basic Details have been saved. ", Button: "OK")
-            self.present(a,animated: true, completion: nil)
+            // Calling the tableview delegate
+            delegate?.pushDetail(cell: 1, indentifier: Segues.Dates.rawValue)
         } else {
             let alert = Utils.basicAlert(title: "Invalid Form", message: "Please make sure all fields are correctly filled and at least one switch is selected in each category.", Button: "OK")
             self.present(alert, animated: true, completion: nil)
         }
-    }
-    
-    func saveBasicDetails(){
-        // TODO
-        
     }
 }
 
@@ -154,7 +146,7 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
 
 // Image Picker
 extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     // Getting the image from the picker and setting it in the imageView
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -172,7 +164,5 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
 
 // Split View delegate
 extension BasicDetailsVC: UISplitViewControllerDelegate {
-    
-    
-    
+
 }

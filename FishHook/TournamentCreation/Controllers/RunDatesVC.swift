@@ -14,6 +14,8 @@ class RunDatesVC: UIViewController {
     @IBOutlet weak var startTime: UIDatePicker!
     @IBOutlet weak var endTime: UIDatePicker!
     
+    weak var delegate: detailDelegate?
+
     var start: String?
     var end: String?
     var timeFormatter = DateFormatter()
@@ -84,8 +86,7 @@ class RunDatesVC: UIViewController {
         Global.tournament.startTime = start!
         Global.tournament.endTime = end!
         
-        let alert = Utils.basicAlert(title: "Saved", message: "Dates have been successfully saved.", Button: "OK")
-        self.present(alert, animated: true, completion: nil)
+        delegate?.pushDetail(cell: 2, indentifier: Segues.Fish.rawValue)
     }
     
     // Calendar setup

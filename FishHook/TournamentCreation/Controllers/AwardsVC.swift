@@ -21,8 +21,6 @@ class AwardsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewdidload")
-        
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Awards.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
@@ -30,8 +28,6 @@ class AwardsVC: UIViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
-        
-        // TODO: Add check for prize.count eqaul to number of cells that way we can alert the user if a prize cell is left empty.
         
         // Getting all the final values entered in the prize cells
         guard let cells = tableView.visibleCells as? [PrizesTableViewCell] else {return}
@@ -95,7 +91,6 @@ extension AwardsVC: UITableViewDelegate, UITableViewDataSource {
 extension AwardsVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // TODO: Add an edit button or some way to allow the user to edit the textfields
         
         guard !textField.isNullOrWhitespace() else {
             let alert = Utils.basicAlert(title: "Invalid Prize", message: "Please make sure the entry is not left empty or does not contain only spaces.", Button: "OK")

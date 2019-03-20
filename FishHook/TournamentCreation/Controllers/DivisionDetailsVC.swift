@@ -34,7 +34,7 @@ class DivisionDetailsVC: UIViewController {
     
     @objc func saveSelected(sender: UIBarButtonItem) {
         
-        //TODO: Validation
+        //Validation
         guard !divisionName.isNullOrWhitespace(), awards.count > 0 else {
             
             let alert = Utils.basicAlert(title: "Invalid Division Details", message: "Please enter valid information for this Division", Button: "OK")
@@ -42,16 +42,7 @@ class DivisionDetailsVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-        //        let name = divisionName.text!
-        //        let newDivision = Division(_id: nil, _name: name, _sponsor: nil, _awards: awards)
-        
-        // TODO: Save to Realm and Dismiss controller maybe pass back in an Unwind Segue.
         Global.divisions.append(Division(_id: nil, _tID: nil, _name: divisionName.text!, _sponsor: sponsorName.text, _awards: Global.awards))
-        //
-        //        let alert = Utils.basicAlert(title: "Saved", message: "Division has ben saved", Button: "OK")
-        //        self.present(alert, animated: true , completion: nil)
-        
         Global.awards.removeAll()
         
         navigationController?.popViewController(animated: true)
