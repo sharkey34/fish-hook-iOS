@@ -14,6 +14,13 @@ class CreateTournamentVC: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Test
+        self.preferredDisplayMode = .allVisible
+        if let nav = self.viewControllers.last as? UINavigationController {
+            nav.topViewController?.navigationItem.leftBarButtonItem = self.displayModeButtonItem
+        }
+        
         // Hiding the navigationBar
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.

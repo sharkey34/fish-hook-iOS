@@ -27,6 +27,11 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUp()
+        setLabelValues()
+    }
+    
+    func setUp(){
         db = Firestore.firestore()
         storage = Storage.storage()
         
@@ -41,9 +46,7 @@ class SummaryVC: UIViewController {
         
         let button = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(submitSelected(sender:)))
         navigationItem.rightBarButtonItem = button
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
-        
-        setLabelValues()
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
     }
     
     // Setting label values
@@ -91,6 +94,7 @@ class SummaryVC: UIViewController {
         // TODO: Push all data to Firestore and create the tournament.
         if isValidTournament() {
             guard let tUID = tournamentUID, let tCode = tournamentCode else {return}
+            Global.tournament.id = tUID
             
             let imageID = NSUUID().uuidString
             guard let storageRef = storage?.reference().child("tournament/\(imageID).jpg") else {return}

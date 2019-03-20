@@ -16,7 +16,11 @@ class TournamentTableVC: UITableViewController {
         
         super.viewDidLoad()
         navigationItem.title = "Tournament Setup"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
+        
+        if let splitView = self.navigationController?.splitViewController, !splitView.isCollapsed {
+            self.navigationItem.leftBarButtonItem = splitView.displayModeButtonItem
+        }
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -68,6 +72,49 @@ class TournamentTableVC: UITableViewController {
             performSegue(withIdentifier: "toSummary", sender: self)
         default:
             performSegue(withIdentifier: "toBasic", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let nav = segue.destination as? UINavigationController else {return}
+        
+        switch segue.identifier {
+        case "toBasic":
+            guard let detailsVC = nav.topViewController as? BasicDetailsVC else {return}
+            // Display mode button
+            detailsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            detailsVC.navigationItem.leftItemsSupplementBackButton = true
+            break
+        case "toRunDates":
+            guard let runDatesVC = nav.topViewController as? RunDatesVC else {return}
+            // Display mode button
+            runDatesVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            runDatesVC.navigationItem.leftItemsSupplementBackButton = true
+            break
+        case "toFishSpecies":
+            guard let speciesVC = nav.topViewController as? SelectSpeciesVC else {return}
+            // Display mode button
+            speciesVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            speciesVC.navigationItem.leftItemsSupplementBackButton = true
+            break
+        case "toDivisions":
+            guard let divisionsVC = nav.topViewController as? CreateDivisionVC else {return}
+            // Display mode button
+            divisionsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            divisionsVC.navigationItem.leftItemsSupplementBackButton = true
+            break
+        case "toSummary":
+            guard let summaryVC = nav.topViewController as? SummaryVC else {return}
+            // Display mode button
+            summaryVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            summaryVC.navigationItem.leftItemsSupplementBackButton = true
+            break
+        default:
+            guard let detailsVC = nav.topViewController as? BasicDetailsVC else {return}
+            // Display mode button
+            detailsVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            detailsVC.navigationItem.leftItemsSupplementBackButton = true
         }
     }
 }

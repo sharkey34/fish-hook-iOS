@@ -66,11 +66,16 @@ class TournamentsCollectionVC: UICollectionViewController {
         let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
         
         let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
-            UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
-            cell.activeLabel.text = "Activated"
-            cell.activeView.backgroundColor = UIColor.green
-            cell.activeView.layer.cornerRadius = 10
-            self.collectionView.reloadData()
+            
+            DispatchQueue.main.async {
+                print("active index \(index)")
+                print(self.tournaments[index].id)
+                UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
+                cell.activeLabel.text = "Activated"
+                cell.activeView.backgroundColor = UIColor.green
+                cell.activeView.layer.cornerRadius = 10
+                self.collectionView.reloadData()
+            }
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -124,7 +129,6 @@ class TournamentsCollectionVC: UICollectionViewController {
                     if let data = data {
                         print("Data found")
                         let image = UIImage(data: data)
-                        print(image)
                         self.tournaments[indexPath.row].logo = image
 
                         DispatchQueue.main.async {
@@ -171,6 +175,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                 deleteSelected(index: indexPath.row, active: active)
             } else {
                 if cell.activeLabel.text != "Activated"{
+                    print("Active index \(indexPath.row)")
                     let alert = tournamentSelected(index: indexPath.row, cell: cell)
                     present(alert, animated: true, completion: nil)
                 }

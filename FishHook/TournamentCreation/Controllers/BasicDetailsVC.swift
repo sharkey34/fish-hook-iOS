@@ -151,6 +151,8 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+// Image Picker
 extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Getting the image from the picker and setting it in the imageView
@@ -166,4 +168,11 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
         }
         dismiss(animated: true, completion: nil)
     }
+}
+
+// Split View delegate
+extension BasicDetailsVC: UISplitViewControllerDelegate {
+    
+    
+    
 }

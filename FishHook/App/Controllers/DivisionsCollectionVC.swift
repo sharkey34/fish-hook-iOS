@@ -24,8 +24,9 @@ class DivisionsCollectionVC: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         divisions.removeAll()
         // Fetch Divisions
+        print(UserDefaults.standard.string(forKey: "activeTournament"))
         if let tID = UserDefaults.standard.string(forKey: "activeTournament") {
-            print(tID)
+            print("tournament ID \(tID)")
             fetchDivisions(tID: tID)
         } else {
             let alert = Utils.basicAlert(title: "No Tournament Active", message: "Please add a tournament to continue", Button: "OK")
