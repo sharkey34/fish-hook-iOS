@@ -50,10 +50,15 @@ class BasicDetailsVC: UIViewController {
     }
     
     func addImage(){
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        
-        self.present(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            let alert = Utils.basicAlert(title: "Access not granted", message: "Please navigate to settings and grant access to the photo library.", Button: "OK")
+
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc func saveSelected(sender: UIBarButtonItem){

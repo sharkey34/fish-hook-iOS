@@ -28,11 +28,6 @@ class OfficialVC: UITableViewController {
         if currentUser.admin {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSelected(sender:)))
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        // Fetch Catches
-        catches.removeAll()
         fetchOfficialCatches()
     }
     
@@ -41,7 +36,6 @@ class OfficialVC: UITableViewController {
         guard let id = aID else {return}
         
         db.collection("official").whereField("aID", isEqualTo: id).getDocuments(source: .default) { (documents, error) in
-            
             if let err = error {
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
@@ -52,12 +46,13 @@ class OfficialVC: UITableViewController {
                     for doc in docs {
                         let map = doc.data()
                         let docID = doc.documentID
+                        let imageID = map["imageID"] as? String
                         let userID = map["userID"] as! String
                         let userName = map["userName"] as! String
                         let fish = map["fish"] as! String
                         let metric = map["metric"] as! String
                         
-                        self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil))
+                        self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID))
                     }
                     if self.catches.count <= 0 {
                         let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
@@ -99,13 +94,47 @@ class OfficialVC: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? OfficialTableViewCell else {
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         }
+        cell.tag = indexPath.row
         
-        // Configure the cell...
-        cell.catchIV.image  = UIImage(named: "OfficialCatch")
-        cell.fishLabel.text = catches[indexPath.row].fish
-        cell.userNameLabel.text = catches[indexPath.row].userName
-        cell.metricLabel.text = catches[indexPath.row].metric
+        let c = catches[indexPath.row]
+        
+        if let image = c.image {
+            cell.catchIV.image = image
+        } else if let id = c.imageID {
+            let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/official%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8")
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let data = data {
+                    let image = UIImage(data: data)
+                    c.image = image
+                    
+                    DispatchQueue.main.async {
+                        if cell.tag == indexPath.row {
+                            cell.catchIV.image = image
+                        }
+                    }
+                }
+            }.resume()
+        } else {
+            cell.catchIV.image  = UIImage(named: "OfficialCatch")
+        }
+        
+        cell.fishLabel.text = c.fish
+        cell.userNameLabel.text = c.userName
+        cell.metricLabel.text = c.metric
 
         return cell
+    }
+    
+    @IBAction func unwindFromAddCatch(segue: UIStoryboardSegue) {
+        guard let aVC = segue.source as? AddOfficialCatchVC else {return}
+        
+        if let c = aVC.newCatch {
+            catches.append(c)
+            tableView.reloadData()
+        }
     }
 }

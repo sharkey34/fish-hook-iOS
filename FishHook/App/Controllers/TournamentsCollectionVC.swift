@@ -12,23 +12,19 @@ import FirebaseStorage
 import FirebaseAuth
 import CoreData
 
-private let reuseIdentifier = "Cell"
-
 class TournamentsCollectionVC: UICollectionViewController {
     
     var db: Firestore?
     var storage: Storage?
     var currentUser: User?
-    var editingTournaments = false
     var tournaments = [Tournament]()
     var deleteImages = [UIImageView]()
-    var load = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUp()
-//        fetchTournamentIDS()
+        fetchTournamentIDS()
     }
     
     // initial setup.
@@ -38,7 +34,6 @@ class TournamentsCollectionVC: UICollectionViewController {
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Dashboard"
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         navigationItem.rightBarButtonItem = editButtonItem
     }
     
@@ -98,7 +93,7 @@ class TournamentsCollectionVC: UICollectionViewController {
             let t = tournaments[indexPath.row]
             let dates = "\(t.startDate!) - \(t.endDate!)"
             // Normal setup
-            // TODO: Get and set image from storage.
+            // Get and set image from storage.
             // Setting up tap Gesture recognizer.
             deleteImages.append(cell.deleteIV)
             cell.deleteIV.isHidden = !isEditing
@@ -143,7 +138,6 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
         return cell
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: If add button selected then segue to tournament creation else go to details of tournament.
