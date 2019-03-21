@@ -36,6 +36,14 @@ class CreateAccountVC: UIViewController {
         db = Firestore.firestore()
         let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped(sender:)))
         signUp.addGestureRecognizer(tap)
+        
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender:)))
+        view.addGestureRecognizer(viewTap)
+    }
+    
+    @objc
+    func viewTapped(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @objc

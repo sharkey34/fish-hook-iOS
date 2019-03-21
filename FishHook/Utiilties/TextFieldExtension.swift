@@ -57,4 +57,10 @@ extension UITextField: UITextFieldDelegate {
         let newText = count + string.count - range.length
         return newText <= 30
     }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            
+            return true
+    }
 }

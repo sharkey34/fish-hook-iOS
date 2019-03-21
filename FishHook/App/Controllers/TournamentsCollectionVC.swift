@@ -96,6 +96,7 @@ class TournamentsCollectionVC: UICollectionViewController {
             // Get and set image from storage.
             // Setting up tap Gesture recognizer.
             deleteImages.append(cell.deleteIV)
+            cell.deleteIV.image = UIImage(named: "Delete")
             cell.deleteIV.isHidden = !isEditing
             
             if let logo = t.logo {
@@ -120,6 +121,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                 }.resume()
             } else {
                 cell.tournamentImage.image = UIImage(named: "DefaultTournament")
+                cell.deleteIV.image = UIImage(named: "Delete")
             }
             cell.dateLabel.text = dates
         
@@ -294,7 +296,6 @@ class TournamentsCollectionVC: UICollectionViewController {
     func fetchTournaments(tournamentIDS: [String]){
         for tournament in tournamentIDS {
             db?.collection("tournaments").document(tournament).getDocument(completion: { (doc, err) in
-                
                 let id = doc?.documentID
                 if let map = doc?.data() {
                     let code = map["code"] as! String

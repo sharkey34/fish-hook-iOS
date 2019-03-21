@@ -395,6 +395,11 @@
 				TargetAttributes = {
 					4A35F96B221B0D4700664FF2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					4A35F97F221B0D4900664FF2 = {
 						CreatedOnToolsVersion = 10.1;
@@ -748,7 +753,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -767,7 +772,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

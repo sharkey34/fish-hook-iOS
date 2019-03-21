@@ -33,6 +33,8 @@ class LoginVC: UIViewController {
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender:)))
+        view.addGestureRecognizer(tap)
         
         // looping through labels and setting tapGesture.
         for label in labels{
@@ -43,6 +45,11 @@ class LoginVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc
+    func viewTapped(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @objc
