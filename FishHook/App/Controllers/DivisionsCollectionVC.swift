@@ -15,18 +15,21 @@ class DivisionsCollectionVC: UICollectionViewController {
     var divisions = [Division]()
     var dID: String?
     var db: Firestore!
+    var currentUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
+        
+        if let tabVC = tabBarController as? TabVC {
+            currentUser = tabVC.currentUser
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         divisions.removeAll()
         // Fetch Divisions
-        print(UserDefaults.standard.string(forKey: "activeTournament"))
         if let tID = UserDefaults.standard.string(forKey: "activeTournament") {
-            print("tournament ID \(tID)")
             fetchDivisions(tID: tID)
         } else {
             let alert = Utils.basicAlert(title: "No Tournament Active", message: "Please add a tournament to continue", Button: "OK")
@@ -90,6 +93,7 @@ class DivisionsCollectionVC: UICollectionViewController {
         if segue.identifier == "toAwards" {
             guard let aVC = segue.destination as? AwardsCollectionVC else {return}
             aVC.dID = dID
+            aVC.currentUser = currentUser
         }
     }
 }

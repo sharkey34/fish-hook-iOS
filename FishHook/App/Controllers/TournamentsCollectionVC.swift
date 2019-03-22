@@ -31,7 +31,11 @@ class TournamentsCollectionVC: UICollectionViewController {
     func setUp(){
         db = Firestore.firestore()
         storage = Storage.storage()
-        currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
+        
+        if let tabVC = tabBarController as? TabVC {
+            currentUser = tabVC.currentUser
+        }
+        
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Dashboard"
         navigationItem.rightBarButtonItem = editButtonItem
@@ -338,6 +342,11 @@ class TournamentsCollectionVC: UICollectionViewController {
                 self.collectionView.reloadData()
             }
         })
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("SegaGenuisus \(segue.identifier)")
     }
     
     // NAVIGATION

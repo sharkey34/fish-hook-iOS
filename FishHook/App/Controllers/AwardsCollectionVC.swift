@@ -16,6 +16,7 @@ class AwardsCollectionVC: UICollectionViewController {
     var aID: String?
     var awards = [Award]()
     var db: Firestore!
+    var currentUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,8 +87,9 @@ class AwardsCollectionVC: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toOfficial" {
-            guard let oVC = segue.destination as? OfficialVC else {return}
+            guard let oVC = segue.destination as? OfficialTableVC else {return}
             oVC.aID = aID
+            oVC.currentUser = currentUser
         }
     }
 }

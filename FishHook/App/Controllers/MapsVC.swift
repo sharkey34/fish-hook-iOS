@@ -1,20 +1,19 @@
 //
-//  AdminTabViewController.swift
+//  MapsVC.swift
 //  FishHook
 //
-//  Created by Eric Sharkey on 2/22/19.
+//  Created by Eric Sharkey on 3/22/19.
 //  Copyright © 2019 Eric Sharkey. All rights reserved.
 //
 
 import UIKit
 
-class AdminTabVC: UITabBarController {
+class MapsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tabBar.unselectedItemTintColor = UIColor.white
     }
     
 

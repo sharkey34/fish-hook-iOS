@@ -10,23 +10,29 @@ import UIKit
 import FirebaseFirestore
 import FirebaseStorage
 
-class OfficialVC: UITableViewController {
+class OfficialTableVC: UITableViewController {
     
     var aID: String?
     var catches = [Catch]()
-    var currentUser: User!
+    var currentUser: User?
     var db: Firestore!
     var storage: Storage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUp()
+    }
+    
+    // Function for intial setup
+    func setUp(){
         db = Firestore.firestore()
         storage = Storage.storage()
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
         
-        if currentUser.admin {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSelected(sender:)))
+        if let user = currentUser {
+            if user.admin {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSelected(sender:)))
+            }
         }
         fetchOfficialCatches()
     }

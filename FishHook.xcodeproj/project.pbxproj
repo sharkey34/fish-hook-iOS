@@ -13,6 +13,8 @@
 		4A35F977221B0D4900664FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F976221B0D4900664FF2 /* Assets.xcassets */; };
 		4A35F97A221B0D4900664FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F978221B0D4900664FF2 /* LaunchScreen.storyboard */; };
 		4A35F985221B0D4900664FF2 /* FishHookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F984221B0D4900664FF2 /* FishHookTests.swift */; };
+		4A4B4D2222453FEC0064C4C6 /* MapsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */; };
+		4A4B4D24224548810064C4C6 /* AddTrophyCatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */; };
 		4A515BAE22372443009B94EE /* AddOfficialCatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */; };
 		4A515BB022373FF2009B94EE /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515BAF22373FF2009B94EE /* Catch.swift */; };
 		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
@@ -30,6 +32,8 @@
 		4A73E4512224952300786CE1 /* RunDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4502224952300786CE1 /* RunDatesVC.swift */; };
 		4A73E45522249BF800786CE1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E45422249BF800786CE1 /* Enums.swift */; };
 		4A854EE12228AD720008CD67 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A854EE02228AD720008CD67 /* TextFieldExtension.swift */; };
+		4A860152224484380080FDE3 /* TrophyTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860151224484380080FDE3 /* TrophyTableVC.swift */; };
+		4A860154224485EE0080FDE3 /* TrophyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860153224485EE0080FDE3 /* TrophyCell.swift */; };
 		4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A8689C42231EA39009719CD /* FishHook.xcdatamodeld */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
 		4AB0D936223573D60056BC73 /* CoreDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */; };
@@ -37,7 +41,7 @@
 		4AB0D93A223617DA0056BC73 /* AwardsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */; };
 		4AB0D93C223618020056BC73 /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D93B223618020056BC73 /* AwardsCollectionViewCell.swift */; };
 		4AB0D93E223619270056BC73 /* OfficialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D93D223619270056BC73 /* OfficialTableViewCell.swift */; };
-		4AB0D9402236193D0056BC73 /* OfficialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D93F2236193D0056BC73 /* OfficialVC.swift */; };
+		4AB0D9402236193D0056BC73 /* OfficialTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D93F2236193D0056BC73 /* OfficialTableVC.swift */; };
 		4AB210992225DBC500735881 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210982225DBC500735881 /* Fish.swift */; };
 		4AB2109D2225E48400735881 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109C2225E48400735881 /* Utils.swift */; };
 		4AB2109F2226380C00735881 /* Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB2109E2226380C00735881 /* Division.swift */; };
@@ -45,7 +49,7 @@
 		4AB210A42226406400735881 /* DivisionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB210A32226406400735881 /* DivisionDetailsVC.swift */; };
 		4AC210702241D69000012E9B /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */; };
 		4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715732220DBD800868214 /* CreateTournamentVC.swift */; };
-		4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* AdminTabVC.swift */; };
+		4AC7157A2220DF7000868214 /* TabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715792220DF7000868214 /* TabVC.swift */; };
 		4AC7157C2220E05F00868214 /* TournamentsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157B2220E05F00868214 /* TournamentsCollectionVC.swift */; };
 		4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */; };
 		4AC715812220E3EC00868214 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC715802220E3EC00868214 /* LoginVC.swift */; };
@@ -82,6 +86,8 @@
 		4A35F980221B0D4900664FF2 /* FishHookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishHookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F984221B0D4900664FF2 /* FishHookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishHookTests.swift; sourceTree = "<group>"; };
 		4A35F986221B0D4900664FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsVC.swift; sourceTree = "<group>"; };
+		4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrophyCatchVC.swift; sourceTree = "<group>"; };
 		4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfficialCatchVC.swift; sourceTree = "<group>"; };
 		4A515BAF22373FF2009B94EE /* Catch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch.swift; sourceTree = "<group>"; };
 		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 		4A73E4502224952300786CE1 /* RunDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDatesVC.swift; sourceTree = "<group>"; };
 		4A73E45422249BF800786CE1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4A854EE02228AD720008CD67 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		4A860151224484380080FDE3 /* TrophyTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyTableVC.swift; sourceTree = "<group>"; };
+		4A860153224485EE0080FDE3 /* TrophyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyCell.swift; sourceTree = "<group>"; };
 		4A8689C52231EA39009719CD /* FishHook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FishHook.xcdatamodel; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSingleton.swift; sourceTree = "<group>"; };
@@ -106,7 +114,7 @@
 		4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionVC.swift; sourceTree = "<group>"; };
 		4AB0D93B223618020056BC73 /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AB0D93D223619270056BC73 /* OfficialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialTableViewCell.swift; sourceTree = "<group>"; };
-		4AB0D93F2236193D0056BC73 /* OfficialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialVC.swift; sourceTree = "<group>"; };
+		4AB0D93F2236193D0056BC73 /* OfficialTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialTableVC.swift; sourceTree = "<group>"; };
 		4AB210982225DBC500735881 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		4AB2109C2225E48400735881 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4AB2109E2226380C00735881 /* Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Division.swift; sourceTree = "<group>"; };
@@ -114,7 +122,7 @@
 		4AB210A32226406400735881 /* DivisionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionDetailsVC.swift; sourceTree = "<group>"; };
 		4AC2106F2241D69000012E9B /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		4AC715732220DBD800868214 /* CreateTournamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournamentVC.swift; sourceTree = "<group>"; };
-		4AC715792220DF7000868214 /* AdminTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabVC.swift; sourceTree = "<group>"; };
+		4AC715792220DF7000868214 /* TabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabVC.swift; sourceTree = "<group>"; };
 		4AC7157B2220E05F00868214 /* TournamentsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsCollectionVC.swift; sourceTree = "<group>"; };
 		4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionsCollectionVC.swift; sourceTree = "<group>"; };
 		4AC715802220E3EC00868214 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -174,13 +182,16 @@
 		4A2F48AC221F942D00FDBC93 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4AC715792220DF7000868214 /* AdminTabVC.swift */,
+				4AC715762220DC6500868214 /* Login_Signup */,
+				4AC715792220DF7000868214 /* TabVC.swift */,
 				4AC7157B2220E05F00868214 /* TournamentsCollectionVC.swift */,
 				4AC7157E2220E0B100868214 /* DivisionsCollectionVC.swift */,
 				4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */,
-				4AB0D93F2236193D0056BC73 /* OfficialVC.swift */,
+				4AB0D93F2236193D0056BC73 /* OfficialTableVC.swift */,
 				4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */,
-				4AC715762220DC6500868214 /* Login_Signup */,
+				4A860151224484380080FDE3 /* TrophyTableVC.swift */,
+				4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */,
+				4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +329,7 @@
 				4AFF71D3222331910038707F /* DivsionCollectionViewCell.swift */,
 				4AB0D93B223618020056BC73 /* AwardsCollectionViewCell.swift */,
 				4AB0D93D223619270056BC73 /* OfficialTableViewCell.swift */,
+				4A860153224485EE0080FDE3 /* TrophyCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -542,10 +554,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AB210A42226406400735881 /* DivisionDetailsVC.swift in Sources */,
+				4A860152224484380080FDE3 /* TrophyTableVC.swift in Sources */,
 				4AC715742220DBD800868214 /* CreateTournamentVC.swift in Sources */,
-				4AB0D9402236193D0056BC73 /* OfficialVC.swift in Sources */,
+				4AB0D9402236193D0056BC73 /* OfficialTableVC.swift in Sources */,
 				4AB0D936223573D60056BC73 /* CoreDataSingleton.swift in Sources */,
 				4AB210A12226388000735881 /* Award.swift in Sources */,
+				4A4B4D24224548810064C4C6 /* AddTrophyCatchVC.swift in Sources */,
+				4A860154224485EE0080FDE3 /* TrophyCell.swift in Sources */,
 				4AB0D93E223619270056BC73 /* OfficialTableViewCell.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
 				4AB2109F2226380C00735881 /* Division.swift in Sources */,
@@ -556,7 +571,7 @@
 				4A515BB022373FF2009B94EE /* Catch.swift in Sources */,
 				4AB210992225DBC500735881 /* Fish.swift in Sources */,
 				4A854EE12228AD720008CD67 /* TextFieldExtension.swift in Sources */,
-				4AC7157A2220DF7000868214 /* AdminTabVC.swift in Sources */,
+				4AC7157A2220DF7000868214 /* TabVC.swift in Sources */,
 				4AC7157C2220E05F00868214 /* TournamentsCollectionVC.swift in Sources */,
 				4A73E45522249BF800786CE1 /* Enums.swift in Sources */,
 				4AB0D9382235FD370056BC73 /* Global.swift in Sources */,
@@ -572,6 +587,7 @@
 				4A5EB20E2242FBCD00499FCD /* DetailDelegate.swift in Sources */,
 				4AB0D93A223617DA0056BC73 /* AwardsCollectionVC.swift in Sources */,
 				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
+				4A4B4D2222453FEC0064C4C6 /* MapsVC.swift in Sources */,
 				4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */,
 				4AF27E282226F904003A8A21 /* PrizesTableViewCell.swift in Sources */,
 				4A73E4482224943E00786CE1 /* FishSpeciesCell.swift in Sources */,
