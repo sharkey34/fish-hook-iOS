@@ -65,8 +65,16 @@ extension MapsVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latLong = manager.location?.coordinate else {return}
         
+        // For Testing Purposes
+        let lat = CLLocationDegrees(exactly: 27.929097)
+        let long = CLLocationDegrees(exactly: -82.610179)
+        let temp = MKPointAnnotation()
+        temp.coordinate = CLLocationCoordinate2D(latitude: 27.929097, longitude: -82.610179)
+        map.addAnnotation(temp)
+
+        
         let zoomRegion = MKCoordinateRegion.init(
-            center: CLLocationCoordinate2DMake(latLong.latitude, latLong.longitude), latitudinalMeters: 350, longitudinalMeters: 350)
+            center: CLLocationCoordinate2DMake(lat!, long!), latitudinalMeters: 10000, longitudinalMeters: 10000)
         
         map.setRegion(zoomRegion, animated: true)
     }
