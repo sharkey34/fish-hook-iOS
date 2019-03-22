@@ -20,8 +20,11 @@ class Catch {
     var fish: String
     var image: UIImage?
     var imageID: String?
+    var tID: String?
+    var lat: String?
+    var long: String?
     
-    init(_id: String, _aID: String?, _userName: String, _place: Int?, _userID: String, _metric: String, _fish: String, _image: UIImage?, _imageID: String?) {
+    init(_id: String, _aID: String?, _userName: String, _place: Int?, _userID: String, _metric: String, _fish: String, _image: UIImage?, _imageID: String?, _tID: String?, _lat: String?, _long: String?) {
         self.id = _id
         self.aID = _aID
         self.userName = _userName
@@ -31,5 +34,8 @@ class Catch {
         self.fish = _fish
         self.image = _image
         self.imageID = _imageID
+        self.tID = _tID
+        self.lat = _lat
+        self.long = _long
     }
 }

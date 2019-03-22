@@ -46,7 +46,8 @@ class OfficialTableVC: UITableViewController {
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
                 return
-            } else {
+            }
+            
                 if let docs = documents?.documents {
                     
                     for doc in docs {
@@ -58,7 +59,7 @@ class OfficialTableVC: UITableViewController {
                         let fish = map["fish"] as! String
                         let metric = map["metric"] as! String
                         
-                        self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID))
+                        self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID, _tID: nil, _lat: nil, _long: nil))
                     }
                     if self.catches.count <= 0 {
                         let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
@@ -67,7 +68,6 @@ class OfficialTableVC: UITableViewController {
                         self.tableView.reloadData()
                     }
                 }
-            }
         }
     }
     

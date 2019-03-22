@@ -17,13 +17,16 @@ class TrophyTableVC: UITableViewController {
     var currentUser: User?
     var db: Firestore!
     var storage: Storage!
+    var tID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        fetchTrophies()
     }
     
     func setUp(){
+        tID = UserDefaults.standard.string(forKey: "activeTournament")
         db = Firestore.firestore()
         storage = Storage.storage()
         
@@ -31,6 +34,43 @@ class TrophyTableVC: UITableViewController {
         
         if let tabVC = tabBarController as? TabVC {
             currentUser = tabVC.currentUser
+        }
+    }
+    
+    // Fetching trophies from firestore
+    func fetchTrophies(){
+        guard let id = tID else {return}
+        
+        db.collection("trophy").whereField("tID", isEqualTo: id).getDocuments(source: .default) { (documents, error) in
+        
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if let docs = documents?.documents {
+                for doc in docs {
+                    let map = doc.data()
+                    let id = doc.documentID
+                    let tID = map["tID"] as! String
+                    let userName = map["name"] as! String
+                    let lat = map["lat"] as! String
+                    let long = map["long"] as! String
+                    let userID = map["userID"] as! String
+                    let imageID = map["image"] as! String
+                    let fish = map["fish"] as! String
+                    let metric = map["metric"] as! String
+                    
+                    self.catches.append(Catch(_id: id, _aID: nil, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID, _tID: tID, _lat: lat, _long: long))
+                }
+                if self.catches.count <= 0 {
+                    let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -42,6 +82,7 @@ class TrophyTableVC: UITableViewController {
     
     // TABLE VIEW
     override func numberOfSections(in tableView: UITableView) -> Int {
+        tableView.rowHeight = view.frame.height / 2
         return 1
     }
     
@@ -51,6 +92,8 @@ class TrophyTableVC: UITableViewController {
     }
     
     
+    
+    // Setting the cells values
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrophyCell else {
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)}
@@ -77,7 +120,7 @@ class TrophyTableVC: UITableViewController {
                         }
                     }
                 }
-                }.resume()
+            }.resume()
         } else {
             cell.trophyIV.image  = UIImage(named: "OfficialCatch")
         }

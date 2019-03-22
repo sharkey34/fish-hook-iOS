@@ -39,16 +39,15 @@ class AddTrophyCatchVC: UIViewController {
         setUp()
     }
     
+    // Setting up Firestore, storage, location manager and image picker
     func setUp(){
         storage = Storage.storage()
         db = Firestore.firestore()
         imagePicker.delegate = self
-        tID = UserDefaults.standard.string(forKey: "activeTournament")
-    
-
-        
+        checkLocationServices()
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         catchIV.addGestureRecognizer(tap)
+        tID = UserDefaults.standard.string(forKey: "activeTournament")
     }
     
     // ACTIONS
@@ -62,35 +61,82 @@ class AddTrophyCatchVC: UIViewController {
         addImage()
     }
     @IBAction func submitCatch(_ sender: UIButton) {
-        
-        // TODO: Validating inputs
-        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image else{
+        // Validating inputs
+        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image, let firstName = currentUser?.firstName, let lastName = currentUser?.lastName, let UID = currentUser?.uid, let id = tID, let latitude = lat?.description, let longitude = long?.description
+            else{
             let alert = Utils.basicAlert(title: "Invalid Entries", message: "Please make sure every field is filled out correctly and not left blank.", Button: "OK")
             present(alert, animated: true, completion: nil)
             return}
         
-        // Saving image
+        let catchID = db.collection("trophy").document().documentID
         imageID = NSUUID().uuidString
+    
+        newCatch = Catch(_id: catchID, _aID: nil, _userName: "\(firstName) \(lastName)", _place: nil, _userID: UID, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchImage, _imageID: imageID, _tID: id, _lat: latitude, _long: longitude)
+        
+        // Saving image
         uploadImage(imageID: imageID, image: catchImage)
         
         // Saving to user
-//        addTrophyCatch()
+        addTrophyCatch()
+    }
+    
+    // Saving the trophy catch to firestore.
+    func addTrophyCatch(){
+        
+        if let c = newCatch {
+            db.collection("trophy").document(c.id).setData(
+            [
+                "tID": tID!,
+                "name": c.userName,
+                "lat": c.lat!,
+                "long": c.long!,
+                "userID": c.userID,
+                "image": c.imageID!,
+                "fish": c.fish,
+                "metric": c.metric
+            ]
+            ) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {
+                    self.saveCatchToUser()
+                }
+            }
+        }
+    }
+    
+    // Saving the catch to the current user.
+    func saveCatchToUser(){
+        
+        db.collection("users").document(currentUser!.uid).updateData(
+            [
+                "trophies": FieldValue.arrayUnion([newCatch!.id])
+            ]
+        ) { (error) in
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.performSegue(withIdentifier: "fromAddTrophy", sender: self)
+            }
+        }
     }
     
     // Location Manager Functions
     
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled() {
+            checkLocationPermissions()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            checkLocationPermissions()
         } else {
             let alert = Utils.basicAlert(title: "Unable to access location", message: "Please enable access to loctation services", Button: "OK")
             present(alert, animated: true, completion: nil)
         }
     }
     
+    // Checking the location permissions granted. If There has been no decision than requesting access
     func checkLocationPermissions(){
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
@@ -140,17 +186,6 @@ class AddTrophyCatchVC: UIViewController {
                 / Double(snapshot.progress!.totalUnitCount)
             print(percentComplete.description)
         }
-    }
-//
-//    func addTrophyCatch(){
-//        db.collection("trophy").document().setData([String : Any]) { (error) in
-//
-//        }
-//    }
-    
-    func saveCatchToUser(imageID: String){
-        
-        
     }
 }
 

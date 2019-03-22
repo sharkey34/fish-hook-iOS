@@ -120,7 +120,7 @@ class AddOfficialCatchVC: UIViewController {
     // Adding all catch data to FireStore
     func addOfficialCatch(imageID: String){
         
-        newCatch = Catch(_id: catchID!, _aID: aID, _userName: fullName!, _place: nil, _userID: userID!, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchIV.image!, _imageID: imageID)
+        newCatch = Catch(_id: catchID!, _aID: aID, _userName: fullName!, _place: nil, _userID: userID!, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchIV.image!, _imageID: imageID, _tID: nil, _lat: nil, _long: nil)
         
         db.collection("official").document(catchID!).setData(
             [
