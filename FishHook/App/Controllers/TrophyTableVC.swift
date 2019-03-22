@@ -55,6 +55,35 @@ class TrophyTableVC: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrophyCell else {
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)}
         
+        cell.tag = indexPath.row
+        let c = catches[indexPath.row]
+        
+        if let image = c.image {
+            cell.trophyIV.image = image
+        } else if let id = c.imageID {
+            let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/trophy%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8")
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let data = data {
+                    let image = UIImage(data: data)
+                    c.image = image
+                    
+                    DispatchQueue.main.async {
+                        if cell.tag == indexPath.row {
+                            cell.trophyIV.image = image
+                        }
+                    }
+                }
+                }.resume()
+        } else {
+            cell.trophyIV.image  = UIImage(named: "OfficialCatch")
+        }
+        cell.fishLabel.text = c.fish
+        cell.nameLabel.text = c.userName
+        cell.metricLabel.text = c.metric
         
         return cell
     }
@@ -63,5 +92,15 @@ class TrophyTableVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let trophyVC = segue.destination as? AddTrophyCatchVC else {return}
         trophyVC.currentUser = currentUser
+    }
+    
+    @IBAction func unwindToTrophyTable(segue: UIStoryboardSegue) {
+        
+        guard let addVC = segue.source as? AddTrophyCatchVC else {return}
+        
+        if let newCatch = addVC.newCatch {
+            catches.append(newCatch)
+            tableView.reloadData()
+        }
     }
 }

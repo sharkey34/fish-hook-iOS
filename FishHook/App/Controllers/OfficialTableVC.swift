@@ -101,7 +101,6 @@ class OfficialTableVC: UITableViewController {
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         }
         cell.tag = indexPath.row
-        
         let c = catches[indexPath.row]
         
         if let image = c.image {

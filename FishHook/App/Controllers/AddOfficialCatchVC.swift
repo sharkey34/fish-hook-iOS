@@ -152,7 +152,7 @@ class AddOfficialCatchVC: UIViewController {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        // Upload file and metadata to the object 'images/mountains.jpg'
+        // Upload file and metadata
         let uploadTask = storageRef.putData(imageData, metadata: metadata)
         
         uploadTask.observe(.progress) { snapshot in

@@ -1399,9 +1399,11 @@
                         <outlet property="catchIV" destination="eAO-1a-cKL" id="tKK-ZS-BJx"/>
                         <outlet property="fishTF" destination="Zho-oU-xy1" id="zJk-mH-2aR"/>
                         <outlet property="metricTF" destination="uyQ-mw-nBY" id="oWG-BV-9PO"/>
+                        <segue destination="xik-Qe-5OQ" kind="unwind" identifier="fromAddTrophy" unwindAction="unwindToTrophyTableWithSegue:" id="VW6-s9-qud"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWK-6f-Usk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xik-Qe-5OQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1380" y="2948"/>
         </scene>

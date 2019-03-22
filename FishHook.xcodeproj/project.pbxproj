@@ -190,8 +190,8 @@
 				4AB0D93F2236193D0056BC73 /* OfficialTableVC.swift */,
 				4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */,
 				4A860151224484380080FDE3 /* TrophyTableVC.swift */,
-				4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */,
 				4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */,
+				4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
