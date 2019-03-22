@@ -41,13 +41,13 @@ class AddTrophyCatchVC: UIViewController {
     
     // Setting up Firestore, storage, location manager and image picker
     func setUp(){
+        tID = UserDefaults.standard.string(forKey: "activeTournament")
         storage = Storage.storage()
         db = Firestore.firestore()
         imagePicker.delegate = self
         checkLocationServices()
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         catchIV.addGestureRecognizer(tap)
-        tID = UserDefaults.standard.string(forKey: "activeTournament")
     }
     
     // ACTIONS
