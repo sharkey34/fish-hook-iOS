@@ -69,7 +69,7 @@ extension MapsVC: CLLocationManagerDelegate {
         let lat = CLLocationDegrees(exactly: 27.929097)
         let long = CLLocationDegrees(exactly: -82.610179)
         let temp = MKPointAnnotation()
-        temp.coordinate = CLLocationCoordinate2D(latitude: 27.929097, longitude: -82.610179)
+        temp.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
         map.addAnnotation(temp)
 
         

@@ -1,5 +1,6 @@
 .DS_Store
 xcuserdata/
+Keys.plist
 *.xcuserstate
 Podfile
 Podfile.lock
