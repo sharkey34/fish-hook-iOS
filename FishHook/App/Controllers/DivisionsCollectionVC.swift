@@ -21,6 +21,7 @@ class DivisionsCollectionVC: UICollectionViewController {
         super.viewDidLoad()
         db = Firestore.firestore()
         
+        navigationItem.title = "Divisions"
         if let tabVC = tabBarController as? TabVC {
             currentUser = tabVC.currentUser
         }

@@ -41,6 +41,7 @@ class AddTrophyCatchVC: UIViewController {
     
     // Setting up Firestore, storage, location manager and image picker
     func setUp(){
+        navigationItem.title = "Add Catch"
         tID = UserDefaults.standard.string(forKey: "activeTournament")
         storage = Storage.storage()
         db = Firestore.firestore()

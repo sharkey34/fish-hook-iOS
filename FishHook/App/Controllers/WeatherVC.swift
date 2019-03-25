@@ -13,6 +13,8 @@ class WeatherVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        navigationItem.title = "Current Weather"
+        
         if let key = getKeys() {
             print(key)
             

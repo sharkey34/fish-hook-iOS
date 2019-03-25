@@ -37,6 +37,7 @@ class AddOfficialCatchVC: UIViewController {
         db = Firestore.firestore()
         imagePicker.delegate = self
 
+        navigationItem.title = "Add Catch"
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         catchIV.addGestureRecognizer(tap)
     }

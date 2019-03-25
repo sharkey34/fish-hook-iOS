@@ -37,9 +37,10 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
         
         navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.title = "Dashboard"
+        self.navigationItem.title = "Tournament Dashboard"
         navigationItem.rightBarButtonItem = editButtonItem
     }
+    
     
     //ACTIONS
     

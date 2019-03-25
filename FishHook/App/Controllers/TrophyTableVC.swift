@@ -23,6 +23,7 @@ class TrophyTableVC: UITableViewController {
         super.viewDidLoad()
         setUp()
         fetchTrophies()
+        navigationItem.title = "Trophy Wall"
     }
     
     func setUp(){

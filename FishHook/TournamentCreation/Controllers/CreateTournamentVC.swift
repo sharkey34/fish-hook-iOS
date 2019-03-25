@@ -14,12 +14,19 @@ class CreateTournamentVC: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Checking the current device.
+        let device = UIDevice.current
         
-        // Test
-        self.preferredDisplayMode = .allVisible
-        if let nav = self.viewControllers.last as? UINavigationController {
-            nav.topViewController?.navigationItem.leftBarButtonItem = self.displayModeButtonItem
+        if device.userInterfaceIdiom == UIUserInterfaceIdiom.phone {
+            self.preferredDisplayMode = .automatic
+            
+        } else {
+            self.preferredDisplayMode = .allVisible
+            if let nav = self.viewControllers.last as? UINavigationController {
+                nav.topViewController?.navigationItem.leftBarButtonItem = self.displayModeButtonItem
+            }
         }
+        
         
         // Hiding the navigationBar
         navigationController?.setNavigationBarHidden(true, animated: false)

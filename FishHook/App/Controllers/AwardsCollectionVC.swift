@@ -20,6 +20,8 @@ class AwardsCollectionVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Awards"
         db = Firestore.firestore()
     }
     
