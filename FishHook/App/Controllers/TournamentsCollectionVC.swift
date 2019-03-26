@@ -24,7 +24,7 @@ class TournamentsCollectionVC: UICollectionViewController {
         super.viewDidLoad()
         
         setUp()
-        fetchTournamentIDS()
+//        fetchTournamentIDS()
     }
     
     // initial setup.
@@ -107,23 +107,24 @@ class TournamentsCollectionVC: UICollectionViewController {
             if let logo = t.logo {
                 cell.tournamentImage.image = logo
             } else if let id = t.imageID {
-                let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/tournament%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8")
-                
-                URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                    if let data = data {
-                        let image = UIImage(data: data)
-                        self.tournaments[indexPath.row].logo = image
-
-                        DispatchQueue.main.async {
-                            if cell.tag == indexPath.row {
-                                cell.tournamentImage.image = image
+                if let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/tournament%2F\(id).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8") {
+                    
+                    URLSession.shared.dataTask(with: url) { (data, response, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        if let data = data {
+                            let image = UIImage(data: data)
+                            self.tournaments[indexPath.row].logo = image
+                            
+                            DispatchQueue.main.async {
+                                if cell.tag == indexPath.row {
+                                    cell.tournamentImage.image = image
+                                }
                             }
                         }
-                    }
-                }.resume()
+                        }.resume()
+                }
             } else {
                 cell.tournamentImage.image = UIImage(named: "DefaultTournament")
                 cell.deleteIV.image = UIImage(named: "Delete")

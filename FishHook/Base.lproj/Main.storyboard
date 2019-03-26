@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xuQ-yI-LIM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xuQ-yI-LIM">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1654,17 +1654,17 @@
         <scene sceneID="jTa-dR-cJ7">
             <objects>
                 <tabBarController storyboardIdentifier="AdminTabVC" id="RrT-hY-ejQ" customClass="TabVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="grm-By-oKC">
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="grm-By-oKC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dAi-ke-FIk" kind="relationship" relationship="viewControllers" id="wkk-ha-hEl"/>
-                        <segue destination="Spa-4L-Vz0" kind="relationship" relationship="viewControllers" id="L1p-0J-aPp"/>
-                        <segue destination="bLA-75-rSY" kind="relationship" relationship="viewControllers" id="Hud-JQ-CEe"/>
-                        <segue destination="FLr-fL-cH1" kind="relationship" relationship="viewControllers" id="cjH-U5-KhL"/>
-                        <segue destination="kWc-uy-RbP" kind="relationship" relationship="viewControllers" id="JW4-E0-zlJ"/>
+                        <segue destination="kWc-uy-RbP" kind="relationship" relationship="viewControllers" id="wlB-uk-LsW"/>
+                        <segue destination="Spa-4L-Vz0" kind="relationship" relationship="viewControllers" id="UY9-x1-oE8"/>
+                        <segue destination="dAi-ke-FIk" kind="relationship" relationship="viewControllers" id="u03-eG-RXP"/>
+                        <segue destination="bLA-75-rSY" kind="relationship" relationship="viewControllers" id="tDG-jQ-Ius"/>
+                        <segue destination="FLr-fL-cH1" kind="relationship" relationship="viewControllers" id="RCL-JP-7BQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zL-bL-TrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1799,17 +1799,101 @@
             </objects>
             <point key="canvasLocation" x="3916" y="1547"/>
         </scene>
-        <!--WeatherVC-->
+        <!--Marine Weather-->
         <scene sceneID="i7e-w0-CBo">
             <objects>
                 <viewController id="bsp-rO-BcQ" customClass="WeatherVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6wz-pg-JDL">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WeatherBackground" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Mu-hPj">
+                                <rect key="frame" x="0.0" y="10" width="768" height="1024"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="XRr-Tb-Bpl">
+                                <rect key="frame" x="269" y="261" width="230" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                <color key="textColor" red="1" green="1" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Olu-Mb-Juh">
+                                <rect key="frame" x="269" y="365.5" width="230" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aYt-sO-C1G">
+                                <rect key="frame" x="153.5" y="470" width="461" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xq9-EE-GTL">
+                                <rect key="frame" x="153.5" y="522" width="461" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t7e-4j-gSe">
+                                <rect key="frame" x="153.5" y="574" width="461" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kdj-ES-Qte">
+                                <rect key="frame" x="153.5" y="626.5" width="461" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4bS-pC-uMg">
+                                <rect key="frame" x="153.5" y="678.5" width="461" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kdj-ES-Qte" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.6" id="2CF-Um-iA1"/>
+                            <constraint firstItem="xq9-EE-GTL" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="2Gf-nM-Yee"/>
+                            <constraint firstItem="WOY-Mu-hPj" firstAttribute="centerX" secondItem="MJF-rs-FGH" secondAttribute="centerX" id="4nT-bs-hym"/>
+                            <constraint firstItem="4bS-pC-uMg" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="4qf-B5-1nl"/>
+                            <constraint firstItem="XRr-Tb-Bpl" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="81O-er-koC"/>
+                            <constraint firstItem="WOY-Mu-hPj" firstAttribute="width" secondItem="6wz-pg-JDL" secondAttribute="width" id="8sx-It-tV8"/>
+                            <constraint firstItem="WOY-Mu-hPj" firstAttribute="centerY" secondItem="MJF-rs-FGH" secondAttribute="centerY" id="9rN-no-Ik7"/>
+                            <constraint firstItem="4bS-pC-uMg" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="1.3" id="H60-gP-4af"/>
+                            <constraint firstItem="XRr-Tb-Bpl" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="0.5" id="HnV-EB-YlN"/>
+                            <constraint firstItem="t7e-4j-gSe" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="1.1" id="II6-Gb-LMT"/>
+                            <constraint firstItem="t7e-4j-gSe" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="KGN-FA-7M2"/>
+                            <constraint firstItem="aYt-sO-C1G" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="KHZ-dt-Svm"/>
+                            <constraint firstItem="WOY-Mu-hPj" firstAttribute="height" secondItem="6wz-pg-JDL" secondAttribute="height" id="LTE-cl-SQs"/>
+                            <constraint firstItem="4bS-pC-uMg" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.6" id="N21-Fp-lR3"/>
+                            <constraint firstItem="XRr-Tb-Bpl" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.3" id="NTT-Hy-aST"/>
+                            <constraint firstItem="Olu-Mb-Juh" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="0.7" id="OuO-Hl-7sa"/>
+                            <constraint firstItem="Kdj-ES-Qte" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="1.2" id="RxS-HN-yGG"/>
+                            <constraint firstItem="xq9-EE-GTL" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.6" id="Sk9-eO-I99"/>
+                            <constraint firstItem="aYt-sO-C1G" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.6" id="T48-Gg-GZF"/>
+                            <constraint firstItem="t7e-4j-gSe" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.6" id="XJW-T0-Hlw"/>
+                            <constraint firstItem="Kdj-ES-Qte" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="Xwr-e2-1fg"/>
+                            <constraint firstItem="xq9-EE-GTL" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" id="cPT-gA-Mfu"/>
+                            <constraint firstItem="aYt-sO-C1G" firstAttribute="centerY" secondItem="WOY-Mu-hPj" secondAttribute="centerY" multiplier="0.9" id="eoO-xc-2J0"/>
+                            <constraint firstItem="Olu-Mb-Juh" firstAttribute="centerX" secondItem="WOY-Mu-hPj" secondAttribute="centerX" id="y4H-N1-Bxg"/>
+                            <constraint firstItem="Olu-Mb-Juh" firstAttribute="width" secondItem="WOY-Mu-hPj" secondAttribute="width" multiplier="0.3" id="zNo-B0-lSS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MJF-rs-FGH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3We-UW-iUb"/>
+                    <navigationItem key="navigationItem" title="Marine Weather" id="3We-UW-iUb"/>
+                    <connections>
+                        <outlet property="tempLabel" destination="XRr-Tb-Bpl" id="RBh-M5-Eoz"/>
+                        <outlet property="weatherDescLabel" destination="Olu-Mb-Juh" id="COr-bp-8n1"/>
+                        <outlet property="weatherIV" destination="WOY-Mu-hPj" id="BMS-rE-4Ph"/>
+                        <outletCollection property="marinWeatherLables" destination="aYt-sO-C1G" collectionClass="NSMutableArray" id="2V0-ms-dTd"/>
+                        <outletCollection property="marinWeatherLables" destination="xq9-EE-GTL" collectionClass="NSMutableArray" id="LEy-oU-fkw"/>
+                        <outletCollection property="marinWeatherLables" destination="t7e-4j-gSe" collectionClass="NSMutableArray" id="cQC-oC-lk3"/>
+                        <outletCollection property="marinWeatherLables" destination="Kdj-ES-Qte" collectionClass="NSMutableArray" id="u3n-Zj-zaQ"/>
+                        <outletCollection property="marinWeatherLables" destination="4bS-pC-uMg" collectionClass="NSMutableArray" id="4gW-PH-cDi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRW-p8-FWI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1901,6 +1985,7 @@
         <image name="MapIcon" width="23" height="33"/>
         <image name="Placeholder" width="896" height="792"/>
         <image name="TrophyIcon" width="41" height="32"/>
+        <image name="WeatherBackground" width="768" height="1024"/>
         <image name="WeatherIcon" width="26" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -19,6 +19,7 @@ class TabVC: UITabBarController {
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
         // Do any additional setup after loading the view.
         tabBar.unselectedItemTintColor = UIColor.white
+        self.selectedIndex = 2
     }
     
 

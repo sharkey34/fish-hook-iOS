@@ -23,5 +23,16 @@ struct Utils {
         return alert
     }
     
+    // TODO:
+    // Bolding specific part of string
+    static func boldCharactersInRangeOf(text: String, boldText: String) -> NSAttributedString{
+        
+        let attributedString = NSMutableAttributedString(string: text as String, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 25.0)])
     
+        let boldAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 25.0)]
+    
+        attributedString.addAttribute(NSAttributedString.Key.font, value: boldAttribute, range: NSRangeFromString(boldText))
+        
+        return attributedString
+    }
 }

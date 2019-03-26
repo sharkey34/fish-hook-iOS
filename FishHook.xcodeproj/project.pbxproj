@@ -38,6 +38,7 @@
 		4A860154224485EE0080FDE3 /* TrophyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860153224485EE0080FDE3 /* TrophyCell.swift */; };
 		4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A8689C42231EA39009719CD /* FishHook.xcdatamodeld */; };
 		4A9D7DF3221E3F3F00585DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */; };
+		4A9EAEDC2249920D00F02A48 /* MarineWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9EAEDB2249920D00F02A48 /* MarineWeather.swift */; };
 		4AB0D936223573D60056BC73 /* CoreDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */; };
 		4AB0D9382235FD370056BC73 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D9372235FD370056BC73 /* Global.swift */; };
 		4AB0D93A223617DA0056BC73 /* AwardsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */; };
@@ -113,6 +114,7 @@
 		4A860153224485EE0080FDE3 /* TrophyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyCell.swift; sourceTree = "<group>"; };
 		4A8689C52231EA39009719CD /* FishHook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FishHook.xcdatamodel; sourceTree = "<group>"; };
 		4A9D7DF2221E3F3F00585DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A9EAEDB2249920D00F02A48 /* MarineWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarineWeather.swift; sourceTree = "<group>"; };
 		4AB0D935223573D60056BC73 /* CoreDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSingleton.swift; sourceTree = "<group>"; };
 		4AB0D9372235FD370056BC73 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4AB0D939223617DA0056BC73 /* AwardsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionVC.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				4AB2109E2226380C00735881 /* Division.swift */,
 				4AB210A02226388000735881 /* Award.swift */,
 				4A515BAF22373FF2009B94EE /* Catch.swift */,
+				4A9EAEDB2249920D00F02A48 /* MarineWeather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				4AF27E262226F5DD003A8A21 /* AwardsVC.swift in Sources */,
 				4A5EB20E2242FBCD00499FCD /* DetailDelegate.swift in Sources */,
 				4AB0D93A223617DA0056BC73 /* AwardsCollectionVC.swift in Sources */,
+				4A9EAEDC2249920D00F02A48 /* MarineWeather.swift in Sources */,
 				4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */,
 				4A4B4D2222453FEC0064C4C6 /* MapsVC.swift in Sources */,
 				4AC7157F2220E0B100868214 /* DivisionsCollectionVC.swift in Sources */,
@@ -777,7 +781,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHookApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -796,7 +800,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHookApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericsharkey.FishHook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
