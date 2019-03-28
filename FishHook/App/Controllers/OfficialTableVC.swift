@@ -48,26 +48,30 @@ class OfficialTableVC: UITableViewController {
                 return
             }
             
-                if let docs = documents?.documents {
+            if let docs = documents?.documents {
+                
+                for doc in docs {
+                    let map = doc.data()
+                    let docID = doc.documentID
+                    let imageID = map["imageID"] as? String
+                    let userID = map["userID"] as! String
+                    let userName = map["userName"] as! String
+                    let fish = map["fish"] as! String
+                    let metric = map["metric"] as! String
                     
-                    for doc in docs {
-                        let map = doc.data()
-                        let docID = doc.documentID
-                        let imageID = map["imageID"] as? String
-                        let userID = map["userID"] as! String
-                        let userName = map["userName"] as! String
-                        let fish = map["fish"] as! String
-                        let metric = map["metric"] as! String
-                        
-                        self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID, _tID: nil, _lat: nil, _long: nil))
-                    }
+                    self.catches.append(Catch(_id: docID, _aID: self.aID!, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID, _tID: nil, _lat: nil, _long: nil))
+                }
+                
+                DispatchQueue.main.async {
                     if self.catches.count <= 0 {
                         let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
                         self.present(alert, animated: true, completion: nil)
                     } else {
                         self.tableView.reloadData()
                     }
+                    
                 }
+            }
         }
     }
     

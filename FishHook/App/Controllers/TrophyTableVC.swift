@@ -65,11 +65,14 @@ class TrophyTableVC: UITableViewController {
                     
                     self.catches.append(Catch(_id: id, _aID: nil, _userName: userName, _place: nil, _userID: userID, _metric: metric, _fish: fish, _image: nil, _imageID: imageID, _tID: tID, _lat: lat, _long: long))
                 }
-                if self.catches.count <= 0 {
-                    let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.tableView.reloadData()
+                
+                DispatchQueue.main.async {
+                    if self.catches.count <= 0 {
+                        let alert = Utils.basicAlert(title: "No Catches", message: "There have been no catches added. Please select the add button and add a catch.", Button: "OK")
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
