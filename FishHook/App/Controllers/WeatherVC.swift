@@ -75,6 +75,8 @@ class WeatherVC: UIViewController {
     
     // Fetching the marine data
     func fetchMarineWeather(lat: String, long: String){
+        
+        // Not sure why string interpolation for key is not working
         let marineWeatherString = "https://api.worldweatheronline.com/premium/v1/marine.ashx?q=27.929097,-82.610179&format=json&key=85afa02d0e724309a44233800192203"
         
         let url = URL(string: marineWeatherString)

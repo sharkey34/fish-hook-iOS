@@ -19,6 +19,8 @@
 		4A4B4D24224548810064C4C6 /* AddTrophyCatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */; };
 		4A515BAE22372443009B94EE /* AddOfficialCatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */; };
 		4A515BB022373FF2009B94EE /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515BAF22373FF2009B94EE /* Catch.swift */; };
+		4A53F374224B1DDE000EB19C /* AnglerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A53F373224B1DDE000EB19C /* AnglerProfileVC.swift */; };
+		4A53F376224B1E15000EB19C /* AnglerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A53F375224B1E15000EB19C /* AnglerProfileCell.swift */; };
 		4A5C3C9C2221EBC7006DE8B9 /* ArchiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */; };
 		4A5C3C9E2221EBE0006DE8B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3C9D2221EBE0006DE8B9 /* User.swift */; };
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
@@ -95,6 +97,8 @@
 		4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrophyCatchVC.swift; sourceTree = "<group>"; };
 		4A515BAD22372443009B94EE /* AddOfficialCatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfficialCatchVC.swift; sourceTree = "<group>"; };
 		4A515BAF22373FF2009B94EE /* Catch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch.swift; sourceTree = "<group>"; };
+		4A53F373224B1DDE000EB19C /* AnglerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnglerProfileVC.swift; sourceTree = "<group>"; };
+		4A53F375224B1E15000EB19C /* AnglerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnglerProfileCell.swift; sourceTree = "<group>"; };
 		4A5C3C9B2221EBC7006DE8B9 /* ArchiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUser.swift; sourceTree = "<group>"; };
 		4A5C3C9D2221EBE0006DE8B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				4A4B4D23224548810064C4C6 /* AddTrophyCatchVC.swift */,
 				4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */,
 				4A41F44F2245A754000E55FD /* WeatherVC.swift */,
+				4A53F373224B1DDE000EB19C /* AnglerProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				4AB0D93B223618020056BC73 /* AwardsCollectionViewCell.swift */,
 				4AB0D93D223619270056BC73 /* OfficialTableViewCell.swift */,
 				4A860153224485EE0080FDE3 /* TrophyCell.swift */,
+				4A53F375224B1E15000EB19C /* AnglerProfileCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -589,9 +595,11 @@
 				4AC715812220E3EC00868214 /* LoginVC.swift in Sources */,
 				4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */,
 				4A73E44F2224950600786CE1 /* SelectSpeciesVC.swift in Sources */,
+				4A53F376224B1E15000EB19C /* AnglerProfileCell.swift in Sources */,
 				4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */,
 				4A515BAE22372443009B94EE /* AddOfficialCatchVC.swift in Sources */,
 				4A73E44A2224949000786CE1 /* SummaryVC.swift in Sources */,
+				4A53F374224B1DDE000EB19C /* AnglerProfileVC.swift in Sources */,
 				4A8689C62231EA39009719CD /* FishHook.xcdatamodeld in Sources */,
 				4AFF71DC22238C4E0038707F /* BasicDetailsVC.swift in Sources */,
 				4AF27E262226F5DD003A8A21 /* AwardsVC.swift in Sources */,

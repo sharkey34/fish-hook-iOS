@@ -59,6 +59,7 @@ enum Segues: String {
     case Summary = "toSummary"
     case Details = "toDivisionDetails"
     case Dashboard = "toDashboard"
+    case Profile = "toProfile"
 }
 
 // TODO: Firebase

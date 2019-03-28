@@ -19,7 +19,7 @@ class MapsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Maps"
+        navigationItem.title = "Current Location"
         checkLocationServices()
     }
 

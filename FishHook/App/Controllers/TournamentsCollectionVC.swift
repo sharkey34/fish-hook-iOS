@@ -38,11 +38,19 @@ class TournamentsCollectionVC: UICollectionViewController {
         
         navigationItem.setHidesBackButton(true, animated: false)
         self.navigationItem.title = "Tournament Dashboard"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ProfileIcon"), style: .plain, target: self, action: #selector(profileSelected(sender:)))
+        
         navigationItem.rightBarButtonItem = editButtonItem
     }
     
     
     //ACTIONS
+    
+    @objc
+    func profileSelected(sender: UIBarButtonItem){
+        performSegue(withIdentifier: Segues.Profile.rawValue, sender: self)
+    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
