@@ -40,9 +40,7 @@ class AnglerProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUp()
-
     }
     
     // Initial Setup

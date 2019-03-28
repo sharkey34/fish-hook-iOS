@@ -357,10 +357,8 @@ class TournamentsCollectionVC: UICollectionViewController {
     // Passing the currentUser to the Profiles
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.Profile.rawValue {
-            if let nav = segue.destination as? UINavigationController {
-                if let profileVC = nav.topViewController as? AnglerProfileVC {
-                    profileVC.userID = currentUser?.uid
-                }
+            if let profileVC = segue.destination as? AnglerProfileVC {
+                profileVC.userID = currentUser?.uid
             }
         }
     }
