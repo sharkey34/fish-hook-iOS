@@ -8,14 +8,11 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseStorage
 import FirebaseAuth
-import CoreData
 
 class TournamentsCollectionVC: UICollectionViewController {
     
     var db: Firestore?
-    var storage: Storage?
     var currentUser: User?
     var tournaments = [Tournament]()
     var deleteImages = [UIImageView]()
@@ -30,7 +27,6 @@ class TournamentsCollectionVC: UICollectionViewController {
     // initial setup.
     func setUp(){
         db = Firestore.firestore()
-        storage = Storage.storage()
         
         if let tabVC = tabBarController as? TabVC {
             currentUser = tabVC.currentUser
@@ -49,7 +45,12 @@ class TournamentsCollectionVC: UICollectionViewController {
     
     @objc
     func profileSelected(sender: UIBarButtonItem){
-        performSegue(withIdentifier: Segues.Profile.rawValue, sender: self)
+        
+        if currentUser!.admin {
+            performSegue(withIdentifier: Segues.OrganizerProfile.rawValue, sender: self)
+        } else {
+            performSegue(withIdentifier: Segues.AnglerProfile.rawValue, sender: self)
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -356,9 +357,16 @@ class TournamentsCollectionVC: UICollectionViewController {
     
     // Passing the currentUser to the Profiles
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.Profile.rawValue {
-            if let profileVC = segue.destination as? AnglerProfileVC {
-                profileVC.userID = currentUser?.uid
+        
+        guard let user = currentUser else {return}
+        
+        if segue.identifier == Segues.AnglerProfile.rawValue {
+            if let anglerVC = segue.destination as? AnglerProfileVC {
+                anglerVC.currentUser = user
+            }
+        } else if segue.identifier == Segues.OrganizerProfile.rawValue {
+            if let organizerVC = segue.destination as? OrganizerProfileVC {
+                organizerVC.currentUser = user
             }
         }
     }

@@ -97,12 +97,19 @@ class LoginVC: UIViewController {
                             // Mapping the data and save the user information to currentUser.
                             if let map = doc.data(){
                                 
+                                let imageID = map["imageID"] as? String
                                 let email = map["email"] as! String
                                 let first = map["first"] as! String
                                 let last = map["last"] as! String
                                 let admin = map["admin"] as! Bool
+                                let boat = map["boat"] as? String
+                                let captain = map["captain"] as? String
+                                let about = map["about"] as? String
+                                let phone = map["phone"] as? String
+                                let address = map["address"] as? String
+                                let org = map["org"] as? String
             
-                            UserDefaults.standard.set(currentUser: User(_uid: uid, _admin: admin, _first: first, _last: last, _email: email), forKey: "currentUser")
+                                UserDefaults.standard.set(currentUser: User(_profileImage:nil, _imageID: imageID,_uid: uid, _admin: admin, _first: first, _last: last, _email: email, _boat: boat, _captain: captain, _about: about, _phone: phone, _address: address, _organization: org), forKey: "currentUser")
                                 
                             }
                             self.performSegue(withIdentifier: "loginToDashboard", sender: self)

@@ -166,8 +166,3 @@ extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
         dismiss(animated: true, completion: nil)
     }
 }
-
-// Split View delegate
-extension BasicDetailsVC: UISplitViewControllerDelegate {
-
-}

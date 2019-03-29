@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0F43A1224DD9E1003F7777 /* OrganizerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F43A0224DD9E1003F7777 /* OrganizerProfileVC.swift */; };
 		4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F48B1221F95CA00FDBC93 /* CreateAccountVC.swift */; };
 		4A35F970221B0D4800664FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A35F96F221B0D4800664FF2 /* AppDelegate.swift */; };
 		4A35F975221B0D4800664FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A35F973221B0D4800664FF2 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		4A5C3CA322222125006DE8B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */; };
 		4A5EB20E2242FBCD00499FCD /* DetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EB20D2242FBCD00499FCD /* DetailDelegate.swift */; };
 		4A6CBBE8221F7E8500B8823A /* ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */; };
+		4A6F98EF224EB038000B727A /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6F98EE224EB038000B727A /* EditProfileVC.swift */; };
 		4A73E44022246B8500786CE1 /* TournamentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */; };
 		4A73E4422224934700786CE1 /* SplitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4412224934700786CE1 /* SplitTableViewCell.swift */; };
 		4A73E4452224940700786CE1 /* CreateDivisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73E4442224940700786CE1 /* CreateDivisionCell.swift */; };
@@ -81,6 +83,7 @@
 /* Begin PBXFileReference section */
 		02E41442937C50E2676D08AA /* Pods_FishHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41706ECB67639F1D0E4AFA98 /* Pods-FishHook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FishHook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FishHook/Pods-FishHook.debug.xcconfig"; sourceTree = "<group>"; };
+		4A0F43A0224DD9E1003F7777 /* OrganizerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileVC.swift; sourceTree = "<group>"; };
 		4A2F48B1221F95CA00FDBC93 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		4A35F96C221B0D4800664FF2 /* FishHook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishHook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35F96F221B0D4800664FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		4A5C3CA222222125006DE8B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4A5EB20D2242FBCD00499FCD /* DetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegate.swift; sourceTree = "<group>"; };
 		4A6CBBE7221F7E8500B8823A /* ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradient.swift; sourceTree = "<group>"; };
+		4A6F98EE224EB038000B727A /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		4A73E43F22246B8500786CE1 /* TournamentTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableVC.swift; sourceTree = "<group>"; };
 		4A73E4412224934700786CE1 /* SplitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTableViewCell.swift; sourceTree = "<group>"; };
 		4A73E4442224940700786CE1 /* CreateDivisionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDivisionCell.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				4A4B4D2122453FEC0064C4C6 /* MapsVC.swift */,
 				4A41F44F2245A754000E55FD /* WeatherVC.swift */,
 				4A53F373224B1DDE000EB19C /* AnglerProfileVC.swift */,
+				4A0F43A0224DD9E1003F7777 /* OrganizerProfileVC.swift */,
+				4A6F98EE224EB038000B727A /* EditProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				4A860154224485EE0080FDE3 /* TrophyCell.swift in Sources */,
 				4AB0D93E223619270056BC73 /* OfficialTableViewCell.swift in Sources */,
 				4A2F48B2221F95CA00FDBC93 /* CreateAccountVC.swift in Sources */,
+				4A6F98EF224EB038000B727A /* EditProfileVC.swift in Sources */,
 				4AB2109F2226380C00735881 /* Division.swift in Sources */,
 				4AC210702241D69000012E9B /* UIImageViewExtension.swift in Sources */,
 				4AB2109D2225E48400735881 /* Utils.swift in Sources */,
@@ -587,6 +594,7 @@
 				4A515BB022373FF2009B94EE /* Catch.swift in Sources */,
 				4AB210992225DBC500735881 /* Fish.swift in Sources */,
 				4A854EE12228AD720008CD67 /* TextFieldExtension.swift in Sources */,
+				4A0F43A1224DD9E1003F7777 /* OrganizerProfileVC.swift in Sources */,
 				4AC7157A2220DF7000868214 /* TabVC.swift in Sources */,
 				4A41F4502245A754000E55FD /* WeatherVC.swift in Sources */,
 				4AC7157C2220E05F00868214 /* TournamentsCollectionVC.swift in Sources */,

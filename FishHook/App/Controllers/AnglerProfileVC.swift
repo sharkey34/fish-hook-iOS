@@ -33,7 +33,7 @@ class AnglerProfileVC: UIViewController {
     
     var officialSelected = false
     var trophySelected = false
-    var userID: String!
+    var currentUser: User!
     var officialCatches = [Catch]()
     var trophyCatches = [Catch]()
     
@@ -50,6 +50,8 @@ class AnglerProfileVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         trophySelected = true
+        
+        anglerProfileIV.layer.cornerRadius = 50
         fetchCatches(isTrophy: true)
         
         let trophyTap = UITapGestureRecognizer(target: self, action: #selector(trophyTapped(sender:)))
@@ -57,6 +59,14 @@ class AnglerProfileVC: UIViewController {
         
         let officialTap = UITapGestureRecognizer(target: self, action: #selector(officialTapped(sender:)))
         officialBtn.addGestureRecognizer(officialTap)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
+    }
+    
+    
+    @objc
+    func editTapped(sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "toAnglerEdit", sender: self)
     }
     
     // Changing attributes and fetching catches
@@ -129,7 +139,7 @@ class AnglerProfileVC: UIViewController {
             catches = officialCatches
         }
         
-        db.collection(type).whereField("userID", isEqualTo: userID).getDocuments(source: .default) { (documents, error) in
+        db.collection(type).whereField("userID", isEqualTo: currentUser.uid).getDocuments(source: .default) { (documents, error) in
             
             if let err = error {
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
