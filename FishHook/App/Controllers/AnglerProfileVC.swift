@@ -51,7 +51,6 @@ class AnglerProfileVC: UIViewController {
         tableView.delegate = self
         trophySelected = true
         
-        anglerProfileIV.layer.cornerRadius = 50
         fetchCatches(isTrophy: true)
         
         let trophyTap = UITapGestureRecognizer(target: self, action: #selector(trophyTapped(sender:)))
@@ -62,6 +61,57 @@ class AnglerProfileVC: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        anglerNameLabel.text = currentUser.userName
+        
+        if let captain = currentUser.captain {
+            captainNameLabel.text = captain
+            captainIconIV.image = UIImage(named: "CaptainIcon")
+        } else {
+            captainNameLabel.text = ""
+            captainIconIV.image = nil
+        }
+        
+        if let boat = currentUser.boat {
+            boatNameLabel.text = boat
+            boatIconIV.image = UIImage(named: "BoatIcon")
+        } else {
+            boatNameLabel.text = ""
+            boatIconIV.image = nil
+        }
+
+        if let image = currentUser.profileImage {
+            anglerProfileIV.image = image
+        } else if let imageID = currentUser.imageID {
+            downlodImage(imageID: imageID)
+        } else {
+            anglerProfileIV.image = UIImage(named: "ProfilePlaceholder")
+        }
+    }
+    
+    // Downloading Image
+    func downlodImage(imageID: String){
+        if let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/fish-hook-3ef8d.appspot.com/o/profile%2F\(imageID).jpg?alt=media&token=c29ad4be-23a0-4bce-945a-00d1298bf8d8") {
+            
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let data = data {
+                    let image = UIImage(data: data)
+                    
+                    // Setting profile image
+                    DispatchQueue.main.async {
+                        self.anglerProfileIV.image = image
+                        self.currentUser.profileImage = image
+                    }
+                }
+            }.resume()
+        }
+    }
+    
+
     
     
     @objc
@@ -178,6 +228,15 @@ class AnglerProfileVC: UIViewController {
                         self.tableView.reloadData()
                     }
                 }
+            }
+        }
+    }
+    
+    // Sending currentUser to edit Vc
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAnglerEdit" {
+            if let editVC = segue.destination as? EditProfileVC {
+                editVC.currentUser = currentUser
             }
         }
     }

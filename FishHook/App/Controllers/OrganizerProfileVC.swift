@@ -28,10 +28,8 @@ class OrganizerProfileVC: UIViewController {
     
     // Initial setup
     func setUp(){  
-        profileIV.layer.cornerRadius = 100
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         emailLabel.text = currentUser.email
@@ -45,7 +43,7 @@ class OrganizerProfileVC: UIViewController {
         } else if let imageID = currentUser.imageID {
             downlodImage(imageID: imageID)
         } else {
-            profileIV.image = UIImage(named: "ProfilePlacholder")
+            profileIV.image = UIImage(named: "ProfilePlaceholder")
         }
     }
     

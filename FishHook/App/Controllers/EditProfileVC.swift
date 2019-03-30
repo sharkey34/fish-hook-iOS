@@ -55,7 +55,9 @@ class EditProfileVC: UIViewController {
         
         entries[0].text = currentUser.organization ?? "Organizer Name"
         entries[1].text = currentUser.phone ?? "Phone Number"
+        entries[1].keyboardType = .phonePad
         entries[2].text = currentUser.address ?? "Organization Address"
+        entries[2].textContentType = .fullStreetAddress
         aboutTV.text = currentUser.about ?? "No Information"
         
         aboutTV.isHidden = false
@@ -183,8 +185,11 @@ class EditProfileVC: UIViewController {
     
     // Validating Entries
     func validateEntries() -> Bool {
-        guard !entries[0].isNullOrWhitespace(), !entries[1].isNullOrWhitespace(), !entries[2].isNullOrWhitespace(), let _ = profileIV.image else {return false}
-        
+        if currentUser.admin {
+            guard !entries[0].isNullOrWhitespace(), !entries[1].isNullOrWhitespace(), !entries[2].isNullOrWhitespace(), let _ = profileIV.image else {return false}
+        } else {
+            guard !entries[0].isNullOrWhitespace(), let _ = profileIV.image else {return false}
+        }
         return true
     }
 }

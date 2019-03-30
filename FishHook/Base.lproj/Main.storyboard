@@ -1677,7 +1677,7 @@
                                 <rect key="frame" x="0.0" y="275" width="768" height="256"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BoatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-w8-ap3">
-                                        <rect key="frame" x="77" y="19" width="76.5" height="51"/>
+                                        <rect key="frame" x="77" y="19" width="76.500000000000114" height="51"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CaptainIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1Zg-m6-FVC">
                                         <rect key="frame" x="626" y="19" width="53.5" height="51"/>
@@ -1695,7 +1695,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eric Sharkey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-bh-bdy">
-                                        <rect key="frame" x="230.5" y="134.5" width="307" height="26.5"/>
+                                        <rect key="frame" x="230.5" y="109" width="307" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1788,7 +1788,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePlacholder" translatesAutoresizingMaskIntoConstraints="NO" id="hga-0N-C1p">
-                                <rect key="frame" x="230.5" y="143.5" width="307" height="256"/>
+                                <rect key="frame" x="230.5" y="169" width="307" height="205"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lq2-kY-Ip8">
                                 <rect key="frame" x="0.0" y="531" width="768" height="443"/>
@@ -1871,7 +1871,7 @@
                             <constraint firstItem="lq2-kY-Ip8" firstAttribute="leading" secondItem="YFi-QS-p0T" secondAttribute="leading" id="80T-QM-Rzk"/>
                             <constraint firstItem="i3Z-mr-dgc" firstAttribute="top" secondItem="Pf5-ho-YGB" secondAttribute="bottom" id="8fU-cC-aEV"/>
                             <constraint firstItem="i3Z-mr-dgc" firstAttribute="centerX" secondItem="YFi-QS-p0T" secondAttribute="centerX" id="Dnb-VS-hS3"/>
-                            <constraint firstItem="hga-0N-C1p" firstAttribute="height" secondItem="sL8-2k-kef" secondAttribute="height" multiplier="0.25" id="NDP-qu-u59"/>
+                            <constraint firstItem="hga-0N-C1p" firstAttribute="height" secondItem="sL8-2k-kef" secondAttribute="height" multiplier="0.2" id="NDP-qu-u59"/>
                             <constraint firstItem="i3Z-mr-dgc" firstAttribute="height" secondItem="sL8-2k-kef" secondAttribute="height" multiplier="0.25" id="P2r-I3-hbV"/>
                             <constraint firstItem="Pf5-ho-YGB" firstAttribute="centerX" secondItem="YFi-QS-p0T" secondAttribute="centerX" id="WEr-Lt-AWA"/>
                             <constraint firstItem="YFi-QS-p0T" firstAttribute="bottom" secondItem="lq2-kY-Ip8" secondAttribute="bottom" id="a0H-k2-Mg1"/>
@@ -2484,6 +2484,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="5RI-Ml-uSW"/>
         <segue reference="XR5-Bf-aic"/>
-        <segue reference="Mh3-Xb-gMK"/>
+        <segue reference="ox2-Tp-Njl"/>
     </inferredMetricsTieBreakers>
 </document>
