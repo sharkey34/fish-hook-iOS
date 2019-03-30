@@ -23,8 +23,6 @@ class BasicDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
         setUp()
     }
     
@@ -39,6 +37,64 @@ class BasicDetailsVC: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         logo.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setValues()
+    }
+    
+    func setValues(){
+        
+        tournamentName.text = Global.tournament.name
+        
+        if let image = Global.tournament.logo {
+            logo.image = image
+        }
+        
+        if Global.tournament.participants!.count > 0 {
+            for user in Global.tournament.participants! {
+                switch user {
+                case "Angler":
+                   participants[0].1 = true
+                case "Captain":
+                    participants[1].1 = true
+                case "Boat":
+                    participants[2].1 = true
+                default:
+                    break
+                }
+            }
+            tableview.reloadData()
+        }
+        
+        if Global.tournament.waterType.count > 0 {
+            for type in Global.tournament.waterType {
+                switch type {
+                case "Freshwater":
+                    waterType[0].isOn = true
+                case "Saltwater":
+                    waterType[1].isOn = true
+                default:
+                    break
+                }
+            }
+        }
+        
+        if Global.tournament.metrics.count > 0 {
+            for metric in Global.tournament.metrics {
+                switch metric {
+                case "Weight":
+                    metrics[0].isOn = true
+                case "Length":
+                    metrics[1].isOn = true
+                default:
+                    break
+                }
+            }
+        }
+        
+        
+        
     }
     
     @IBAction func addLogoTapped(_ sender: UIButton) {
@@ -94,6 +150,7 @@ class BasicDetailsVC: UIViewController {
                 }
             }
         }
+        
         for p in participants {
             if p.1 {
                 participant = true

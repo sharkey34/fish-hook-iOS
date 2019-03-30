@@ -111,9 +111,6 @@ class AnglerProfileVC: UIViewController {
         }
     }
     
-
-    
-    
     @objc
     func editTapped(sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "toAnglerEdit", sender: self)

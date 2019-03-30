@@ -52,7 +52,6 @@ class EditProfileVC: UIViewController {
     
     // Setting up Admin values
     func adminSetUp(){
-        
         entries[0].text = currentUser.organization ?? "Organizer Name"
         entries[1].text = currentUser.phone ?? "Phone Number"
         entries[1].keyboardType = .phonePad
@@ -69,6 +68,7 @@ class EditProfileVC: UIViewController {
         entries[0].text = currentUser.userName
         entries[1].text = currentUser.boat ?? "Boat name"
         entries[2].text = currentUser.captain ?? "Captain name"
+        aboutLabel.text = nil
         
         aboutTV.isHidden = true
         aboutTV.isEditable = false

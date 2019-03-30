@@ -32,6 +32,22 @@ class SelectSpeciesVC: UITableViewController {
         searchControllerSetup()
     }
     
+    func setUpValues(){
+        
+        if Global.tournament.fishSpecies.count > 0 {
+            
+            for fish in Global.tournament.fishSpecies.enumerated() {
+
+                for filteredFish in filteredSpecies {
+                    if fish.element.name == filteredFish.name {
+                        filteredFish.checked = true
+                    }
+                }
+            }
+        }
+        tableView.reloadData()
+    }
+    
     @objc func saveSelected(sender: UIBarButtonItem){
         
         // Validating at least one fish Species has been selected.
@@ -66,7 +82,7 @@ class SelectSpeciesVC: UITableViewController {
                     self.fishSpecies.append(newFish)
                 }
                 self.filteredSpecies = self.fishSpecies
-                self.tableView.reloadData()
+                self.setUpValues()
             }
         })
     }

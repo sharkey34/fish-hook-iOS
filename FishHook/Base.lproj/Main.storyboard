@@ -390,7 +390,7 @@
         <scene sceneID="QlL-Om-bd2">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="2hI-o0-kmB" customClass="TournamentTableVC" customModule="FishHook" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fjG-7A-FRc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1435,7 +1435,7 @@
                                 <rect key="frame" x="0.0" y="70" width="768" height="307"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePlacholder" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-5v-hEt">
-                                <rect key="frame" x="38.5" y="176" width="230.5" height="184.5"/>
+                                <rect key="frame" x="77" y="176" width="153.5" height="184.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YpX-7U-KBe">
                                 <rect key="frame" x="307" y="412" width="154" height="30"/>
@@ -1511,7 +1511,7 @@
                             <constraint firstItem="GXk-ic-4uM" firstAttribute="height" secondItem="x06-WO-oPw" secondAttribute="height" multiplier="0.03" id="QZx-bI-vLN"/>
                             <constraint firstItem="EVe-5v-hEt" firstAttribute="centerX" secondItem="IFn-xn-uUz" secondAttribute="centerX" multiplier="0.4" id="Ri1-tf-Jpf"/>
                             <constraint firstItem="IFn-xn-uUz" firstAttribute="width" secondItem="x06-WO-oPw" secondAttribute="width" id="SQG-8u-E9R"/>
-                            <constraint firstItem="EVe-5v-hEt" firstAttribute="width" secondItem="IFn-xn-uUz" secondAttribute="width" multiplier="0.3" id="UuL-K2-WXV"/>
+                            <constraint firstItem="EVe-5v-hEt" firstAttribute="width" secondItem="IFn-xn-uUz" secondAttribute="width" multiplier="0.2" id="UuL-K2-WXV"/>
                             <constraint firstItem="BE1-Sf-RHw" firstAttribute="top" secondItem="fdm-Z3-mtx" secondAttribute="bottom" constant="35" id="Val-bU-4Ib"/>
                             <constraint firstItem="Dai-za-QxU" firstAttribute="centerY" secondItem="IFn-xn-uUz" secondAttribute="centerY" multiplier="1.55" id="VrY-Nc-vQY"/>
                             <constraint firstItem="ba1-V7-WQj" firstAttribute="top" secondItem="Kfq-gA-p9b" secondAttribute="bottom" constant="25" id="WrD-Z4-10A"/>
@@ -1677,7 +1677,7 @@
                                 <rect key="frame" x="0.0" y="275" width="768" height="256"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BoatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-w8-ap3">
-                                        <rect key="frame" x="77" y="19" width="76.500000000000114" height="51"/>
+                                        <rect key="frame" x="77" y="19" width="76.5" height="51"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CaptainIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1Zg-m6-FVC">
                                         <rect key="frame" x="626" y="19" width="53.5" height="51"/>
@@ -2484,6 +2484,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="5RI-Ml-uSW"/>
         <segue reference="XR5-Bf-aic"/>
-        <segue reference="ox2-Tp-Njl"/>
+        <segue reference="Mh3-Xb-gMK"/>
     </inferredMetricsTieBreakers>
 </document>
