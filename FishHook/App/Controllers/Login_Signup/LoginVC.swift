@@ -107,9 +107,10 @@ class LoginVC: UIViewController {
                                 let about = map["about"] as? String
                                 let phone = map["phone"] as? String
                                 let address = map["address"] as? String
+                                let userName = map["userName"] as? String
                                 let org = map["org"] as? String
             
-                                UserDefaults.standard.set(currentUser: User(_profileImage:nil, _imageID: imageID,_uid: uid, _admin: admin, _first: first, _last: last, _email: email, _boat: boat, _captain: captain, _about: about, _phone: phone, _address: address, _organization: org), forKey: "currentUser")
+                                UserDefaults.standard.set(currentUser: User(_profileImage:nil, _imageID: imageID,_uid: uid, _admin: admin, _first: first, _last: last, _email: email, _boat: boat, _captain: captain, _about: about, _phone: phone, _address: address, _organization: org, _userName: userName), forKey: "currentUser")
                                 
                             }
                             self.performSegue(withIdentifier: "loginToDashboard", sender: self)
@@ -120,7 +121,6 @@ class LoginVC: UIViewController {
         case 2:
             // TODO: Perform Segue to Create Account Controller
             performSegue(withIdentifier: "toCreateAccount", sender: self)
-            print("No Account")
         default:
             print("Invalid Login Controller tag")
         }

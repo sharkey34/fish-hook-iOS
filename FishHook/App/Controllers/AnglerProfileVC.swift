@@ -153,7 +153,7 @@ class AnglerProfileVC: UIViewController {
                     let map = doc.data()
                     let id = doc.documentID
                     let tID = map["tID"] as! String
-                    let userName = map["name"] as! String
+                    let userName = map["userName"] as! String
                     let lat = map["lat"] as! String
                     let long = map["long"] as! String
                     let userID = map["userID"] as! String

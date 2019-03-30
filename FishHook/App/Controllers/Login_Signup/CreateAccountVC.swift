@@ -81,6 +81,7 @@ class CreateAccountVC: UIViewController {
                     "first":firstName,
                     "last": lastName,
                     "email": emailText,
+                    "userName": "\(firstName) \(lastName)",
                     "admin": self.adminSwitch.isOn
                 ],
                 completion: { (error) in if let err = error {
@@ -90,9 +91,10 @@ class CreateAccountVC: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     // Saving currentUser t-o UserDefaults
-                    let currentUser = User(_profileImage: nil, _imageID: nil,_uid: uid, _admin: self.adminSwitch.isOn, _first: firstName, _last: lastName, _email: emailText, _boat: nil, _captain: nil, _about: nil, _phone: nil, _address: nil, _organization:  nil)
+                    let currentUser = User(_profileImage: nil, _imageID: nil,_uid: uid, _admin: self.adminSwitch.isOn, _first: firstName, _last: lastName, _email: emailText, _boat: nil, _captain: nil, _about: nil, _phone: nil, _address: nil, _organization:  nil, _userName: "\(firstName) \(lastName)")
                     UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
                     UserDefaults.standard.set(nil, forKey: "activeTournament")
+                    self.navigationController?.isNavigationBarHidden = true
                     self.performSegue(withIdentifier: "createToDashboard", sender: self)
                 }
             })

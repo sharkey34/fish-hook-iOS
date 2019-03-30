@@ -63,7 +63,7 @@ class AddTrophyCatchVC: UIViewController {
     }
     @IBAction func submitCatch(_ sender: UIButton) {
         // Validating inputs
-        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image, let firstName = currentUser?.firstName, let lastName = currentUser?.lastName, let UID = currentUser?.uid, let id = tID, let latitude = lat?.description, let longitude = long?.description
+        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image, let UID = currentUser?.uid, let id = tID, let latitude = lat?.description, let longitude = long?.description, let userName = currentUser?.userName
             else{
             let alert = Utils.basicAlert(title: "Invalid Entries", message: "Please make sure every field is filled out correctly and not left blank.", Button: "OK")
             present(alert, animated: true, completion: nil)
@@ -72,7 +72,7 @@ class AddTrophyCatchVC: UIViewController {
         let catchID = db.collection("trophy").document().documentID
         imageID = NSUUID().uuidString
     
-        newCatch = Catch(_id: catchID, _aID: nil, _userName: "\(firstName) \(lastName)", _place: nil, _userID: UID, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchImage, _imageID: imageID, _tID: id, _lat: latitude, _long: longitude)
+        newCatch = Catch(_id: catchID, _aID: nil, _userName: userName, _place: nil, _userID: UID, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchImage, _imageID: imageID, _tID: id, _lat: latitude, _long: longitude)
         
         // Saving image
         uploadImage(imageID: imageID, image: catchImage)
@@ -88,7 +88,7 @@ class AddTrophyCatchVC: UIViewController {
             db.collection("trophy").document(c.id).setData(
             [
                 "tID": tID!,
-                "name": c.userName,
+                "userName": c.userName,
                 "lat": c.lat!,
                 "long": c.long!,
                 "userID": c.userID,

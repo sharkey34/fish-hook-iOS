@@ -17,6 +17,7 @@ class TabVC: UITabBarController {
         super.viewDidLoad()
 
         currentUser = UserDefaults.standard.currentUser(forKey: "currentUser")
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         tabBar.unselectedItemTintColor = UIColor.white
         self.selectedIndex = 2

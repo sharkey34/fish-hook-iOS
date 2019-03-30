@@ -17,21 +17,18 @@ class OrganizerProfileVC: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var aboutTV: UITextView!
+    @IBOutlet weak var orgLabel: UILabel!
     
     var currentUser: User!
-    var storage: Storage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUp()
     }
     
     // Initial setup
-    func setUp(){
-        storage = Storage.storage()
-  
-        profileIV.layer.cornerRadius = 50
+    func setUp(){  
+        profileIV.layer.cornerRadius = 100
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
     }
     
@@ -41,11 +38,14 @@ class OrganizerProfileVC: UIViewController {
         phoneLabel.text = currentUser.phone
         locationLabel.text = currentUser.address
         aboutTV.text = currentUser.about
+        orgLabel.text = currentUser.organization
         
         if let image = currentUser.profileImage {
             profileIV.image = image
         } else if let imageID = currentUser.imageID {
             downlodImage(imageID: imageID)
+        } else {
+            profileIV.image = UIImage(named: "ProfilePlacholder")
         }
     }
     
@@ -63,6 +63,7 @@ class OrganizerProfileVC: UIViewController {
                     // Setting profile image
                     DispatchQueue.main.async {
                         self.profileIV.image = image
+                        self.currentUser.profileImage = image
                     }
                 }
             }.resume()

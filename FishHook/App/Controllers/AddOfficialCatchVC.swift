@@ -20,8 +20,8 @@ class AddOfficialCatchVC: UIViewController {
     var imagePicker = UIImagePickerController()
     var db: Firestore!
     var catchID: String?
+    var userName: String?
     var userID: String?
-    var fullName: String?
     var storage: Storage?
     var newCatch: Catch?
     var imageID: String?
@@ -86,10 +86,7 @@ class AddOfficialCatchVC: UIViewController {
                         for doc in docs {
                             self.userID = doc.documentID
                             let map = doc.data()
-                            
-                            let first = map["first"] as! String
-                            let last = map["last"] as! String
-                            self.fullName = "\(first) \(last)"
+                            self.userName = map["userName"] as? String
                             self.addCatch(imageID: id)
                         }
                     }else {
@@ -121,14 +118,14 @@ class AddOfficialCatchVC: UIViewController {
     // Adding all catch data to FireStore
     func addOfficialCatch(imageID: String){
         
-        newCatch = Catch(_id: catchID!, _aID: aID, _userName: fullName!, _place: nil, _userID: userID!, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchIV.image!, _imageID: imageID, _tID: nil, _lat: nil, _long: nil)
+        newCatch = Catch(_id: catchID!, _aID: aID, _userName: userName!, _place: nil, _userID: userID!, _metric: metricTF.text!, _fish: fishTF.text!, _image: catchIV.image!, _imageID: imageID, _tID: nil, _lat: nil, _long: nil)
         
         db.collection("official").document(catchID!).setData(
             [
                 "aID": aID,
                 "imageID": imageID,
                 "userID": userID!,
-                "userName": fullName!,
+                "userName": userName!,
                 "metric": metricTF.text!,
                 "fish": fishTF.text!
             ]

@@ -32,7 +32,7 @@ class TournamentsCollectionVC: UICollectionViewController {
             currentUser = tabVC.currentUser
         }
         
-        navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationItem.title = "Tournament Dashboard"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ProfileIcon"), style: .plain, target: self, action: #selector(profileSelected(sender:)))

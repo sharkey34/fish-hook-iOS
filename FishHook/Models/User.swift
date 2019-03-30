@@ -25,10 +25,10 @@ class User: NSObject, NSCoding {
     var phone: String?
     var address: String?
     var organization: String?
-    var userName: String
+    var userName: String?
     
     // Super init
-    init(_profileImage: UIImage?,_imageID: String?,_uid:String,_admin: Bool, _first:String,_last:String,_email:String, _boat: String?, _captain: String?, _about: String?, _phone: String?, _address: String?, _organization: String?) {
+    init(_profileImage: UIImage?,_imageID: String?,_uid:String,_admin: Bool, _first:String,_last:String,_email:String, _boat: String?, _captain: String?, _about: String?, _phone: String?, _address: String?, _organization: String?, _userName: String?) {
         self.profileImage = _profileImage
         self.imageID = _imageID
         self.uid = _uid
@@ -42,7 +42,7 @@ class User: NSObject, NSCoding {
         self.phone = _phone
         self.address = _address
         self.organization = _organization
-        self.userName = "\(firstName) \(lastName)"
+        self.userName = _userName
     }
     
     // Encoding properties
@@ -79,6 +79,6 @@ class User: NSObject, NSCoding {
         self.phone = aDecoder.decodeObject(forKey: "phone") as? String
         self.address = aDecoder.decodeObject(forKey: "address") as? String
         self.organization = aDecoder.decodeObject(forKey: "org") as? String
-        self.userName = aDecoder.decodeObject(forKey: "userName") as! String
+        self.userName = aDecoder.decodeObject(forKey: "userName") as? String
     }
 }

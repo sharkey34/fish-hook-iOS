@@ -1471,12 +1471,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Information" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-Q0-Atb">
-                                <rect key="frame" x="77" y="452" width="614" height="184.5"/>
+                                <rect key="frame" x="77" y="452" width="614" height="154"/>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.40000000000000002" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dai-za-QxU">
+                                <rect key="frame" x="269" y="333" width="307" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kfq-gA-p9b">
                                 <rect key="frame" x="230.5" y="716" width="307" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -1497,7 +1503,7 @@
                             <constraint firstItem="IFn-xn-uUz" firstAttribute="height" secondItem="x06-WO-oPw" secondAttribute="height" multiplier="0.3" id="Dlb-pA-AJM"/>
                             <constraint firstItem="BE1-Sf-RHw" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" multiplier="1.3" id="F09-vk-9fx"/>
                             <constraint firstItem="wNA-ok-5zf" firstAttribute="height" secondItem="x06-WO-oPw" secondAttribute="height" multiplier="0.03" id="FO8-jp-eq4"/>
-                            <constraint firstItem="BTM-Q0-Atb" firstAttribute="height" secondItem="x06-WO-oPw" secondAttribute="height" multiplier="0.18" id="KVe-Xb-C16"/>
+                            <constraint firstItem="BTM-Q0-Atb" firstAttribute="height" secondItem="x06-WO-oPw" secondAttribute="height" multiplier="0.15" id="KVe-Xb-C16"/>
                             <constraint firstItem="wNA-ok-5zf" firstAttribute="top" secondItem="ba1-V7-WQj" secondAttribute="bottom" constant="25" id="Lel-bW-aaA"/>
                             <constraint firstItem="sAB-wi-kTl" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" multiplier="1.3" id="MWT-Pk-Zzm"/>
                             <constraint firstItem="BE1-Sf-RHw" firstAttribute="width" secondItem="x06-WO-oPw" secondAttribute="width" multiplier="0.5" id="Nrf-fp-5sW"/>
@@ -1507,6 +1513,7 @@
                             <constraint firstItem="IFn-xn-uUz" firstAttribute="width" secondItem="x06-WO-oPw" secondAttribute="width" id="SQG-8u-E9R"/>
                             <constraint firstItem="EVe-5v-hEt" firstAttribute="width" secondItem="IFn-xn-uUz" secondAttribute="width" multiplier="0.3" id="UuL-K2-WXV"/>
                             <constraint firstItem="BE1-Sf-RHw" firstAttribute="top" secondItem="fdm-Z3-mtx" secondAttribute="bottom" constant="35" id="Val-bU-4Ib"/>
+                            <constraint firstItem="Dai-za-QxU" firstAttribute="centerY" secondItem="IFn-xn-uUz" secondAttribute="centerY" multiplier="1.55" id="VrY-Nc-vQY"/>
                             <constraint firstItem="ba1-V7-WQj" firstAttribute="top" secondItem="Kfq-gA-p9b" secondAttribute="bottom" constant="25" id="WrD-Z4-10A"/>
                             <constraint firstItem="EVe-5v-hEt" firstAttribute="centerY" secondItem="IFn-xn-uUz" secondAttribute="centerY" multiplier="1.2" id="XpK-YU-k3C"/>
                             <constraint firstItem="BTM-Q0-Atb" firstAttribute="top" secondItem="YpX-7U-KBe" secondAttribute="bottom" constant="10" id="Yqi-Da-8E3"/>
@@ -1515,6 +1522,7 @@
                             <constraint firstItem="ba1-V7-WQj" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" multiplier="0.7" id="dti-aV-oeK"/>
                             <constraint firstItem="IFn-xn-uUz" firstAttribute="top" secondItem="wQT-Vk-Dnj" secondAttribute="top" id="el9-vT-0p7"/>
                             <constraint firstItem="EVe-5v-hEt" firstAttribute="height" secondItem="IFn-xn-uUz" secondAttribute="height" multiplier="0.6" id="f1w-zw-nwH"/>
+                            <constraint firstItem="Dai-za-QxU" firstAttribute="width" secondItem="IFn-xn-uUz" secondAttribute="width" multiplier="0.4" id="gd9-yH-xjP"/>
                             <constraint firstItem="sAB-wi-kTl" firstAttribute="width" secondItem="x06-WO-oPw" secondAttribute="width" multiplier="0.5" id="grz-su-yhw"/>
                             <constraint firstItem="Kfq-gA-p9b" firstAttribute="centerY" secondItem="wQT-Vk-Dnj" secondAttribute="centerY" multiplier="1.4" id="heN-6M-phf"/>
                             <constraint firstItem="BTM-Q0-Atb" firstAttribute="width" secondItem="x06-WO-oPw" secondAttribute="width" multiplier="0.8" id="iqP-1Q-m3W"/>
@@ -1524,6 +1532,7 @@
                             <constraint firstItem="BTM-Q0-Atb" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" id="qq7-HZ-8mM"/>
                             <constraint firstItem="YpX-7U-KBe" firstAttribute="top" secondItem="IFn-xn-uUz" secondAttribute="bottom" constant="35" id="tGC-fA-nom"/>
                             <constraint firstItem="IFn-xn-uUz" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" id="xFg-up-nij"/>
+                            <constraint firstItem="Dai-za-QxU" firstAttribute="centerX" secondItem="IFn-xn-uUz" secondAttribute="centerX" multiplier="1.1" id="yk6-Yy-Mf5"/>
                             <constraint firstItem="YpX-7U-KBe" firstAttribute="centerX" secondItem="wQT-Vk-Dnj" secondAttribute="centerX" id="z7i-6F-GGs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wQT-Vk-Dnj"/>
@@ -1541,6 +1550,7 @@
                         <outlet property="bannerIV" destination="IFn-xn-uUz" id="kDI-CL-5gm"/>
                         <outlet property="emailLabel" destination="fdm-Z3-mtx" id="rac-zQ-VTE"/>
                         <outlet property="locationLabel" destination="sAB-wi-kTl" id="UdT-53-g4J"/>
+                        <outlet property="orgLabel" destination="Dai-za-QxU" id="Vum-EJ-nuI"/>
                         <outlet property="phoneLabel" destination="BE1-Sf-RHw" id="2sf-k8-Gbu"/>
                         <outlet property="profileIV" destination="EVe-5v-hEt" id="fGu-pH-e8a"/>
                         <segue destination="v87-Ke-gHY" kind="show" identifier="toOrganizerEdit" id="Mh3-Xb-gMK"/>
@@ -1587,20 +1597,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="goe-1f-6FW">
-                                <rect key="frame" x="115" y="706" width="538" height="154"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Information" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="goe-1f-6FW">
+                                <rect key="frame" x="115" y="732.5" width="538" height="153.5"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drg-fp-ehU">
-                                <rect key="frame" x="307" y="885" width="154" height="36"/>
+                                <rect key="frame" x="307" y="911" width="154" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitTapped:" destination="v87-Ke-gHY" eventType="touchUpInside" id="Eas-kh-gZg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S93-er-bCV">
+                                <rect key="frame" x="307" y="666.5" width="154" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1614,7 +1630,9 @@
                             <constraint firstItem="Drg-fp-ehU" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="A6w-d5-Omf"/>
                             <constraint firstItem="0Lu-hW-ejI" firstAttribute="centerY" secondItem="mHE-Sd-knj" secondAttribute="centerY" multiplier="1.2" id="Eqn-aJ-dlT"/>
                             <constraint firstItem="goe-1f-6FW" firstAttribute="width" secondItem="dFL-V6-1iO" secondAttribute="width" multiplier="0.7" id="Vmk-h7-Qok"/>
-                            <constraint firstItem="goe-1f-6FW" firstAttribute="centerY" secondItem="mHE-Sd-knj" secondAttribute="centerY" multiplier="1.5" id="bHt-if-GzR"/>
+                            <constraint firstItem="S93-er-bCV" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="Vrz-K9-RfL"/>
+                            <constraint firstItem="S93-er-bCV" firstAttribute="centerY" secondItem="mHE-Sd-knj" secondAttribute="centerY" multiplier="1.3" id="ZWd-j5-NVR"/>
+                            <constraint firstItem="goe-1f-6FW" firstAttribute="centerY" secondItem="mHE-Sd-knj" secondAttribute="centerY" multiplier="1.55" id="bHt-if-GzR"/>
                             <constraint firstItem="goe-1f-6FW" firstAttribute="height" secondItem="dFL-V6-1iO" secondAttribute="height" multiplier="0.15" id="cdu-Gk-Z0K"/>
                             <constraint firstItem="Drg-fp-ehU" firstAttribute="top" secondItem="goe-1f-6FW" secondAttribute="bottom" constant="25" id="cn0-fT-3Vy"/>
                             <constraint firstItem="goe-1f-6FW" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="dig-U0-7pw"/>
@@ -1623,6 +1641,7 @@
                             <constraint firstItem="jIg-oK-J41" firstAttribute="width" secondItem="dFL-V6-1iO" secondAttribute="width" multiplier="0.7" id="jXD-HH-QsF"/>
                             <constraint firstItem="h4R-N8-TSd" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="lW8-M4-moB"/>
                             <constraint firstItem="jIg-oK-J41" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="rDj-sW-L6q"/>
+                            <constraint firstItem="S93-er-bCV" firstAttribute="width" secondItem="dFL-V6-1iO" secondAttribute="width" multiplier="0.2" id="rOW-ds-lr0"/>
                             <constraint firstItem="0Lu-hW-ejI" firstAttribute="width" secondItem="dFL-V6-1iO" secondAttribute="width" multiplier="0.7" id="tfY-30-n2u"/>
                             <constraint firstItem="0Lu-hW-ejI" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="ud8-Tv-1nv"/>
                             <constraint firstItem="tZV-uP-OEq" firstAttribute="centerX" secondItem="mHE-Sd-knj" secondAttribute="centerX" id="uks-So-e0w"/>
@@ -1631,6 +1650,7 @@
                         <viewLayoutGuide key="safeArea" id="mHE-Sd-knj"/>
                     </view>
                     <connections>
+                        <outlet property="aboutLabel" destination="S93-er-bCV" id="9KB-In-tb8"/>
                         <outlet property="aboutTV" destination="goe-1f-6FW" id="ZLD-Rs-abS"/>
                         <outlet property="profileIV" destination="tZV-uP-OEq" id="3JM-3R-rtm"/>
                         <outletCollection property="entries" destination="YYJ-bz-8ov" collectionClass="NSMutableArray" id="FEP-7a-gdU"/>
