@@ -43,6 +43,11 @@ class BasicDetailsVC: UIViewController {
         setValues()
     }
     
+    func resetvalues(){
+        Global.tournament.metrics = []
+        Global.tournament.waterType = []
+    }
+    
     func setValues(){
         
         tournamentName.text = Global.tournament.name
@@ -118,6 +123,7 @@ class BasicDetailsVC: UIViewController {
     }
     
     @objc func saveSelected(sender: UIBarButtonItem){
+        resetvalues()
         var name = false
         var type = false
         var metric = false

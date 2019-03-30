@@ -13,9 +13,9 @@ class SelectSpeciesVC: UITableViewController {
     
     var fishSpecies = [Fish]()
     var filteredSpecies = [Fish]()
-    // TODO: DELETE can just loop through normal array and check true or false.
-    var selectedSpecies = [Fish]()
     var db: Firestore?
+    var fresh = false
+    var salt = false
     
     weak var delegate: detailDelegate?
     
@@ -25,19 +25,35 @@ class SelectSpeciesVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
+        checkType()
         getAndParseFishSpecies()
+        searchControllerSetup()
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Fish.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
-        searchControllerSetup()
     }
     
+    // Checking the watertypes selected
+    func checkType(){
+        if Global.tournament.waterType.count > 0 {
+            for type in Global.tournament.waterType {
+                switch type {
+                case "Freshwater":
+                    fresh = true
+                case "Saltwater":
+                    salt = true
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    
+    // Setting values based on what was selected
     func setUpValues(){
-        
         if Global.tournament.fishSpecies.count > 0 {
-            
             for fish in Global.tournament.fishSpecies.enumerated() {
-
                 for filteredFish in filteredSpecies {
                     if fish.element.name == filteredFish.name {
                         filteredFish.checked = true
@@ -51,19 +67,18 @@ class SelectSpeciesVC: UITableViewController {
     @objc func saveSelected(sender: UIBarButtonItem){
         
         // Validating at least one fish Species has been selected.
-        guard selectedSpecies.count > 0 else {
+        guard Global.tournament.fishSpecies.count > 0 else {
             let alert = Utils.basicAlert(title: "No Fish Selected", message: "Please select the Fish Species that can be caught in your tournament.", Button: "OK")
             present(alert, animated: true, completion: nil)
             return
         }
-        // TODO: Save all selected fish species to the Realm Database.
-        Global.tournament.fishSpecies = selectedSpecies
        
         delegate?.pushDetail(cell: 3, indentifier: Segues.Divisions.rawValue)
     }
     
     
     func getAndParseFishSpecies(){
+        
         db?.collection("fish").getDocuments(completion: { (document, error) in
             if let err = error {
                 print("Error retreving fish species." + " " + err.localizedDescription)
@@ -79,7 +94,18 @@ class SelectSpeciesVC: UITableViewController {
                     let type = doc.data()["type"] as! Int
                     
                     let newFish = Fish(_id: doc.documentID,_name: name, _type: type, _checked: false, _weight: nil, _length: nil)
-                    self.fishSpecies.append(newFish)
+                    
+                    if self.fresh && self.salt {
+                        self.fishSpecies.append(newFish)
+                    } else if self.fresh {
+                        if newFish.type == 1 {
+                            self.fishSpecies.append(newFish)
+                        }
+                    } else if self.salt {
+                        if newFish.type == 2 {
+                            self.fishSpecies.append(newFish)
+                        }
+                    }
                 }
                 self.filteredSpecies = self.fishSpecies
                 self.setUpValues()
@@ -95,8 +121,11 @@ class SelectSpeciesVC: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.backgroundColor = UIColor.white
+        
         // Setting up the searchBar of search controller.
-        searchController.searchBar.scopeButtonTitles = [Water.Both.rawValue , Water.Fresh.rawValue, Water.Salt.rawValue]
+        if fresh && salt {
+            searchController.searchBar.scopeButtonTitles = [Water.Both.rawValue , Water.Fresh.rawValue, Water.Salt.rawValue]
+        }
         searchController.searchBar.delegate = self
         
         // Adding the searchBar to the tableViewController.
@@ -131,7 +160,7 @@ class SelectSpeciesVC: UITableViewController {
         if selected.checked {
             selected.checked = false
             cell.accessoryType = .none
-            selectedSpecies.removeAll { (fish) -> Bool in
+            Global.tournament.fishSpecies.removeAll { (fish) -> Bool in
                 if fish.name == selected.name {
                     return true
                 } else {
@@ -141,7 +170,7 @@ class SelectSpeciesVC: UITableViewController {
         } else {
             selected.checked = true
             cell.accessoryType = .checkmark
-            selectedSpecies.append(selected)
+            Global.tournament.fishSpecies.append(selected)
         }
     }
 }
@@ -152,23 +181,29 @@ extension SelectSpeciesVC: UISearchBarDelegate, UISearchResultsUpdating, UISearc
         // Getting the text entered into the search bar.
         let enteredText = searchController.searchBar.text
         
-        // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
-        let scopeIndex = searchController.searchBar.selectedScopeButtonIndex
-        let scopeTitles = searchController.searchBar.scopeButtonTitles
-        let scope = scopeTitles![scopeIndex]
-        
-        // Setting the filtered array equal to the locationArray.
+        // Setting the filtered array equal to the fishspecies array.
         filteredSpecies = fishSpecies
         
+        
+        // TEST
+        if fresh && salt {
+            // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
+            let scopeIndex = searchController.searchBar.selectedScopeButtonIndex
+            let scopeTitles = searchController.searchBar.scopeButtonTitles
+            let scope = scopeTitles![scopeIndex]
+            
+            // Filtering by scope.
+            if scope != Water.Both.rawValue {
+                filteredSpecies = filteredSpecies.filter({$0.type == scopeIndex})
+            }
+        }
+        
+ 
         // Filtering by entered text.
         if enteredText != ""{
             filteredSpecies = filteredSpecies.filter({$0.name.lowercased().range(of: enteredText!.lowercased()) != nil})
         }
         
-        // Filtering by scope.
-        if scope != Water.Both.rawValue {
-            filteredSpecies = filteredSpecies.filter({$0.type == scopeIndex})
-        }
         // Reloading the tableView.
         tableView.reloadData()
     }

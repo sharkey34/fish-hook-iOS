@@ -32,6 +32,7 @@ class RunDatesVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         
         setUpCalendar()
+        checkValues()
     }
     
     func timeSetup(){
@@ -42,6 +43,26 @@ class RunDatesVC: UIViewController {
         end = timeFormatter.string(from: endTime.date)
     }
     
+    func checkValues(){
+        if let s = Global.tournament.startTime {
+            if let date = timeFormatter.date(from: s) {
+                startTime.setDate(date, animated: true)
+            }
+        }
+        
+        if let e = Global.tournament.endTime {
+            if let date = timeFormatter.date(from: e) {
+                endTime.setDate(date, animated: true)
+            }
+        }
+        
+        if Global.selectedDates.count > 0 {
+            for date in Global.selectedDates {
+                calendar.select(date)
+            }
+        }
+    }
+
     // getting time from DatePicker
     @IBAction func timeChange(_ sender: UIDatePicker) {
         switch sender.tag {
@@ -72,13 +93,13 @@ class RunDatesVC: UIViewController {
         
         // Sorting dates by ascending
         let sortedDates = calendar.selectedDates.sorted(by: {$0 < $1})
+        Global.selectedDates = sortedDates
+        
         
         // Getting the start and end dates
         let startDate = dateFormat.string(from: sortedDates[0])
         let endDate = dateFormat.string(from: sortedDates[sortedDates.count - 1])
         
-        print(startDate)
-        print(endDate)
         
         // TODO: Save the run dates to the database
         Global.tournament.startDate = startDate
