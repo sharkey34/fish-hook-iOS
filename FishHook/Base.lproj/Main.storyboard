@@ -568,7 +568,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Award"/>
                                 <connections>
-                                    <segue destination="qK1-lv-xqm" kind="show" id="ZoW-al-9El"/>
+                                    <segue destination="qK1-lv-xqm" kind="show" identifier="" id="ZoW-al-9El"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kyN-OU-39D">
@@ -622,6 +622,7 @@
                         <outlet property="sponsorName" destination="o4A-F6-9Vv" id="KYt-X2-CME"/>
                         <outlet property="tableView" destination="kyN-OU-39D" id="O5k-EF-bC8"/>
                         <segue destination="PRK-Lw-WVe" kind="unwind" identifier="unwindToCreate" unwindAction="unwindFromDivisionDetailsWithSegue:" id="K5J-sv-PZl"/>
+                        <segue destination="qK1-lv-xqm" kind="show" identifier="toAwards" id="dmp-sb-ZU7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooh-sf-nj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -739,6 +740,7 @@
                         <outlet property="fishSpecies" destination="H10-4h-8Gm" id="alk-ki-fNE"/>
                         <outlet property="prizeCount" destination="jOt-7u-MgK" id="YOX-xC-3gU"/>
                         <outlet property="sponsorName" destination="pdn-Hk-SXd" id="Ktt-0v-ZUM"/>
+                        <outlet property="stepper" destination="sCq-S9-uzc" id="7m6-Hx-Pvh"/>
                         <outlet property="tableView" destination="pAN-ib-sXa" id="r01-nJ-auF"/>
                         <segue destination="PMB-9p-L0Q" kind="unwind" identifier="unwindToDetails" unwindAction="unwindToDetailsWithSegue:" id="XrX-M6-nYN"/>
                     </connections>
@@ -2485,5 +2487,6 @@
         <segue reference="5RI-Ml-uSW"/>
         <segue reference="XR5-Bf-aic"/>
         <segue reference="Mh3-Xb-gMK"/>
+        <segue reference="dmp-sb-ZU7"/>
     </inferredMetricsTieBreakers>
 </document>

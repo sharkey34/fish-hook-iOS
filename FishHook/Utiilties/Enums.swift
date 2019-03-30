@@ -61,6 +61,7 @@ enum Segues: String {
     case Dashboard = "toDashboard"
     case AnglerProfile = "toAnglerProfile"
     case OrganizerProfile = "toOrganizerProfile"
+    case Awards = "toAwards"
 }
 
 // TODO: Firebase

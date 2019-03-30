@@ -14,18 +14,50 @@ class AwardsVC: UIViewController {
     @IBOutlet weak var sponsorName: UITextField!
     @IBOutlet weak var fishSpecies: UITextField!
     @IBOutlet weak var prizeCount: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stepper: UIStepper!
+    
     var prizes = [String]()
     var itemCount: Int = 0
+    var editingAward: Award?
+    var edit = false
+    var firstLoad = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("viewDidLoad")
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Awards.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSelected(sender:)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelSelected(sender:)))
+        
+        setEditingAwardValues()
+    }
+    
+    
+    // Setting initial values to editing award values
+    func setEditingAwardValues(){
+        guard let award = editingAward else {return}
+        
+        awardName.text = award.name
+        
+        if let sponsor = award.sponsor {
+            sponsorName.text = sponsor
+        }
+        
+        fishSpecies.text = award.fishSpecies
+        prizeCount.text = award.prizes?.count.description
+        
+        if let p = award.prizes {
+            prizes = p
+            itemCount = prizes.count
+            stepper.value = Double.init(itemCount)
+        }
+        
+        edit = true
+        tableView.reloadData()
     }
     
     @objc func saveSelected(sender: UIBarButtonItem) {
@@ -33,6 +65,7 @@ class AwardsVC: UIViewController {
         // Getting all the final values entered in the prize cells
         guard let cells = tableView.visibleCells as? [PrizesTableViewCell] else {return}
         
+        prizes.removeAll()
         for cell in cells {
             if !cell.prizeName.isNullOrWhitespace() {
                 prizes.append(cell.prizeName.text!)
@@ -47,12 +80,25 @@ class AwardsVC: UIViewController {
             return
         }
      
-        Global.awards.append(Award(_id: nil, _name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
-        
+        if edit {
+            editingAward?.prizes = prizes
+            editingAward?.name = awardName.text!
+            editingAward?.sponsor = sponsorName.text
+            editingAward?.fishSpecies = fishSpecies.text!
+        } else {
+            print(Global.awards.count)
+
+            Global.awards.append(Award(_id: nil, _name: awardName.text!, _sponsor: sponsorName.text, _prizes: prizes, _fishSpecies: fishSpecies.text!))
+            
+            print(Global.awards.count)
+        }
+        edit = false
         navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem) {
+        edit = false
+        editingAward = nil
         navigationController?.popViewController(animated: true)
     }
     
@@ -72,7 +118,6 @@ extension AwardsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return itemCount
     }
     
@@ -80,8 +125,13 @@ extension AwardsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PrizesTableViewCell else {return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)}
         
+        if edit && indexPath.row < prizes.count && firstLoad {
+            cell.prizeName.text = prizes[indexPath.row]
+            if indexPath.row == prizes.count - 1 {
+                firstLoad = false
+            }
+        }
         let num = indexPath.row + 1
-        
         cell.prizeNum.text = num.description
         cell.prizeName.delegate = self
         

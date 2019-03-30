@@ -77,8 +77,8 @@ class SelectSpeciesVC: UITableViewController {
     }
     
     
+    // Retreiving fish species from the database
     func getAndParseFishSpecies(){
-        
         db?.collection("fish").getDocuments(completion: { (document, error) in
             if let err = error {
                 print("Error retreving fish species." + " " + err.localizedDescription)
@@ -95,9 +95,7 @@ class SelectSpeciesVC: UITableViewController {
                     
                     let newFish = Fish(_id: doc.documentID,_name: name, _type: type, _checked: false, _weight: nil, _length: nil)
                     
-                    if self.fresh && self.salt {
-                        self.fishSpecies.append(newFish)
-                    } else if self.fresh {
+                    if self.fresh {
                         if newFish.type == 1 {
                             self.fishSpecies.append(newFish)
                         }
@@ -105,6 +103,8 @@ class SelectSpeciesVC: UITableViewController {
                         if newFish.type == 2 {
                             self.fishSpecies.append(newFish)
                         }
+                    } else {
+                        self.fishSpecies.append(newFish)
                     }
                 }
                 self.filteredSpecies = self.fishSpecies
@@ -185,7 +185,6 @@ extension SelectSpeciesVC: UISearchBarDelegate, UISearchResultsUpdating, UISearc
         filteredSpecies = fishSpecies
         
         
-        // TEST
         if fresh && salt {
             // Getting the scope index, the array of titles and then getting the exact title at the selected scope.
             let scopeIndex = searchController.searchBar.selectedScopeButtonIndex
