@@ -33,6 +33,7 @@ class TournamentTableVC: UITableViewController {
     }
     
     @objc func cancelSelected(sender: UIBarButtonItem) {
+        Utils.resetGlobal()
         dismiss(animated: true, completion: nil)
     }
 

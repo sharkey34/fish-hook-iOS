@@ -20,8 +20,8 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUp()
+        subscribeUnsubscribe(bool: true)
     }
     
     // Performing intial setup.
@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender:)))
         view.addGestureRecognizer(tap)
-        
+                
         // looping through labels and setting tapGesture.
         for label in labels{
             let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
@@ -123,6 +123,30 @@ class LoginVC: UIViewController {
             performSegue(withIdentifier: "toCreateAccount", sender: self)
         default:
             print("Invalid Login Controller tag")
+        }
+    }
+    
+    @objc func show(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 3
+            }
+        }
+    }
+    
+    @objc func hide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // Subscribing and unsubscribing to keyboard observers.
+    func subscribeUnsubscribe(bool: Bool){
+        if bool == true {
+            NotificationCenter.default.addObserver(self, selector: #selector(show(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(hide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        } else {
+            NotificationCenter.default.removeObserver(self)
         }
     }
 }

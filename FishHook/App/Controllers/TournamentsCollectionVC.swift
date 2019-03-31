@@ -78,6 +78,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let tournament = self.tournaments[indexPath.row]
                     Global.tournament = tournament
                     Global.divisions = tournament.divisions
+                    Global.edit = true
                     self.performSegue(withIdentifier: "toTournament", sender: self)
                 }
             })
@@ -458,8 +459,14 @@ class TournamentsCollectionVC: UICollectionViewController {
         guard let sVC = segue.source as? SummaryVC else {return}
         
         if let t = sVC.newTournament {
-            tournaments.append(t)
+            if Global.edit {
+                tournaments.removeAll()
+                fetchTournamentIDS()
+            } else {
+                tournaments.append(t)
+            }
             self.collectionView.reloadData()
         }
+        Utils.resetGlobal()
     }
 }

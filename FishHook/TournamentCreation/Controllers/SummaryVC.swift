@@ -23,6 +23,7 @@ class SummaryVC: UIViewController {
     var tournamentCode: String?
     var divisionID: String?
     var newTournament: Tournament?
+    var edit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,17 @@ class SummaryVC: UIViewController {
         db = Firestore.firestore()
         storage = Storage.storage()
         
-        let docID = db?.collection("tournaments").document()
-        tournamentUID = String(docID!.documentID)
+        if Global.edit {
+            tournamentUID = Global.tournament.id
+            tournamentCode = Global.tournament.code
+        } else {
+            let docID = db?.collection("tournaments").document()
+            tournamentUID = String(docID!.documentID)
+            tournamentCode = tournamentUID?.prefix(6).lowercased()
+        }
+     
         
         // Cast as String
-        tournamentCode = tournamentUID?.prefix(6).lowercased()
         
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 13/255, green: 102/255, blue: 163/255, alpha: 1)
         navigationItem.title = TournamentSetup.Summary.rawValue
@@ -95,7 +102,11 @@ class SummaryVC: UIViewController {
             guard let tUID = tournamentUID, let tCode = tournamentCode else {return}
             Global.tournament.id = tUID
             
-            let imageID = NSUUID().uuidString
+            var imageID = NSUUID().uuidString
+            
+            if Global.edit {
+                imageID = Global.tournament.imageID!
+            }
             guard let storageRef = storage?.reference().child("tournament/\(imageID).jpg") else {return}
             
             // Local file you want to upload
@@ -112,8 +123,7 @@ class SummaryVC: UIViewController {
                 // Upload reported progress
                 let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
                     / Double(snapshot.progress!.totalUnitCount)
-                
-                print(percentComplete.description)
+                print(percentComplete)
             }
             saveTournament(uid: tUID, tCode: tCode, imageID: imageID)
         }
@@ -125,8 +135,6 @@ class SummaryVC: UIViewController {
         for id in Global.tournament.fishSpecies{
             fishID.append(id.id)
         }
-        
-        print(Global.tournament.dates.count)
         
         db?.collection("tournaments").document(uid).setData(
             [
@@ -158,9 +166,16 @@ class SummaryVC: UIViewController {
     
     // Function to Save Divisions
     func saveDivisions(tUID: String){
-        
+                
         for division in Global.divisions {
-            guard let divID = db?.collection("divisions").document().documentID else {return}
+            var divID: String!
+            
+            if let dID = division.id {
+                divID = dID
+            } else {
+                guard let id = db?.collection("divisions").document().documentID else {return}
+                divID = id
+            }
             
             db?.collection("divisions").document(divID).setData(
                 [
@@ -180,7 +195,6 @@ class SummaryVC: UIViewController {
         
         newTournament = Global.tournament
         // Going back to the Dashboard
-        resetGlobal()
         performSegue(withIdentifier: Segues.Dashboard.rawValue, sender: self)
     }
     
@@ -189,7 +203,17 @@ class SummaryVC: UIViewController {
         guard let divAwards = division.awards else {return}
         
         for award in divAwards{
-            db?.collection("awards").addDocument(data:
+            
+            var awardID: String!
+            
+            if let aID = award.id {
+                awardID = aID
+            } else {
+                guard let id = db?.collection("awards").document().documentID else {return}
+                awardID = id
+            }
+            
+            db?.collection("awards").document(awardID).setData(
                 [
                     "dID": divID,
                     "name": award.name!,
@@ -225,14 +249,6 @@ class SummaryVC: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
         })
-    }
-    
-    // Resetting values
-    func resetGlobal(){
-        Global.tournament = Tournament(_id: nil, _name: nil, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: [String](), _waterType: [String](), _metrics: [String](), _startDate: nil, _endDate: nil, _startTime: nil, _endTime: nil, _code: nil, _isActive: false, _imageID: nil, _dates: [Date]())
-        
-        Global.divisions = [Division]()
-        Global.awards = [Award]()
     }
     
     func isValidTournament() -> Bool {

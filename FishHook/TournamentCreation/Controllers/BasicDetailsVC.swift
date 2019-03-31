@@ -37,9 +37,7 @@ class BasicDetailsVC: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         logo.addGestureRecognizer(tap)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         setValues()
     }
     
@@ -49,7 +47,6 @@ class BasicDetailsVC: UIViewController {
     }
     
     func setValues(){
-        
         tournamentName.text = Global.tournament.name
         
         if let image = Global.tournament.logo {
@@ -97,9 +94,6 @@ class BasicDetailsVC: UIViewController {
                 }
             }
         }
-        
-        
-        
     }
     
     @IBAction func addLogoTapped(_ sender: UIButton) {
@@ -216,7 +210,7 @@ extension BasicDetailsVC: UITableViewDelegate, UITableViewDataSource {
 extension BasicDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Getting the image from the picker and setting it in the imageView
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let edited = info[.editedImage] as? UIImage {
             logo.image = edited

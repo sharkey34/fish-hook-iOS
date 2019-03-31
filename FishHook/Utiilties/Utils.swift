@@ -35,4 +35,13 @@ struct Utils {
         
         return attributedString
     }
+    
+    // Resetting values
+    static func resetGlobal(){
+        Global.tournament = Tournament(_id: nil, _name: nil, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: [String](), _waterType: [String](), _metrics: [String](), _startDate: nil, _endDate: nil, _startTime: nil, _endTime: nil, _code: nil, _isActive: false, _imageID: nil, _dates: [Date]())
+        
+        Global.edit = false
+        Global.divisions = [Division]()
+        Global.awards = [Award]()
+    }
 }

@@ -29,6 +29,7 @@ class AddOfficialCatchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        subscribeUnsubscribe(bool: true)
       setUp()
     }
     
@@ -159,6 +160,30 @@ class AddOfficialCatchVC: UIViewController {
                 / Double(snapshot.progress!.totalUnitCount)
             
             print(percentComplete.description)
+        }
+    }
+    
+    @objc func show(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
+        }
+    }
+    
+    @objc func hide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // Subscribing and unsubscribing to keyboard observers.
+    func subscribeUnsubscribe(bool: Bool){
+        if bool == true {
+            NotificationCenter.default.addObserver(self, selector: #selector(show(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(hide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        } else {
+            NotificationCenter.default.removeObserver(self)
         }
     }
 }
