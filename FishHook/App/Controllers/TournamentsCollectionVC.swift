@@ -12,10 +12,9 @@ import FirebaseAuth
 
 class TournamentsCollectionVC: UICollectionViewController {
     
-    var db: Firestore?
+    var db: Firestore!
     var currentUser: User?
     var tournaments = [Tournament]()
-    var deleteImages = [UIImageView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +35,6 @@ class TournamentsCollectionVC: UICollectionViewController {
         self.navigationItem.title = "Tournament Dashboard"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ProfileIcon"), style: .plain, target: self, action: #selector(profileSelected(sender:)))
-        
-        navigationItem.rightBarButtonItem = editButtonItem
     }
     
     
@@ -53,34 +50,105 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        for iv in deleteImages {
-            iv.isHidden = !isEditing
-        }
-    }
-    
-    
-    // Setting up the tournament alert to activate the tournament.
-    func tournamentSelected(index: Int, cell: DashboardCollectionCell) -> UIAlertController {
-        let alertController = UIAlertController(title: "Activate", message: "Would you like to activate this tournament?", preferredStyle: .alert)
+    // Creating and presenting the actionSheet
+    func presentActionSheet(indexPath: IndexPath,  cell: DashboardCollectionCell){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let activate = UIAlertAction(title: "Activate", style: .default) { (action) in
-            
-            DispatchQueue.main.async {
-                UserDefaults.standard.set(self.tournaments[index].id, forKey: "activeTournament")
-                cell.activeLabel.text = "Activated"
-                cell.activeView.backgroundColor = UIColor.green
-                cell.activeView.layer.cornerRadius = 10
-                self.collectionView.reloadData()
-            }
+        guard let user = currentUser else {return}
+        
+        // Activating new tournament
+        if cell.activeLabel.text != "Activated"{
+            let activate = UIAlertAction(title: "Activate", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(self.tournaments[indexPath.row].id, forKey: "activeTournament")
+                    cell.activeLabel.text = "Activated"
+                    cell.activeView.backgroundColor = UIColor.green
+                    cell.activeView.layer.cornerRadius = 10
+                    self.collectionView.reloadData()
+                }
+            })
+            alertController.addAction(activate)
         }
+        
+        if user.admin {
+            // Setting the editingDivision value and performing segue
+            let edit = UIAlertAction(title: "Edit", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+                //  Do some action here.
+                DispatchQueue.main.async {
+                    let tournament = self.tournaments[indexPath.row]
+                    Global.tournament = tournament
+                    Global.divisions = tournament.divisions
+                    self.performSegue(withIdentifier: "toTournament", sender: self)
+                }
+            })
+            alertController.addAction(edit)
+        }
+        
+        // Deleting the item and reloading the collectionView
+        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (alert: UIAlertAction!) -> Void in
+            DispatchQueue.main.async {
+                let active = cell.activeLabel.text == "Activated" ? true:false
+                self.deleteSelected(index: indexPath.row, active: active)
+            }
+        })
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertController.addAction(activate)
+        alertController.addAction(delete)
         alertController.addAction(cancel)
-        return alertController
+        
+        // Checking the current device.
+        let device = UIDevice.current
+        
+        if device.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            if let controller = alertController.popoverPresentationController {
+                controller.sourceView = cell.contentView
+                controller.sourceRect = CGRect(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.maxY, width: 0, height: 0)
+                controller.permittedArrowDirections = [.up]
+            }
+        }
+        present(alertController, animated: true, completion: nil)
     }
+    
+    
+    // Alerting the user
+    func deleteSelected(index: Int, active: Bool){
+        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this tournament?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (error) in
+            
+            let id = self.tournaments[index].id
+            
+            if let tID = id {
+                self.deleteTournament(id: tID, index: index, active: active)
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // Function to delete cell
+    func deleteTournament(id: String, index: Int, active: Bool) {
+        
+        db?.collection("tournaments").document(id).delete(completion: { (error) in
+            
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                if active {
+                    UserDefaults.standard.set(nil, forKey: "activeTournament")
+                }
+                self.tournaments.remove(at: index)
+                self.collectionView.reloadData()
+            }
+        })
+    }
+    
+    
     
     // COLLECTIONVIEW
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -101,7 +169,7 @@ class TournamentsCollectionVC: UICollectionViewController {
             cell.tournamentImage.image = UIImage(named: "Plus")
             cell.dateLabel.text = ""
             cell.activeLabel.text = ""
-            cell.deleteIV.isHidden = true
+//            cell.deleteIV.isHidden = true
             cell.activeView.backgroundColor = UIColor.white
         } else {
             let t = tournaments[indexPath.row]
@@ -109,10 +177,6 @@ class TournamentsCollectionVC: UICollectionViewController {
             // Normal setup
             // Get and set image from storage.
             // Setting up tap Gesture recognizer.
-            deleteImages.append(cell.deleteIV)
-            cell.deleteIV.image = UIImage(named: "Delete")
-            cell.deleteIV.isHidden = !isEditing
-            
             if let logo = t.logo {
                 cell.tournamentImage.image = logo
             } else if let id = t.imageID {
@@ -167,39 +231,9 @@ class TournamentsCollectionVC: UICollectionViewController {
                 presentAddModal()
             }
         } else {
-            if isEditing {
-                let active = cell.activeLabel.text == "Activated" ? true:false
-                deleteSelected(index: indexPath.row, active: active)
-            } else {
-                if cell.activeLabel.text != "Activated"{
-                    print("Active index \(indexPath.row)")
-                    let alert = tournamentSelected(index: indexPath.row, cell: cell)
-                    present(alert, animated: true, completion: nil)
-                }
-            }
+            presentActionSheet(indexPath: indexPath, cell: cell)
         }
     }
-    
-    // Alerting the user
-    func deleteSelected(index: Int, active: Bool){
-        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this tournament?", preferredStyle: .alert)
-        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (error) in
-            
-            let id = self.tournaments[index].id
-            
-            if let tID = id {
-                self.deleteTournament(id: tID, index: index, active: active)
-            }
-        })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(delete)
-        alert.addAction(cancel)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
     
     // Setting up and presenting modal to add a tournament
     func presentAddModal(){
@@ -250,8 +284,9 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let startTime = map["startTime"] as! String
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
+                    let dates = map["dates"] as! [Date]
                     
-                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID))
+                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID, _dates: dates))
                     
                     self.addTournamentToUser(id: id)
                     UserDefaults.standard.set(id, forKey: "activeTournament")
@@ -287,7 +322,7 @@ class TournamentsCollectionVC: UICollectionViewController {
         var userTournamentIDs = [String]()
         guard let userID = Auth.auth().currentUser?.uid else {return}
         
-        db?.collection("users").document(userID).getDocument(completion: { (doc, err) in
+        db.collection("users").document(userID).getDocument(completion: { (doc, err) in
             if let map = doc?.data() {
                 guard let ids = map["tournaments"] as? [String] else {return}
 
@@ -310,7 +345,7 @@ class TournamentsCollectionVC: UICollectionViewController {
     // Fetching tournaments from the ids
     func fetchTournaments(tournamentIDS: [String]){
         for tournament in tournamentIDS {
-            db?.collection("tournaments").document(tournament).getDocument(completion: { (doc, err) in
+            db.collection("tournaments").document(tournament).getDocument(completion: { (doc, err) in
                 let id = doc?.documentID
                 if let map = doc?.data() {
                     let code = map["code"] as! String
@@ -323,11 +358,17 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let startTime = map["startTime"] as! String
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
+                    let dates = map["dates"] as! [Timestamp]
                     
-                    let newTournament = Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID)
+                    var convertedDates = [Date]()
+                    for date in dates {
+                        convertedDates.append(date.dateValue())
+                    }
+                                        
+                    let newTournament = Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID, _dates:convertedDates)
                     
                     self.tournaments.append(newTournament)
-                    self.collectionView.reloadData()
+                    self.fetchDivisions(tournament: newTournament)
                 } else if let error = err {
                     let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
@@ -336,24 +377,60 @@ class TournamentsCollectionVC: UICollectionViewController {
         }
     }
     
-    // Function to delete cell
-    func deleteTournament(id: String, index: Int, active: Bool) {
+    // Fetching divisions for each Tournament
+    func fetchDivisions(tournament: Tournament){
+        guard let tID = tournament.id else {return}
         
-        db?.collection("tournaments").document(id).delete(completion: { (error) in
-
+        db.collection("divisions").whereField("tID", isEqualTo: tID).getDocuments { (documents, error) in
+            
             if let err = error {
                 let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
                 self.present(alert, animated: true, completion: nil)
+                
             } else {
-                if active {
-                    UserDefaults.standard.set(nil, forKey: "activeTournament")
+                guard let docs = documents?.documents else {return}
+                print(docs.count)
+                for doc in docs {
+                    let map = doc.data()
+                    let dID = doc.documentID
+                    let name = map["name"] as! String
+                    let tID = map["tID"] as! String
+                    let sponsor = map["sponsor"] as? String
+                    
+                    let newDivision = Division(_id: dID, _tID: tID, _name: name, _sponsor: sponsor, _awards: [Award]())
+                    tournament.divisions.append(newDivision)
+                    self.fetchAwards(division: newDivision)
                 }
-                self.deleteImages.removeAll()
-                self.tournaments.remove(at: index)
-                self.collectionView.reloadData()
             }
-        })
+        }
     }
+    
+    // Fetching Awards for each Division
+    func fetchAwards(division: Division) {
+        
+        guard let id = division.id else {return}
+        db.collection("awards").whereField("dID", isEqualTo: id).getDocuments { (documents, error) in
+            if let err = error {
+                let alert = Utils.basicAlert(title: "Error", message: err.localizedDescription, Button: "OK")
+                self.present(alert, animated:  true, completion: nil)
+            }
+            guard let docs = documents?.documents else {return}
+            
+            for doc in docs {
+                let map = doc.data()
+                let id = doc.documentID
+                let name = map["name"] as! String
+                let fish = map["fish"] as! String
+                let prizes = map["prizes"] as! [String]
+                let sponsor = map["sponsor"] as? String
+                
+                let newAward = Award(_id: id, _name: name, _sponsor: sponsor, _prizes: prizes, _fishSpecies: fish)
+                division.awards?.append(newAward)
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
     
     // Passing the currentUser to the Profiles
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

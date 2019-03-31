@@ -52,6 +52,7 @@ class SelectSpeciesVC: UITableViewController {
     
     // Setting values based on what was selected
     func setUpValues(){
+        print(Global.tournament.fishSpecies.count)
         if Global.tournament.fishSpecies.count > 0 {
             for fish in Global.tournament.fishSpecies.enumerated() {
                 for filteredFish in filteredSpecies {
@@ -95,11 +96,11 @@ class SelectSpeciesVC: UITableViewController {
                     
                     let newFish = Fish(_id: doc.documentID,_name: name, _type: type, _checked: false, _weight: nil, _length: nil)
                     
-                    if self.fresh {
+                    if self.fresh && !self.salt{
                         if newFish.type == 1 {
                             self.fishSpecies.append(newFish)
                         }
-                    } else if self.salt {
+                    } else if self.salt && !self.fresh{
                         if newFish.type == 2 {
                             self.fishSpecies.append(newFish)
                         }

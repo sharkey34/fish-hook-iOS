@@ -56,8 +56,8 @@ class RunDatesVC: UIViewController {
             }
         }
         
-        if Global.selectedDates.count > 0 {
-            for date in Global.selectedDates {
+        if Global.tournament.dates.count > 0 {
+            for date in Global.tournament.dates {
                 calendar.select(date)
             }
         }
@@ -93,7 +93,9 @@ class RunDatesVC: UIViewController {
         
         // Sorting dates by ascending
         let sortedDates = calendar.selectedDates.sorted(by: {$0 < $1})
-        Global.selectedDates = sortedDates
+        Global.tournament.dates = sortedDates
+        
+        print(Global.tournament.dates.count)
         
         
         // Getting the start and end dates

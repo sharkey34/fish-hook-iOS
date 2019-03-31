@@ -126,6 +126,8 @@ class SummaryVC: UIViewController {
             fishID.append(id.id)
         }
         
+        print(Global.tournament.dates.count)
+        
         db?.collection("tournaments").document(uid).setData(
             [
                 "code": tCode,
@@ -138,7 +140,8 @@ class SummaryVC: UIViewController {
                 "startDate": Global.tournament.startDate!,
                 "startTime": Global.tournament.startTime!,
                 "endDate": Global.tournament.endDate!,
-                "endTime" : Global.tournament.endTime!
+                "endTime" : Global.tournament.endTime!,
+                "dates": Global.tournament.dates
             ]
             , completion: { (err) in
                 
@@ -158,8 +161,6 @@ class SummaryVC: UIViewController {
         
         for division in Global.divisions {
             guard let divID = db?.collection("divisions").document().documentID else {return}
-            
-//            db?.collection("tournaments").document("CreatedTournamentID").collection("divisions")
             
             db?.collection("divisions").document(divID).setData(
                 [
@@ -228,7 +229,7 @@ class SummaryVC: UIViewController {
     
     // Resetting values
     func resetGlobal(){
-        Global.tournament = Tournament(_id: nil, _name: nil, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: [String](), _waterType: [String](), _metrics: [String](), _startDate: nil, _endDate: nil, _startTime: nil, _endTime: nil, _code: nil, _isActive: false, _imageID: nil)
+        Global.tournament = Tournament(_id: nil, _name: nil, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: [String](), _waterType: [String](), _metrics: [String](), _startDate: nil, _endDate: nil, _startTime: nil, _endTime: nil, _code: nil, _isActive: false, _imageID: nil, _dates: [Date]())
         
         Global.divisions = [Division]()
         Global.awards = [Award]()
