@@ -37,6 +37,7 @@ class SummaryVC: UIViewController {
         storage = Storage.storage()
         
         if Global.edit {
+            
             tournamentUID = Global.tournament.id
             tournamentCode = Global.tournament.code
         } else {
@@ -60,6 +61,7 @@ class SummaryVC: UIViewController {
         // TODO: Check that needed things are filled out
         
         if isValidTournament() {
+            
             guard let tCode = tournamentCode else {return}
             
             codeLabel.text = tCode
@@ -101,6 +103,7 @@ class SummaryVC: UIViewController {
         if isValidTournament() {
             guard let tUID = tournamentUID, let tCode = tournamentCode else {return}
             Global.tournament.id = tUID
+            Global.tournament.code = tCode
             
             var imageID = NSUUID().uuidString
             

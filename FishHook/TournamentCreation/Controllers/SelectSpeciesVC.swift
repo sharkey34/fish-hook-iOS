@@ -52,7 +52,7 @@ class SelectSpeciesVC: UITableViewController {
     
     // Setting values based on what was selected
     func setUpValues(){
-        print(Global.tournament.fishSpecies.count)
+        
         if Global.tournament.fishSpecies.count > 0 {
             for fish in Global.tournament.fishSpecies.enumerated() {
                 for filteredFish in filteredSpecies {

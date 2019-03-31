@@ -21,10 +21,10 @@ class Catch {
     var image: UIImage?
     var imageID: String?
     var tID: String?
-    var lat: String?
-    var long: String?
+    var lat: Double?
+    var long: Double?
     
-    init(_id: String, _aID: String?, _userName: String, _place: Int?, _userID: String, _metric: String, _fish: String, _image: UIImage?, _imageID: String?, _tID: String?, _lat: String?, _long: String?) {
+    init(_id: String, _aID: String?, _userName: String, _place: Int?, _userID: String, _metric: String, _fish: String, _image: UIImage?, _imageID: String?, _tID: String?, _lat: Double?, _long: Double?) {
         self.id = _id
         self.aID = _aID
         self.userName = _userName

@@ -91,13 +91,15 @@ class CreateAccountVC: UIViewController {
                     let alert = Utils.basicAlert(title: "Account creation was unsuccessful", message: err.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    // Saving currentUser t-o UserDefaults
+                    // Saving currentUser to UserDefaults
                     let currentUser = User(_profileImage: nil, _imageID: nil,_uid: uid, _admin: self.adminSwitch.isOn, _first: firstName, _last: lastName, _email: emailText, _boat: nil, _captain: nil, _about: nil, _phone: nil, _address: nil, _organization:  nil, _userName: "\(firstName) \(lastName)")
                     UserDefaults.standard.set(currentUser: currentUser, forKey: "currentUser")
+                    
+                    //TODO: Issue here
                     UserDefaults.standard.set(nil, forKey: "activeTournament")
                     self.navigationController?.isNavigationBarHidden = true
-                    self.performSegue(withIdentifier: "createToDashboard", sender: self)
                 }
+                self.performSegue(withIdentifier: "createToDashboard", sender: self)
             })
         }
     }

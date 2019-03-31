@@ -78,6 +78,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let tournament = self.tournaments[indexPath.row]
                     Global.tournament = tournament
                     Global.divisions = tournament.divisions
+                    print(Global.tournament.fishSpecies.count)
                     Global.edit = true
                     self.performSegue(withIdentifier: "toTournament", sender: self)
                 }
@@ -197,7 +198,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                                 }
                             }
                         }
-                        }.resume()
+                    }.resume()
                 }
             } else {
                 cell.tournamentImage.image = UIImage(named: "DefaultTournament")
@@ -359,6 +360,7 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let startTime = map["startTime"] as! String
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
+                    let fishIDs = map["fish"] as! [String]
                     let dates = map["dates"] as! [Timestamp]
                     
                     var convertedDates = [Date]()
@@ -370,11 +372,36 @@ class TournamentsCollectionVC: UICollectionViewController {
                     
                     self.tournaments.append(newTournament)
                     self.fetchDivisions(tournament: newTournament)
+                    self.fetchFish(fishIDs: fishIDs, tournament: newTournament)
                 } else if let error = err {
                     let alert = Utils.basicAlert(title: "Error", message: error.localizedDescription, Button: "OK")
                     self.present(alert, animated: true, completion: nil)
                 }
             })
+        }
+    }
+    
+    // fetching the fish for each tournament
+    func fetchFish(fishIDs: [String], tournament: Tournament) {
+        
+        for id in fishIDs {
+            db.collection("fish").document(id).getDocument(source: .default) { (document, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                if let doc = document {
+                    if let map = doc.data(){
+                        let id = doc.documentID
+                        let name = map["name"] as! String
+                        let type = map["type"] as! Int
+                        
+                        
+                        tournament.fishSpecies.append(Fish(_id: id, _name: name, _type: type, _checked: true, _weight: nil, _length: nil))
+                    }
+                }
+            }
         }
     }
     

@@ -201,8 +201,8 @@ class AnglerProfileVC: UIViewController {
                     let id = doc.documentID
                     let tID = map["tID"] as! String
                     let userName = map["userName"] as! String
-                    let lat = map["lat"] as! String
-                    let long = map["long"] as! String
+                    let lat = map["lat"] as? Double
+                    let long = map["long"] as? Double
                     let userID = map["userID"] as! String
                     let imageID = map["image"] as! String
                     let fish = map["fish"] as! String

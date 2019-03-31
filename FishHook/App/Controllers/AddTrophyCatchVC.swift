@@ -25,8 +25,8 @@ class AddTrophyCatchVC: UIViewController {
 
     // Location Manager
     var locationManager = CLLocationManager()
-    var lat: CLLocationDegrees?
-    var long: CLLocationDegrees?
+    var lat: Double?
+    var long: Double?
     
     var currentUser: User?
     var imageID: String!
@@ -64,7 +64,7 @@ class AddTrophyCatchVC: UIViewController {
     }
     @IBAction func submitCatch(_ sender: UIButton) {
         // Validating inputs
-        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image, let UID = currentUser?.uid, let id = tID, let latitude = lat?.description, let longitude = long?.description, let userName = currentUser?.userName
+        guard !fishTF.isNullOrWhitespace(), !metricTF.isNullOrWhitespace(), let catchImage = catchIV.image, let UID = currentUser?.uid, let id = tID, let latitude = lat, let longitude = long, let userName = currentUser?.userName
             else{
             let alert = Utils.basicAlert(title: "Invalid Entries", message: "Please make sure every field is filled out correctly and not left blank.", Button: "OK")
             present(alert, animated: true, completion: nil)
@@ -79,11 +79,11 @@ class AddTrophyCatchVC: UIViewController {
         uploadImage(imageID: imageID, image: catchImage)
         
         // Saving to user
-        addTrophyCatch()
+        addTrophyCatch(lat: latitude, long: longitude)
     }
     
     // Saving the trophy catch to firestore.
-    func addTrophyCatch(){
+    func addTrophyCatch(lat: Double, long: Double){
         
         if let c = newCatch {
             db.collection("trophy").document(c.id).setData(

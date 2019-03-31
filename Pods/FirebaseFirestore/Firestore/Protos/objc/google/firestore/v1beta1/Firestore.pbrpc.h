@@ -54,12 +54,12 @@
   #import "Query.pbobjc.h"
   #import "Write.pbobjc.h"
   #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
-    #import <Protobuf/Empty.pbobjc.h>
+    #import <protobuf/Empty.pbobjc.h>
   #else
     #import "Empty.pbobjc.h"
   #endif
   #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
-    #import <Protobuf/Timestamp.pbobjc.h>
+    #import <protobuf/Timestamp.pbobjc.h>
   #else
     #import "Timestamp.pbobjc.h"
   #endif
