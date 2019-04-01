@@ -67,6 +67,7 @@ class LoginVC: UIViewController {
             let passwordAlert = Utils.basicAlert(title: "Forgot your Password?", message: "", Button: "Ok")
             self.present(passwordAlert, animated: true, completion: nil)
         case 1:
+            
             // Properly validating entries.
             guard !email.isNullOrWhitespace(), email.isValidEmail(), !password.isNullOrWhitespace(), password.isValidPassword() else {
                 

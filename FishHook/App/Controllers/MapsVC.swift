@@ -21,26 +21,14 @@ class MapsVC: UIViewController {
     var db: Firestore!
     var currentLocation: CLLocationCoordinate2D?
     var testLocation: CLLocationCoordinate2D?
+    var annotations: [MKAnnotation]?
     
     var testCoordinates = [(27.944138, -82.576719), (27.905503, -82.579033), (27.904776, -82.610531
         ), (27.920907, -82.586123),(27.938795, -82.590103),(27.943244, -82.622278), (27.937913, -82.662145),(27.985131, -82.633544),(27.974599, -82.654735),(27.964158, -82.588436)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUp()
-    }
-    
-    
-    func setUp(){
-        db = Firestore.firestore()
-        map.delegate = self
-        
-        navigationItem.title = "Current Location"
-        
-        if let tabVC = tabBarController as? TabVC {
-            currentUser = tabVC.currentUser
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,8 +41,24 @@ class MapsVC: UIViewController {
         }
     }
     
+    func setUp(){
+        db = Firestore.firestore()
+        map.delegate = self
+        
+        navigationItem.title = "Current Location"
+        
+        if let tabVC = tabBarController as? TabVC {
+            currentUser = tabVC.currentUser
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
+        catches.removeAll()
+        if let a = annotations {
+            map.removeAnnotations(a)
+        }
+        annotations?.removeAll()
     }
     
     
@@ -132,13 +136,21 @@ class MapsVC: UIViewController {
         
         map.setRegion(zoomRegion, animated: true)
         
-        
+        annotations?.append(testCoordinate)
         
         for trophyCatch in catches.enumerated() {
             let annotation = MKPointAnnotation()
             annotation.title = trophyCatch.element.fish
             annotation.subtitle = trophyCatch.element.imageID
-            annotation.coordinate = CLLocationCoordinate2D(latitude: testCoordinates[trophyCatch.offset].0, longitude: testCoordinates[trophyCatch.offset].1)
+            
+            if trophyCatch.offset > testCoordinates.count - 1 {
+                 annotation.coordinate = CLLocationCoordinate2D(latitude: testCoordinates[0].0, longitude: testCoordinates[0].1)
+            } else {
+                 annotation.coordinate = CLLocationCoordinate2D(latitude: testCoordinates[trophyCatch.offset].0, longitude: testCoordinates[trophyCatch.offset].1)
+            }
+           
+            
+            annotations?.append(annotation)
             map.addAnnotation(annotation)
         }
     }
@@ -224,11 +236,13 @@ extension MapsVC: MKMapViewDelegate {
                     let image = UIImage(data: data)
                     
                     DispatchQueue.main.async {
-                        let size = CGSize(width: 100, height: 100)
+                        let size = CGSize(width: 75, height: 75)
                         UIGraphicsBeginImageContext(size)
-                        image!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-                        let small = UIGraphicsGetImageFromCurrentImageContext()
-                        annotationView?.image = small
+                        if let i = image {
+                            i.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                            let small = UIGraphicsGetImageFromCurrentImageContext()
+                            annotationView?.image = small
+                        }
                     }
                 }
                 }.resume()

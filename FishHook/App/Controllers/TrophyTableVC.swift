@@ -22,12 +22,10 @@ class TrophyTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        fetchTrophies()
         navigationItem.title = "Trophy Wall"
     }
     
     func setUp(){
-        tID = UserDefaults.standard.string(forKey: "activeTournament")
         db = Firestore.firestore()
         storage = Storage.storage()
         
@@ -36,6 +34,13 @@ class TrophyTableVC: UITableViewController {
         if let tabVC = tabBarController as? TabVC {
             currentUser = tabVC.currentUser
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tID = UserDefaults.standard.string(forKey: "activeTournament")
+        catches.removeAll()
+        tableView.reloadData()
+        fetchTrophies()
     }
     
     // Fetching trophies from firestore

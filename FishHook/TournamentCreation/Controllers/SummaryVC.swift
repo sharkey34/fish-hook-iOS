@@ -105,12 +105,15 @@ class SummaryVC: UIViewController {
             Global.tournament.id = tUID
             Global.tournament.code = tCode
             
-            var imageID = NSUUID().uuidString
-            
+            var imageID: String!
             if Global.edit {
                 imageID = Global.tournament.imageID!
+            } else {
+                imageID = NSUUID().uuidString
+                Global.tournament.imageID = imageID
             }
-            guard let storageRef = storage?.reference().child("tournament/\(imageID).jpg") else {return}
+            
+            guard let storageRef = storage?.reference().child("tournament/\(imageID!).jpg") else {return}
             
             // Local file you want to upload
             guard let imageData = Global.tournament.logo?.jpegData(compressionQuality: 0.1) else {return}
@@ -175,11 +178,13 @@ class SummaryVC: UIViewController {
             
             if let dID = division.id {
                 divID = dID
+                print(divID)
             } else {
                 guard let id = db?.collection("divisions").document().documentID else {return}
                 divID = id
             }
             
+            division.id = divID
             db?.collection("divisions").document(divID).setData(
                 [
                     "tID": tUID,
@@ -215,6 +220,8 @@ class SummaryVC: UIViewController {
                 guard let id = db?.collection("awards").document().documentID else {return}
                 awardID = id
             }
+            
+            award.id = awardID
             
             db?.collection("awards").document(awardID).setData(
                 [

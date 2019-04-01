@@ -78,7 +78,6 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let tournament = self.tournaments[indexPath.row]
                     Global.tournament = tournament
                     Global.divisions = tournament.divisions
-                    print(Global.tournament.fishSpecies.count)
                     Global.edit = true
                     self.performSegue(withIdentifier: "toTournament", sender: self)
                 }
@@ -286,9 +285,13 @@ class TournamentsCollectionVC: UICollectionViewController {
                     let startTime = map["startTime"] as! String
                     let endDate = map["endDate"] as! String
                     let endTime = map["endTime"] as! String
-                    let dates = map["dates"] as! [Date]
+                    let dates = map["dates"] as! [Timestamp]
                     
-                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID, _dates: dates))
+                    var convertedDates = [Date]()
+                    for date in dates {
+                        convertedDates.append(date.dateValue())
+                    }
+                    self.tournaments.append(Tournament(_id: id, _name: name, _logo: nil, _created: nil, _divisions: [Division](), _fishSpecies: [Fish](), _participants: participants, _waterType: waterType, _metrics: metrics, _startDate: startDate, _endDate: endDate, _startTime: startTime, _endTime: endTime, _code: code, _isActive: false, _imageID: imageID, _dates: convertedDates))
                     
                     self.addTournamentToUser(id: id)
                     UserDefaults.standard.set(id, forKey: "activeTournament")

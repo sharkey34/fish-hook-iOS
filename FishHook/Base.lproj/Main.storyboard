@@ -158,7 +158,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TkQ-Hl-qJ7">
-                                        <rect key="frame" x="244.5" y="394" width="51" height="31"/>
+                                        <rect key="frame" x="282.5" y="394" width="51" height="31"/>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,7 +182,7 @@
                                     <constraint firstItem="ptV-jV-l6S" firstAttribute="width" secondItem="i0g-Gq-MQK" secondAttribute="width" multiplier="0.12" id="Zt9-cs-45E"/>
                                     <constraint firstItem="BMd-bW-Q0p" firstAttribute="width" secondItem="i0g-Gq-MQK" secondAttribute="width" multiplier="0.12" id="arh-RQ-WKd"/>
                                     <constraint firstItem="BMd-bW-Q0p" firstAttribute="centerX" secondItem="i0g-Gq-MQK" secondAttribute="centerX" id="b7a-k9-3JK"/>
-                                    <constraint firstItem="TkQ-Hl-qJ7" firstAttribute="centerX" secondItem="i0g-Gq-MQK" secondAttribute="centerX" multiplier="0.7" id="fKI-Mb-H64"/>
+                                    <constraint firstItem="TkQ-Hl-qJ7" firstAttribute="centerX" secondItem="i0g-Gq-MQK" secondAttribute="centerX" multiplier="0.8" id="fKI-Mb-H64"/>
                                     <constraint firstItem="ptV-jV-l6S" firstAttribute="centerX" secondItem="i0g-Gq-MQK" secondAttribute="centerX" multiplier="0.51" id="g87-rI-V04"/>
                                     <constraint firstItem="OvE-Ro-HvA" firstAttribute="centerY" secondItem="i0g-Gq-MQK" secondAttribute="centerY" multiplier="1.35" id="mcA-Ip-Pay"/>
                                     <constraint firstItem="OvE-Ro-HvA" firstAttribute="width" secondItem="tSN-qc-7bA" secondAttribute="width" id="r1U-LO-ODm"/>
@@ -1026,7 +1026,7 @@
             <objects>
                 <navigationController id="E65-Z5-6Gk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pdP-2i-DG2">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2485,7 +2485,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5RI-Ml-uSW"/>
-        <segue reference="TQL-y7-MT7"/>
+        <segue reference="XR5-Bf-aic"/>
         <segue reference="Mh3-Xb-gMK"/>
         <segue reference="dmp-sb-ZU7"/>
     </inferredMetricsTieBreakers>
