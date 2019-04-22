@@ -159,7 +159,7 @@ class EditProfileVC: UIViewController {
             values.updateValue(entries[0].text!, forKey: "org")
             values.updateValue(entries[1].text!, forKey: "phone")
             values.updateValue(entries[2].text!, forKey: "address")
-            values.updateValue(aboutTV.text, forKey: "about")
+            values.updateValue(aboutTV.text!, forKey: "about")
             
         } else {
             values.updateValue(entries[0].text!, forKey: "userName")

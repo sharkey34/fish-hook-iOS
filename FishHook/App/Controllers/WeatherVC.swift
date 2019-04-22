@@ -70,6 +70,8 @@ class WeatherVC: UIViewController {
         case . denied:
             // Display alert telling the user to authorize permissions
             break
+        @unknown default:
+            print("Unknown error occurred")
         }
     }
     
@@ -80,6 +82,7 @@ class WeatherVC: UIViewController {
         let marineWeatherString = "https://api.worldweatheronline.com/premium/v1/marine.ashx?q=27.929097,-82.610179&format=json&key=85afa02d0e724309a44233800192203"
         
         let url = URL(string: marineWeatherString)
+        
         
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if let error = error {

@@ -178,7 +178,7 @@ class SummaryVC: UIViewController {
             
             if let dID = division.id {
                 divID = dID
-                print(divID)
+                print(divID!)
             } else {
                 guard let id = db?.collection("divisions").document().documentID else {return}
                 divID = id

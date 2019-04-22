@@ -154,6 +154,8 @@ class AddTrophyCatchVC: UIViewController {
         case . denied:
             // Display alert telling the user to authorize permissions
             break
+        @unknown default:
+            print("Unknown error occurred")
         }
     }
 

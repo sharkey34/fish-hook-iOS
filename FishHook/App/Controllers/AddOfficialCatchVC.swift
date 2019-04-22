@@ -123,7 +123,7 @@ class AddOfficialCatchVC: UIViewController {
         
         db.collection("official").document(catchID!).setData(
             [
-                "aID": aID,
+                "aID": aID!,
                 "imageID": imageID,
                 "userID": userID!,
                 "userName": userName!,
